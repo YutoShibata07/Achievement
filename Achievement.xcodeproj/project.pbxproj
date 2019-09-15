@@ -3,18 +3,50 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		695313832326140E00C79CD1 /* FadeEnableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695313822326140E00C79CD1 /* FadeEnableButton.swift */; };
+		695313852327546800C79CD1 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695313842327546800C79CD1 /* RoundedView.swift */; };
+		6974BE1F2325F3C200ABA858 /* NewRoutineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974BE1D2325F3C200ABA858 /* NewRoutineVC.swift */; };
+		69AB0AA5232219110014905C /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB0AA4232219110014905C /* TodoViewController.swift */; };
+		69AB0AA72322192A0014905C /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB0AA62322192A0014905C /* AchievementViewController.swift */; };
+		69AB0AA92322193C0014905C /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB0AA82322193C0014905C /* GraphViewController.swift */; };
+		69AB0AAB2322194D0014905C /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB0AAA2322194D0014905C /* HistoryViewController.swift */; };
+		69AB0AAD2322195C0014905C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB0AAC2322195C0014905C /* MenuViewController.swift */; };
+		69AB0AB32322199E0014905C /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB0AB22322199E0014905C /* TodoTableViewCell.swift */; };
+		69AB0AB5232219BE0014905C /* AchieveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB0AB4232219BE0014905C /* AchieveTableViewCell.swift */; };
+		69D1C074232760B0007B7714 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1C073232760B0007B7714 /* Extension.swift */; };
+		69D1C078232773A6007B7714 /* NewAchievementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1C077232773A6007B7714 /* NewAchievementVC.swift */; };
+		69D1C07C232DE9A5007B7714 /* Routines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1C07B232DE9A5007B7714 /* Routines.swift */; };
+		69D1C07E232DEA63007B7714 /* Journals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1C07D232DEA63007B7714 /* Journals.swift */; };
+		69D1C081232DF43F007B7714 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1C080232DF43F007B7714 /* Globals.swift */; };
 		69EC223E232211F300021C63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC223D232211F300021C63 /* AppDelegate.swift */; };
 		69EC2240232211F300021C63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC223F232211F300021C63 /* ViewController.swift */; };
 		69EC2243232211F300021C63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69EC2241232211F300021C63 /* Main.storyboard */; };
 		69EC2245232211F500021C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69EC2244232211F500021C63 /* Assets.xcassets */; };
 		69EC2248232211F500021C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69EC2246232211F500021C63 /* LaunchScreen.storyboard */; };
+		C6F3DF5ECCE3DFE7F48B2473 /* Pods_Achievement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75F73668567339B644406BC8 /* Pods_Achievement.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3ED95454CD85641BBA617394 /* Pods-Achievement.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Achievement.debug.xcconfig"; path = "Target Support Files/Pods-Achievement/Pods-Achievement.debug.xcconfig"; sourceTree = "<group>"; };
+		695313822326140E00C79CD1 /* FadeEnableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeEnableButton.swift; sourceTree = "<group>"; };
+		695313842327546800C79CD1 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		6974BE1D2325F3C200ABA858 /* NewRoutineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRoutineVC.swift; sourceTree = "<group>"; };
+		69AB0AA4232219110014905C /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
+		69AB0AA62322192A0014905C /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
+		69AB0AA82322193C0014905C /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
+		69AB0AAA2322194D0014905C /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		69AB0AAC2322195C0014905C /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		69AB0AB22322199E0014905C /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
+		69AB0AB4232219BE0014905C /* AchieveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveTableViewCell.swift; sourceTree = "<group>"; };
+		69D1C073232760B0007B7714 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		69D1C077232773A6007B7714 /* NewAchievementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAchievementVC.swift; sourceTree = "<group>"; };
+		69D1C07B232DE9A5007B7714 /* Routines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routines.swift; sourceTree = "<group>"; };
+		69D1C07D232DEA63007B7714 /* Journals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journals.swift; sourceTree = "<group>"; };
+		69D1C080232DF43F007B7714 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		69EC223A232211F300021C63 /* Achievement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Achievement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69EC223D232211F300021C63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69EC223F232211F300021C63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +54,8 @@
 		69EC2244232211F500021C63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69EC2247232211F500021C63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		69EC2249232211F500021C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75F73668567339B644406BC8 /* Pods_Achievement.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Achievement.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAD5A36391369A8FE5160AE6 /* Pods-Achievement.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Achievement.release.xcconfig"; path = "Target Support Files/Pods-Achievement/Pods-Achievement.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +63,62 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6F3DF5ECCE3DFE7F48B2473 /* Pods_Achievement.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6974BE212325F3D500ABA858 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
+		69D1C0722327609A007B7714 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				69D1C073232760B0007B7714 /* Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		69D1C07923277510007B7714 /* Todo */ = {
+			isa = PBXGroup;
+			children = (
+				69AB0AA4232219110014905C /* TodoViewController.swift */,
+				6974BE1D2325F3C200ABA858 /* NewRoutineVC.swift */,
+			);
+			path = Todo;
+			sourceTree = "<group>";
+		};
+		69D1C07A2327751D007B7714 /* Achievement */ = {
+			isa = PBXGroup;
+			children = (
+				69AB0AA62322192A0014905C /* AchievementViewController.swift */,
+				69D1C077232773A6007B7714 /* NewAchievementVC.swift */,
+			);
+			path = Achievement;
+			sourceTree = "<group>";
+		};
+		69D1C07F232DF401007B7714 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				69D1C0722327609A007B7714 /* Extensions */,
+				69D1C080232DF43F007B7714 /* Globals.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		69EC2231232211F300021C63 = {
 			isa = PBXGroup;
 			children = (
 				69EC223C232211F300021C63 /* Achievement */,
 				69EC223B232211F300021C63 /* Products */,
+				AF67F831D36CE7F0B7B1B819 /* Pods */,
+				ABA56968DDAE03CE3E45C768 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +133,11 @@
 		69EC223C232211F300021C63 /* Achievement */ = {
 			isa = PBXGroup;
 			children = (
+				69D1C07F232DF401007B7714 /* Utils */,
+				6974BE212325F3D500ABA858 /* Xibs */,
+				69EC22512322137E00021C63 /* Model */,
+				69EC22502322137800021C63 /* View */,
+				69EC224F2322136500021C63 /* Controller */,
 				69EC223D232211F300021C63 /* AppDelegate.swift */,
 				69EC223F232211F300021C63 /* ViewController.swift */,
 				69EC2241232211F300021C63 /* Main.storyboard */,
@@ -64,6 +148,55 @@
 			path = Achievement;
 			sourceTree = "<group>";
 		};
+		69EC224F2322136500021C63 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				69D1C07923277510007B7714 /* Todo */,
+				69D1C07A2327751D007B7714 /* Achievement */,
+				69AB0AA82322193C0014905C /* GraphViewController.swift */,
+				69AB0AAA2322194D0014905C /* HistoryViewController.swift */,
+				69AB0AAC2322195C0014905C /* MenuViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		69EC22502322137800021C63 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				69AB0AB22322199E0014905C /* TodoTableViewCell.swift */,
+				69AB0AB4232219BE0014905C /* AchieveTableViewCell.swift */,
+				695313822326140E00C79CD1 /* FadeEnableButton.swift */,
+				695313842327546800C79CD1 /* RoundedView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		69EC22512322137E00021C63 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				69D1C07B232DE9A5007B7714 /* Routines.swift */,
+				69D1C07D232DEA63007B7714 /* Journals.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ABA56968DDAE03CE3E45C768 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75F73668567339B644406BC8 /* Pods_Achievement.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AF67F831D36CE7F0B7B1B819 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3ED95454CD85641BBA617394 /* Pods-Achievement.debug.xcconfig */,
+				EAD5A36391369A8FE5160AE6 /* Pods-Achievement.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +204,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 69EC224C232211F500021C63 /* Build configuration list for PBXNativeTarget "Achievement" */;
 			buildPhases = (
+				38D6273158D9B4CE2A1F195B /* [CP] Check Pods Manifest.lock */,
 				69EC2236232211F300021C63 /* Sources */,
 				69EC2237232211F300021C63 /* Frameworks */,
 				69EC2238232211F300021C63 /* Resources */,
+				4B75328D648547C81F4D7CFD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,12 +265,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		38D6273158D9B4CE2A1F195B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Achievement-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4B75328D648547C81F4D7CFD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Achievement/Pods-Achievement-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Achievement/Pods-Achievement-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Achievement/Pods-Achievement-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		69EC2236232211F300021C63 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				69EC2240232211F300021C63 /* ViewController.swift in Sources */,
+				69AB0AA92322193C0014905C /* GraphViewController.swift in Sources */,
+				69AB0AB5232219BE0014905C /* AchieveTableViewCell.swift in Sources */,
+				69AB0AA5232219110014905C /* TodoViewController.swift in Sources */,
+				69D1C081232DF43F007B7714 /* Globals.swift in Sources */,
+				6974BE1F2325F3C200ABA858 /* NewRoutineVC.swift in Sources */,
+				69D1C07C232DE9A5007B7714 /* Routines.swift in Sources */,
+				69AB0AB32322199E0014905C /* TodoTableViewCell.swift in Sources */,
+				69D1C07E232DEA63007B7714 /* Journals.swift in Sources */,
+				69AB0AAD2322195C0014905C /* MenuViewController.swift in Sources */,
+				69AB0AAB2322194D0014905C /* HistoryViewController.swift in Sources */,
+				695313852327546800C79CD1 /* RoundedView.swift in Sources */,
+				69D1C074232760B0007B7714 /* Extension.swift in Sources */,
+				695313832326140E00C79CD1 /* FadeEnableButton.swift in Sources */,
+				69D1C078232773A6007B7714 /* NewAchievementVC.swift in Sources */,
+				69AB0AA72322192A0014905C /* AchievementViewController.swift in Sources */,
 				69EC223E232211F300021C63 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +472,7 @@
 		};
 		69EC224D232211F500021C63 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3ED95454CD85641BBA617394 /* Pods-Achievement.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +491,7 @@
 		};
 		69EC224E232211F500021C63 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EAD5A36391369A8FE5160AE6 /* Pods-Achievement.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

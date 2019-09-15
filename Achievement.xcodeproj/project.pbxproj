@@ -22,6 +22,7 @@
 		69D1C07C232DE9A5007B7714 /* Routines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1C07B232DE9A5007B7714 /* Routines.swift */; };
 		69D1C07E232DEA63007B7714 /* Journals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1C07D232DEA63007B7714 /* Journals.swift */; };
 		69D1C081232DF43F007B7714 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1C080232DF43F007B7714 /* Globals.swift */; };
+		69D1C083232E62FA007B7714 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1C082232E62FA007B7714 /* User.swift */; };
 		69EC223E232211F300021C63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC223D232211F300021C63 /* AppDelegate.swift */; };
 		69EC2240232211F300021C63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC223F232211F300021C63 /* ViewController.swift */; };
 		69EC2243232211F300021C63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69EC2241232211F300021C63 /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		69D1C07B232DE9A5007B7714 /* Routines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routines.swift; sourceTree = "<group>"; };
 		69D1C07D232DEA63007B7714 /* Journals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journals.swift; sourceTree = "<group>"; };
 		69D1C080232DF43F007B7714 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		69D1C082232E62FA007B7714 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		69EC223A232211F300021C63 /* Achievement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Achievement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69EC223D232211F300021C63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69EC223F232211F300021C63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			children = (
 				69D1C07B232DE9A5007B7714 /* Routines.swift */,
 				69D1C07D232DEA63007B7714 /* Journals.swift */,
+				69D1C082232E62FA007B7714 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				695313852327546800C79CD1 /* RoundedView.swift in Sources */,
 				69D1C074232760B0007B7714 /* Extension.swift in Sources */,
 				695313832326140E00C79CD1 /* FadeEnableButton.swift in Sources */,
+				69D1C083232E62FA007B7714 /* User.swift in Sources */,
 				69D1C078232773A6007B7714 /* NewAchievementVC.swift in Sources */,
 				69AB0AA72322192A0014905C /* AchievementViewController.swift in Sources */,
 				69EC223E232211F300021C63 /* AppDelegate.swift in Sources */,

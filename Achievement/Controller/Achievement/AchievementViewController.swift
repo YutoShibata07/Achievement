@@ -18,7 +18,7 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-//        dateLbl.text = getToday()
+//      dateLbl.text = getToday()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

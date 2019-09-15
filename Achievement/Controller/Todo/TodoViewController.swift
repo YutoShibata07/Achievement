@@ -23,7 +23,7 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tableView.dataSource = self
         if lastVisitTime != nil{
             print("ohh")
-            isFirstTime = compareTime(time: lastVisitTime)
+            isFirstVisit = compareTime(time: lastVisitTime)
         }
     }
     override func viewWillDisappear(_ animated: Bool) {

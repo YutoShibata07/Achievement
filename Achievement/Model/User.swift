@@ -1,5 +1,5 @@
 //
-//  Globals.swift
+//  User.swift
 //  Achievement
 //
 //  Created by 柴田優斗 on 2019/09/15.
@@ -7,5 +7,6 @@
 //
 
 import Foundation
-
-var isFirstVisit:Bool!
+struct User {
+    var isFirsrVisit:Bool
+}

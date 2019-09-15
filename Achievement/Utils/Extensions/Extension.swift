@@ -71,6 +71,7 @@ extension UIColor {
 
 class dateLbl:UILabel{
     override func awakeFromNib() {
+        super.awakeFromNib()
         text = getToday()
     }
 }

@@ -36,7 +36,7 @@ class TodoTableViewCell: UITableViewCell {
     func configureCell(text:String){
         routineLbl.text = text
         doneBtn.isEnabled = true
-        if (isFirstTime == false)&&(isDone == true){
+        if (isFirstVist == false)&&(isDone == true){
             makeLblDone()
         }
     }

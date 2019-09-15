@@ -11,5 +11,12 @@ import Foundation
 struct Journals {
     var title:String!
     var isToday:Bool!
-    var dayCount:Int!
+//    var dayCount:Int!
+    
+    init(title:String,isToday:Bool) {
+        self.title = title
+        self.isToday = isToday
+    }
 }
+
+

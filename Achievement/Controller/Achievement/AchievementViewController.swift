@@ -22,7 +22,9 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        jounalsToShow = ud.array(forKey: "AchievementToShow") as? [Journals] ?? [Journals]()
+        if let loadedData = loadedData(){
+            jounalsToShow = loadedData
+        }
         tableView.reloadData()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,6 +45,12 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         deleteButton.backgroundColor = UIColor.red
         return [deleteButton]
+    }
+    
+    func loadedData() -> [Journals]?{
+        guard let data = ud.data(forKey: "JournalsToShow"),
+            let loadedData = try? JSONDecoder().decode([Journals].self, from: data) else {return nil}
+            return loadedData
     }
     
     

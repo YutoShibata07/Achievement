@@ -31,12 +31,11 @@ class TodoTableViewCell: UITableViewCell {
         if let doneIndex = routines.index(where:{$0.title == routineLbl.text}){
             routines[doneIndex].doneToday = true
         }
-        
     }
     func configureCell(text:String){
         routineLbl.text = text
         doneBtn.isEnabled = true
-        if (isFirstVist == false)&&(isDone == true){
+        if (isFirstVisit == false)&&(isDone == true){
             makeLblDone()
         }
     }

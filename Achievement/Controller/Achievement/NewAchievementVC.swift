@@ -26,11 +26,16 @@ class NewAchievementVC: UIViewController,UITextFieldDelegate {
     }
     @IBAction func addButtonClicked(_ sender: Any){
         if let textToShow = textField.text{
-            jounalsToShow.append(Journals(title: textToShow, isToday: true, dayCount: 0))
-            ud.set(jounalsToShow, forKey: "AchievementToShow")
-            ud.synchronize()
+            jounalsToShow.append(Journals(title: textToShow, isToday: true))
+            savedData(jounalsToShow)
         }
         dismiss(animated: true, completion: nil)
+    }
+    
+    func savedData(_ value:[Journals]){
+        guard let data = try? JSONEncoder().encode(value) else { return }
+        ud.set(data, forKey: "JournalsToShow")
+        ud.synchronize()
     }
     
     

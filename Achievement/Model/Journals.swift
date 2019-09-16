@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Journals {
+struct Journals :Codable{
     var title:String!
     var isToday:Bool!
 //    var dayCount:Int!

@@ -18,7 +18,4 @@ class Routines :Codable{
         self.doneToday = doneToday
         self.coutinuousRecord = coutinuousRecord
     }
-   
-    
-    
 }

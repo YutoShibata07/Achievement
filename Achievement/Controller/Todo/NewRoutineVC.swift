@@ -41,7 +41,7 @@ class NewRoutineVC: UIViewController,UITextFieldDelegate {
     
     func addArray(array:[Routines],phraseToAdd:String) ->[Routines]{
         var array = array
-        array.append(Routines.init(title: phraseToAdd, doneToday: true, coutinuousRecord: 0))
+        array.append(Routines.init(title: phraseToAdd, doneToday: false, coutinuousRecord: 0))
         return array
     }
     

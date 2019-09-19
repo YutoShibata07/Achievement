@@ -15,6 +15,7 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     let ud = UserDefaults.standard
+    let sharedUserData:UserData = UserData.sharedData
     private var lastVisitTime:Date!
 //    最後にこのアプリを使った時間。午前３時と比較してデータを更新するために使用する。
     override func viewDidLoad() {
@@ -22,18 +23,21 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tableView.delegate = self
         tableView.dataSource = self
         if lastVisitTime != nil{
-            print("ohh")
-            isFirstVisit = compareTime(time: lastVisitTime)
+            sharedUserData.data.isFirstVisit = compareTime(time: lastVisitTime)
+            //最終ログインの時間を確認する。
+        }else{sharedUserData.data.isFirstVisit = true}
+        if sharedUserData.data.isFirstVisit == true{
+            resetData()
+            sharedUserData.data.recentCount.remove(at: 0)//3日前のデータを消す。
+            sharedUserData.data.recentCount.append(0)
         }
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
         lastVisitTime = Date()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
+        lastVisitTime = Date()
         if let loadedRoutines = loadRoutines(){
           routines = loadRoutines()!
         }
@@ -46,7 +50,7 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "routineCell", for: indexPath) as? TodoTableViewCell{
-            cell.configureCell(text: routines[indexPath.row].title)
+            cell.configureCell(text: routines[indexPath.row].title,routine: routines[indexPath.row])
             return cell
         }
         return UITableViewCell()
@@ -65,6 +69,11 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         guard let data = ud.data(forKey: "routinesToShow"),
             let loadedData = try? JSONDecoder().decode([Routines].self, from: data) else {return nil}
         return loadedData
+    }
+    func resetData(){//今日の分のデータをリセットする。
+        for data in routines {
+            data.doneToday = false
+        }
     }
 
 }

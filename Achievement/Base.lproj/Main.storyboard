@@ -158,50 +158,67 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="70"/>
                                 <color key="backgroundColor" red="0.36770350689999998" green="0.7615252736" blue="0.12549019610000001" alpha="0.65579516270000004" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="gu3-kc-ZWG"/>
+                                    <constraint firstAttribute="height" constant="70" id="YGS-jg-z3x"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="27"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mER-rm-cwA">
-                                <rect key="frame" x="20" y="100" width="280" height="40"/>
+                                <rect key="frame" x="20" y="100" width="280" height="32.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="hc9-l9-fQg"/>
+                                    <constraint firstAttribute="width" constant="280" id="4z1-UD-x8i"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EGZ-HZ-Rih">
-                                <rect key="frame" x="20" y="160" width="280" height="400"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EGZ-HZ-Rih">
+                                <rect key="frame" x="15" y="195" width="285" height="365"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="fb4-R1-g5w"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="4Tu-9g-Ma9">
-                                        <rect key="frame" x="0.0" y="28" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="285" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Tu-9g-Ma9" id="YRp-gQ-fB4">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="285" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="U7W-3T-Tsj">
+                                <rect key="frame" x="90" y="140.5" width="140" height="27"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYd-cs-Gx2">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="カテゴリー">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCh-12-Xti">
+                                        <rect key="frame" x="70" y="0.0" width="70" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="日付"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="tKx-QW-uR8"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="GTb-fs-cN3" firstAttribute="trailing" secondItem="mER-rm-cwA" secondAttribute="trailing" constant="20" id="1kt-hl-Ad5"/>
-                            <constraint firstItem="CeU-8D-asM" firstAttribute="leading" secondItem="GTb-fs-cN3" secondAttribute="leading" id="F8n-UK-zMd"/>
-                            <constraint firstItem="GTb-fs-cN3" firstAttribute="trailing" secondItem="CeU-8D-asM" secondAttribute="trailing" id="Lez-Jg-qsy"/>
-                            <constraint firstItem="EGZ-HZ-Rih" firstAttribute="top" secondItem="mER-rm-cwA" secondAttribute="bottom" constant="20" id="QXK-NN-AiU"/>
-                            <constraint firstItem="mER-rm-cwA" firstAttribute="leading" secondItem="GTb-fs-cN3" secondAttribute="leading" constant="20" id="W5J-Vq-lIF"/>
-                            <constraint firstItem="mER-rm-cwA" firstAttribute="top" secondItem="CeU-8D-asM" secondAttribute="bottom" constant="10" id="ZJF-y2-mXD"/>
-                            <constraint firstItem="EGZ-HZ-Rih" firstAttribute="leading" secondItem="GTb-fs-cN3" secondAttribute="leading" constant="20" id="kvS-fz-vlB"/>
-                            <constraint firstItem="GTb-fs-cN3" firstAttribute="trailing" secondItem="EGZ-HZ-Rih" secondAttribute="trailing" constant="20" id="lxX-96-Tvo"/>
-                            <constraint firstItem="CeU-8D-asM" firstAttribute="top" secondItem="GTb-fs-cN3" secondAttribute="top" id="oKo-em-zWV"/>
+                            <constraint firstItem="mER-rm-cwA" firstAttribute="leading" secondItem="GTb-fs-cN3" secondAttribute="leading" constant="20" id="32k-fV-vpW"/>
+                            <constraint firstItem="CeU-8D-asM" firstAttribute="top" secondItem="GTb-fs-cN3" secondAttribute="top" id="ZTj-eB-swV"/>
+                            <constraint firstItem="U7W-3T-Tsj" firstAttribute="centerX" secondItem="4cJ-6o-gyu" secondAttribute="centerX" id="dho-cx-gRL"/>
+                            <constraint firstItem="U7W-3T-Tsj" firstAttribute="top" secondItem="mER-rm-cwA" secondAttribute="bottom" constant="8" id="hXT-TR-gi6"/>
+                            <constraint firstItem="CeU-8D-asM" firstAttribute="trailing" secondItem="GTb-fs-cN3" secondAttribute="trailing" id="khI-6d-olS"/>
+                            <constraint firstItem="CeU-8D-asM" firstAttribute="leading" secondItem="GTb-fs-cN3" secondAttribute="leading" id="lDh-3z-9sf"/>
+                            <constraint firstItem="GTb-fs-cN3" firstAttribute="trailing" secondItem="mER-rm-cwA" secondAttribute="trailing" constant="20" id="mBf-Ze-zBx"/>
+                            <constraint firstItem="mER-rm-cwA" firstAttribute="top" secondItem="CeU-8D-asM" secondAttribute="bottom" constant="10" id="oEx-Gr-rVP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GTb-fs-cN3"/>
                     </view>
@@ -209,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7q-VN-RjB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="509" y="325"/>
+            <point key="canvasLocation" x="508.125" y="324.2957746478873"/>
         </scene>
         <!--Todo View Controller-->
         <scene sceneID="eU0-ec-VVN">
@@ -502,6 +519,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHj-u8-xTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1378" y="1077"/>
+        </scene>
+        <!--Clasify View Controller-->
+        <scene sceneID="OYC-io-ePZ">
+            <objects>
+                <viewController id="I19-Jd-r7B" customClass="ClasifyViewController" customModule="Achievement" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gre-FW-j7U">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pEf-Ad-vB1">
+                                <rect key="frame" x="0.0" y="120" width="320" height="448"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="0Gl-IE-dFg">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Gl-IE-dFg" id="Xhd-fv-mBZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ジャンルを決める" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hgn-Fw-O4f">
+                                <rect key="frame" x="20" y="40" width="280" height="60"/>
+                                <color key="backgroundColor" red="0.36862745099999999" green="0.76078431369999999" blue="0.12549019610000001" alpha="0.65579516270000004" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="haf-en-bZd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FVs-L4-r1P" firstAttribute="trailing" secondItem="Hgn-Fw-O4f" secondAttribute="trailing" constant="20" id="Fja-Md-LuY"/>
+                            <constraint firstItem="pEf-Ad-vB1" firstAttribute="top" secondItem="gre-FW-j7U" secondAttribute="topMargin" constant="100" id="HI4-oe-Bsf"/>
+                            <constraint firstItem="pEf-Ad-vB1" firstAttribute="leading" secondItem="FVs-L4-r1P" secondAttribute="leading" id="NCd-2q-tvu"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="pEf-Ad-vB1" secondAttribute="bottom" id="bp9-4H-BWm"/>
+                            <constraint firstItem="Hgn-Fw-O4f" firstAttribute="leading" secondItem="FVs-L4-r1P" secondAttribute="leading" constant="20" id="brD-nC-71z"/>
+                            <constraint firstItem="FVs-L4-r1P" firstAttribute="trailing" secondItem="pEf-Ad-vB1" secondAttribute="trailing" id="pjd-z0-jYm"/>
+                            <constraint firstItem="Hgn-Fw-O4f" firstAttribute="top" secondItem="FVs-L4-r1P" secondAttribute="top" constant="20" id="uro-jW-e9X"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FVs-L4-r1P"/>
+                    </view>
+                    <connections>
+                        <outlet property="headerLbl" destination="Hgn-Fw-O4f" id="DMu-Pn-9pd"/>
+                        <outlet property="tableView" destination="pEf-Ad-vB1" id="tsH-zm-NiD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MBB-ko-pc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-221" y="1076"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gdo-1l-8qd">

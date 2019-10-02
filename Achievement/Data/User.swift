@@ -7,23 +7,27 @@
 //
 
 import Foundation
-struct Data {
+struct User {
     var isFirstVisit:Bool
     var doneCount = 0
     var recentCount:[Int] = [0,0,0]
+    var genres = [String]()
     
     init(isFirstVisit:Bool) {
         self.isFirstVisit = isFirstVisit
         doneCount = 0
         recentCount = [0,0,0]//過去三日間の達成したroutineの数
+        genres = []
     }
 }
 
 //Userの一つしかないデータセットを扱うクラス
-class UserData:NSObject{
-    var data = Data(isFirstVisit: true)
+class UserData{
+    var data = User(isFirstVisit: true)
     static let sharedData :UserData = UserData()
-    private override init(){}
+    var journalsToShow = [Journals]()
+    var routinesToShow = [Routines]()
+    private init(){}
     
     func countDoneTask(){//既に達成したタスクの数を計算する。
         for task in routines{

@@ -11,12 +11,17 @@ import Foundation
 struct Journals :Codable{
     var title:String!
     var isToday:Bool!
-//    var dayCount:Int!
+    var genre:String!
+    var category:Category!
     
-    init(title:String,isToday:Bool) {
+    init(title:String,isToday:Bool, genre:String) {
         self.title = title
         self.isToday = isToday
+        self.genre = genre
     }
 }
 
+struct Category:Codable{
+    let name:String!
+}
 

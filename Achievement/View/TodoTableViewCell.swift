@@ -12,7 +12,7 @@ class TodoTableViewCell: UITableViewCell {
     @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var routineLbl: UILabel!
     @IBOutlet weak var ContentView: UIView!
-    let sharedUserData:UserData = UserData.sharedData
+    let routines = UserData.sharedData.routinesToShow//名前が長すぎるので変数を作った。
     let ud = UserDefaults.standard
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +31,7 @@ class TodoTableViewCell: UITableViewCell {
         if let doneIndex = routines.index(where:{$0.title == routineLbl.text}){
             routines[doneIndex].doneToday = true
         }
-        sharedUserData.countDoneTask()
+        UserData.sharedData.countDoneTask()
         guard let data = try? JSONEncoder().encode(routines) else {return}//データ型として値を保存する。
         ud.set(data, forKey: "routinesToShow")
         ud.synchronize()
@@ -39,10 +39,8 @@ class TodoTableViewCell: UITableViewCell {
     func configureCell(text:String,routine:Routines){
         routineLbl.text = text
         doneBtn.isEnabled = true
-        print("セルを作成しました")
-        if ((sharedUserData.data.isFirstVisit == false)||( routine.doneToday == true)){
+        if ((UserData.sharedData.data.isFirstVisit == false)||( routine.doneToday == true)){
             //既にdoneButtonが押されていた場合はラベルのタイトルに斜線を引く。
-            print("Done!")
             makeLblDone()
         }
     
@@ -55,7 +53,7 @@ class TodoTableViewCell: UITableViewCell {
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
             self.routineLbl.attributedText = attributeString
             if let doneIndex = routines.index(where:{$0.title == routineLbl.text}){
-                routines[doneIndex].doneToday = true
+                UserData.sharedData.routinesToShow[doneIndex].doneToday = true
             }
         }
     }

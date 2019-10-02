@@ -26,7 +26,7 @@ class NewAchievementVC: UIViewController,UITextFieldDelegate {
     }
     @IBAction func addButtonClicked(_ sender: Any){
         if let textToShow = textField.text{
-            jounalsToShow.append(Journals(title: textToShow, isToday: true))
+            jounalsToShow.append(Journals(title: textToShow, isToday: true, genre:""))
             savedData(jounalsToShow)
         }
         dismiss(animated: true, completion: nil)

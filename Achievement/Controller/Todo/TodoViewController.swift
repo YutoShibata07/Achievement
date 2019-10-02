@@ -7,50 +7,49 @@
 //
 
 import UIKit
-import MaterialComponents.MaterialButtons
-var routines = [Routines]()
 class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    let ud = UserDefaults.standard
-    let sharedUserData:UserData = UserData.sharedData
-    private var lastVisitTime:Date!
+    
+    var todoModel = TodoModel()
+    
 //    最後にこのアプリを使った時間。午前３時と比較してデータを更新するために使用する。
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        if lastVisitTime != nil{
-            sharedUserData.data.isFirstVisit = compareTime(time: lastVisitTime)
-            //最終ログインの時間を確認する。
-        }else{sharedUserData.data.isFirstVisit = true}
-        if sharedUserData.data.isFirstVisit == true{
-            resetData()
-            sharedUserData.data.recentCount.remove(at: 0)//3日前のデータを消す。
-            sharedUserData.data.recentCount.append(0)
+        if todoModel.lastVisitTime != nil{
+            UserData.sharedData.data.isFirstVisit = compareTime(time: todoModel.lastVisitTime)
+            //最終ログインの時間が前の3時よりも昔か後か。
+        }else{
+            UserData.sharedData.data.isFirstVisit = true
+            print("本日初めてのログインです。")
         }
-        lastVisitTime = Date()
+        if UserData.sharedData.data.isFirstVisit == true{
+            print("本日初めてのログインなのでデータをリセットします。")
+            todoModel.resetData()
+            todoModel.routines.remove(at: 0)//3日前のデータを消す。
+            UserData.sharedData.data.recentCount.append(0)
+        }
+        todoModel.lastVisitTime = Date()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
-        lastVisitTime = Date()
-        if let loadedRoutines = loadRoutines(){
-          routines = loadRoutines()!
-        }
+        todoModel.lastVisitTime = Date()
+        todoModel.loadRoutines()
     }
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(routines.count)
-        return routines.count
+        return UserData.sharedData.routinesToShow.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "routineCell", for: indexPath) as? TodoTableViewCell{
-            cell.configureCell(text: routines[indexPath.row].title,routine: routines[indexPath.row])
+            cell.configureCell(text: todoModel.routines[indexPath.row].title,routine: todoModel.routines[indexPath.row])
             return cell
         }
         return UITableViewCell()
@@ -58,22 +57,14 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
-            routines.remove(at: indexPath.row)
+            self.todoModel.routines.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         deleteButton.backgroundColor = UIColor.red
         return [deleteButton]
     }
    
-    func loadRoutines() ->[Routines]?{
-        guard let data = ud.data(forKey: "routinesToShow"),
-            let loadedData = try? JSONDecoder().decode([Routines].self, from: data) else {return nil}
-        return loadedData
-    }
-    func resetData(){//今日の分のデータをリセットする。
-        for data in routines {
-            data.doneToday = false
-        }
-    }
+   
+    
 
 }

@@ -12,7 +12,7 @@ class TodoModel{
     
     let ud = UserDefaults.standard
     var lastVisitTime:Date!
-    var routines = UserData.sharedData.routinesToShow //名前が長すぎるので変数を作った。
+    //var routines = UserData.sharedData.routinesToShow //名前が長すぎるので変数を作った。
 
     func loadRoutines() {
         guard let data = ud.data(forKey: "routinesToShow"),
@@ -25,5 +25,10 @@ class TodoModel{
         for data in UserData.sharedData.routinesToShow {
             data.doneToday = false
         }
+    }
+    func savedData(_ value:[Routines]){
+        guard let data = try? JSONEncoder().encode(value) else{return}
+        ud.set(data, forKey: "routinesToShow")
+        ud.synchronize()
     }
 }

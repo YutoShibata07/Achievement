@@ -15,11 +15,11 @@ class NewRoutineVC: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var bgView: UIView!
     let ud = UserDefaults.standard
     @IBOutlet weak var decideBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bgView.layer.cornerRadius = 10
         textField.delegate = self
-        // Do any additional setup after loading the view.
     }
    
         
@@ -31,19 +31,13 @@ class NewRoutineVC: UIViewController,UITextFieldDelegate {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func dicideBtnClicked(_ sender: Any){
-        textToSend = textField.text
-        dismiss(animated: true, completion: nil)
-        if let textToSend = textToSend{
-            routines = addArray(array: routines, phraseToAdd: textToSend)
-            savedData(routines)
+        if let newJournal = textField.text{
+            UserData.sharedData.routinesToShow.append(Routines(title: newJournal, doneToday: false, coutinuousRecord: 0))
+            savedData(UserData.sharedData.routinesToShow)
         }
+        dismiss(animated: true, completion: nil)
     }
     
-    func addArray(array:[Routines],phraseToAdd:String) ->[Routines]{
-        var array = array
-        array.append(Routines.init(title: phraseToAdd, doneToday: false, coutinuousRecord: 0))
-        return array
-    }
     
     func savedData(_ value:[Routines]){
         guard let data = try? JSONEncoder().encode(value) else{return}

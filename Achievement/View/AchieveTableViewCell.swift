@@ -26,7 +26,7 @@ class AchieveTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func configureCell(event:String){
-    achieveLbl.text = event
+        achieveLbl.text = event
     }
 
 }

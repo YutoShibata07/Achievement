@@ -22,7 +22,7 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tableView.dataSource = self
         if todoModel.lastVisitTime != nil{
             UserData.sharedData.data.isFirstVisit = compareTime(time: todoModel.lastVisitTime)
-            //最終ログインの時間が前の3時よりも昔か後か。
+            //最終ログインの時間が前の3時よりも昔か後か。前だったらisFirstVisit = Trueとなる。
         }else{
             UserData.sharedData.data.isFirstVisit = true
             print("本日初めてのログインです。")
@@ -30,10 +30,10 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         if UserData.sharedData.data.isFirstVisit == true{
             print("本日初めてのログインなのでデータをリセットします。")
             todoModel.resetData()
-            todoModel.routines.remove(at: 0)//3日前のデータを消す。
+            UserData.sharedData.data.recentCount.remove(at: 0)//3日前のデータを消す。
             UserData.sharedData.data.recentCount.append(0)
         }
-        todoModel.lastVisitTime = Date()
+        todoModel.lastVisitTime = Date()//最終ログイン時間を今の時間に設定する。
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,8 +48,8 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "routineCell", for: indexPath) as? TodoTableViewCell{
-            cell.configureCell(text: todoModel.routines[indexPath.row].title,routine: todoModel.routines[indexPath.row])
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "routineCell", for: indexPath) as?TodoTableViewCell{
+            cell.configureCell(text: UserData.sharedData.routinesToShow[indexPath.row].title,routine: UserData.sharedData.routinesToShow[indexPath.row])
             return cell
         }
         return UITableViewCell()
@@ -57,13 +57,14 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
-            self.todoModel.routines.remove(at: indexPath.row)
+            UserData.sharedData.routinesToShow.remove(at: indexPath.row)
+            self.todoModel.savedData(UserData.sharedData.routinesToShow)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         deleteButton.backgroundColor = UIColor.red
         return [deleteButton]
     }
-   
+    
    
     
 

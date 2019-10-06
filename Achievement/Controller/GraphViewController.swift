@@ -9,6 +9,9 @@
 import UIKit
 
 class GraphViewController: UIViewController {
+
+    //-------constants and variables----------
+    @IBOutlet weak var commentLbl: UILabel!
     let shapeLayer = CAShapeLayer()
     let pulsatingLayer = CAShapeLayer()
     let sharedUserData:UserData = UserData.sharedData
@@ -31,6 +34,9 @@ class GraphViewController: UIViewController {
         label.textColor = UIColor.black
         return label
     }()
+    
+    
+    //-------override-------------------
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -38,12 +44,41 @@ class GraphViewController: UIViewController {
         super.viewWillAppear(true)
         percentageLbl.alpha = 0
         completedLbl.alpha = 0
+        commentLbl.alpha = 0
         makePieChart()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        shapeLayer.strokeEnd = 0
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        shapeLayer.strokeEnd = 0
+        startMoveChart()
+    }
+    
+    
+    //--------Custom Functions-----------------
+    
+    private func changeComment(){
+        commentLbl.alpha = 1
+        switch achieveRate {
+        case 0..<0.4:
+            commentLbl.text = "１分でいい。。続けるんや！"
+        case 0.4..<0.7:
+            commentLbl.text = "あと半分！！！"
+        case 0.7..<1:
+            commentLbl.text = "後少し頑張れえええええ"
+        case 1:
+            commentLbl.text = "流石です。お疲れ様でした。"
+        default:
+            break
+        }
     }
     private func makePieChart(){//達成率を表示する関数。
         sharedUserData.data.doneCount = 0
-        NumberOfTask = routines.count
-        for task  in routines {
+        NumberOfTask = UserData.sharedData.routinesToShow.count
+        for task  in UserData.sharedData.routinesToShow {
             if task.doneToday == true{
                 sharedUserData.data.doneCount += 1
                 print(task.title + "もやったよ")
@@ -71,15 +106,7 @@ class GraphViewController: UIViewController {
 //        completedLbl.topAnchor.constraint(equalTo: percentageLbl.bottomAnchor, constant: 20).isActive = true
         shapeLayer.strokeEnd = 0
     }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        shapeLayer.strokeEnd = 0
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        shapeLayer.strokeEnd = 0
-        startMoveChart()
-    }
+   
     private func createCircleLayer(layer:CAShapeLayer, strokeColor:UIColor, fillColor:UIColor, lineWidth:Int,strokeEnd:Int){
         let circularPath = UIBezierPath(arcCenter: .zero, radius: 100, startAngle: 0, endAngle:
             2 * CGFloat.pi , clockwise: true)
@@ -101,6 +128,7 @@ class GraphViewController: UIViewController {
         UIView.animate(withDuration: 0.3, delay: 1.5, options: [.curveEaseIn], animations: {
             self.completedLbl.alpha = 1
             self.percentageLbl.alpha = 1
+            self.changeComment()
         },completion: nil)
 //        basicAnimation.fillMode = CAMediaTimingFillMode.forwards//アニメーションが残り続けるようにする。
 //        basicAnimation.isRemovedOnCompletion = false//何回もアニメーションを行えるようにする。

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Journals :Codable{
     var title:String!
@@ -25,3 +26,13 @@ struct Category:Codable{
     let name:String!
 }
 
+struct Genre {
+    var title:String!
+    var color:UIColor
+}
+
+struct Colors {
+    var colors: [UIColor] = [UIColor.red, UIColor.purple]
+    var names = ["赤","紫"]
+    
+}

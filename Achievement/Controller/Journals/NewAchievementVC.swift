@@ -10,15 +10,18 @@ import UIKit
 
 class NewAchievementVC: UIViewController,UITextFieldDelegate {
     let ud = UserDefaults.standard
+    @IBOutlet weak var bgView: RoudedView!
     @IBOutlet weak var textField: UITextField!
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         resignFirstResponder()
         return true
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        bgView.layer.cornerRadius = 10
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     @IBAction func cancelBtnClicked(_ sender: Any) {
@@ -26,10 +29,10 @@ class NewAchievementVC: UIViewController,UITextFieldDelegate {
     }
     @IBAction func addButtonClicked(_ sender: Any){
         if let textToShow = textField.text{
-            jounalsToShow.append(Journals(title: textToShow, isToday: true, genre:""))
-            savedData(jounalsToShow)
+            UserData.sharedData.journalsToShow.append(Journals(title: textToShow, isToday: true, genre:""))
+            savedData(UserData.sharedData.journalsToShow)
         }
-        dismiss(animated: true, completion: nil)
+        
     }
     
     func savedData(_ value:[Journals]){

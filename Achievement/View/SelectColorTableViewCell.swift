@@ -24,8 +24,8 @@ class SelectColorTableViewCell: UITableViewCell {
 
     }
 
-    func configureCell(text:String, color:UIColor){
-        colorNameLbl.text = text
+    func configureCell(colorName:String, color:UIColor){
+        colorNameLbl.text = colorName
         colorView.backgroundColor = color
     }
 }

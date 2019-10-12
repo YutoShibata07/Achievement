@@ -10,29 +10,29 @@ import Foundation
 import UIKit
 
 struct Journals :Codable{
-    var title:String!
-    var isToday:Bool!
-    var genre:String!
-    var category:Category!
+    var title:String
+    var isToday:Bool
+    var categoryColor:String
+    var categoryName:String
+    //ジャーナルが属するカテゴリー。名前と色の二つの属性を持つ。
     
-    init(title:String,isToday:Bool, genre:String) {
+    init(title:String,isToday:Bool, categoryName:String, categorycolor:String) {
         self.title = title
         self.isToday = isToday
-        self.genre = genre
+        self.categoryName = categoryName
+        self.categoryColor = categorycolor
     }
 }
 
+
+
 struct Category:Codable{
-    let name:String!
-}
-
-struct Genre {
-    var title:String!
-    var color:UIColor
-}
-
-struct Colors {
-    var colors: [UIColor] = [UIColor.red, UIColor.purple]
-    var names = ["赤","紫"]
+    var name :String!
+    var color:String!
     
+    
+    init(name:String, color:String) {
+        self.name = name
+        self.color = color
+    }
 }

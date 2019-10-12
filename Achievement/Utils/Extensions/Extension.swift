@@ -77,4 +77,47 @@ class dateLbl:UILabel{
     }
 }
 
+extension UIViewController{
+    func simpleAlert(title:String,msg:String){
+    //alertの内容をmsgとして設定することで様々に使い分けることができる。
+        let alert  = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+
+extension String{
+    var isNotEmpty :Bool{
+        return !isEmpty
+    //これはコンピューテッドプロパティ。String型のオブジェクトはisNotEmptyをプロパティとして持つようになる。
+    }
+
+}
+
+extension String{
+    //本来なら全てUIColorで扱いたいけど、、UIColorはCodableを満たしてないから仕方なく。。。
+    func toUIColor() -> UIColor{
+        switch self {
+        case "レッド":
+            return UIColor.red
+        case "ブルー":
+            return UIColor.blue
+        case "グリーン":
+            return UIColor.green
+        case "パーポｳ":
+            return UIColor.purple
+        case "ブラック":
+            return UIColor.black
+        case "ピンク":
+            return UIColor.systemPink
+        case "ブラウン":
+            return UIColor.brown
+        case  "イエロー":
+            return UIColor.yellow
+        default:
+            return UIColor.gray
+        }
+    }
+}
 

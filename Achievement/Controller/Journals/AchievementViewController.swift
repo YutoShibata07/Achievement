@@ -7,7 +7,8 @@
 //
 
 import UIKit
-//var jounalsToShow = [Journals]() →後でシングルトンで使います
+
+
 class AchievementViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addBtn: UIButton!
@@ -26,24 +27,32 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
         journalModel.loadedData()
         tableView.reloadData()
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return UserData.sharedData.journalsToShow.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let achieveCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? AchieveTableViewCell{
-            achieveCell.configureCell(event: UserData.sharedData.journalsToShow[indexPath.row].title)
+            achieveCell.configureCell(event: UserData.sharedData.journalsToShow[indexPath.row].title, color: UserData.sharedData.journalsToShow[indexPath.row].categoryColor)
             return achieveCell
         }
         return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        journalModel.loadedData()
         let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
             UserData.sharedData.journalsToShow.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         deleteButton.backgroundColor = UIColor.red
+        journalModel.savedData(UserData.sharedData.journalsToShow)
         return [deleteButton]
+    }
+    
+    func updateJournals(){
+        journalModel.loadedData()
+        self.tableView.reloadData()
     }
     
 }

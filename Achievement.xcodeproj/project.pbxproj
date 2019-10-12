@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		692163BF2349BE190059F4D9 /* ClassifyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692163BE2349BE180059F4D9 /* ClassifyTableViewCell.swift */; };
-		692163C12349D4A10059F4D9 /* CreateGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692163C02349D4A10059F4D9 /* CreateGenreViewController.swift */; };
+		692163C12349D4A10059F4D9 /* CreateCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692163C02349D4A10059F4D9 /* CreateCategoryViewController.swift */; };
 		692163C32349D7750059F4D9 /* SelectColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692163C22349D7750059F4D9 /* SelectColorTableViewCell.swift */; };
 		6938C89D23389ECB002C5978 /* ClasifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938C89C23389ECB002C5978 /* ClasifyViewController.swift */; };
 		695313832326140E00C79CD1 /* FadeEnableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695313822326140E00C79CD1 /* FadeEnableButton.swift */; };
@@ -23,6 +23,7 @@
 		69AB0AAD2322195C0014905C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB0AAC2322195C0014905C /* MenuViewController.swift */; };
 		69AB0AB32322199E0014905C /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB0AB22322199E0014905C /* TodoTableViewCell.swift */; };
 		69AB0AB5232219BE0014905C /* AchieveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB0AB4232219BE0014905C /* AchieveTableViewCell.swift */; };
+		69D0771A235051500097A139 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D07719235051500097A139 /* CategoryModel.swift */; };
 		69D1C074232760B0007B7714 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1C073232760B0007B7714 /* Extension.swift */; };
 		69D1C078232773A6007B7714 /* NewAchievementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1C077232773A6007B7714 /* NewAchievementVC.swift */; };
 		69D1C07C232DE9A5007B7714 /* Routines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1C07B232DE9A5007B7714 /* Routines.swift */; };
@@ -39,7 +40,7 @@
 /* Begin PBXFileReference section */
 		3ED95454CD85641BBA617394 /* Pods-Achievement.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Achievement.debug.xcconfig"; path = "Target Support Files/Pods-Achievement/Pods-Achievement.debug.xcconfig"; sourceTree = "<group>"; };
 		692163BE2349BE180059F4D9 /* ClassifyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyTableViewCell.swift; sourceTree = "<group>"; };
-		692163C02349D4A10059F4D9 /* CreateGenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGenreViewController.swift; sourceTree = "<group>"; };
+		692163C02349D4A10059F4D9 /* CreateCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryViewController.swift; sourceTree = "<group>"; };
 		692163C22349D7750059F4D9 /* SelectColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorTableViewCell.swift; sourceTree = "<group>"; };
 		6938C89C23389ECB002C5978 /* ClasifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClasifyViewController.swift; sourceTree = "<group>"; };
 		695313822326140E00C79CD1 /* FadeEnableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeEnableButton.swift; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 		69AB0AAC2322195C0014905C /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		69AB0AB22322199E0014905C /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		69AB0AB4232219BE0014905C /* AchieveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveTableViewCell.swift; sourceTree = "<group>"; };
+		69D07719235051500097A139 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		69D1C073232760B0007B7714 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		69D1C077232773A6007B7714 /* NewAchievementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAchievementVC.swift; sourceTree = "<group>"; };
 		69D1C07B232DE9A5007B7714 /* Routines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routines.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			children = (
 				697839C123446F5E00F13CC3 /* TodoModel.swift */,
 				697839BF2344664800F13CC3 /* JournalModel.swift */,
+				69D07719235051500097A139 /* CategoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,7 +124,7 @@
 				69AB0AA62322192A0014905C /* AchievementViewController.swift */,
 				69D1C077232773A6007B7714 /* NewAchievementVC.swift */,
 				6938C89C23389ECB002C5978 /* ClasifyViewController.swift */,
-				692163C02349D4A10059F4D9 /* CreateGenreViewController.swift */,
+				692163C02349D4A10059F4D9 /* CreateCategoryViewController.swift */,
 			);
 			path = Journals;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				69AB0AAD2322195C0014905C /* MenuViewController.swift in Sources */,
 				69AB0AAB2322194D0014905C /* HistoryViewController.swift in Sources */,
 				695313852327546800C79CD1 /* RoundedView.swift in Sources */,
+				69D0771A235051500097A139 /* CategoryModel.swift in Sources */,
 				692163BF2349BE190059F4D9 /* ClassifyTableViewCell.swift in Sources */,
 				69D1C074232760B0007B7714 /* Extension.swift in Sources */,
 				697839C223446F5E00F13CC3 /* TodoModel.swift in Sources */,
@@ -360,7 +364,7 @@
 				69AB0AA72322192A0014905C /* AchievementViewController.swift in Sources */,
 				6938C89D23389ECB002C5978 /* ClasifyViewController.swift in Sources */,
 				69EC223E232211F300021C63 /* AppDelegate.swift in Sources */,
-				692163C12349D4A10059F4D9 /* CreateGenreViewController.swift in Sources */,
+				692163C12349D4A10059F4D9 /* CreateCategoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

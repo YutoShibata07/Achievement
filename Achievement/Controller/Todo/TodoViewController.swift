@@ -7,6 +7,9 @@
 //
 
 import UIKit
+
+
+
 class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var dateLbl: UILabel!
@@ -38,9 +41,10 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        todoModel.loadRoutines()
+        print("こんにちは")
         tableView.reloadData()
         todoModel.lastVisitTime = Date()
-        todoModel.loadRoutines()
     }
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,7 +69,4 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return [deleteButton]
     }
     
-   
-    
-
 }

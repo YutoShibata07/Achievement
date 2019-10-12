@@ -11,6 +11,6 @@ import UIKit
 class RoudedView:UIView{
     override func awakeFromNib() {
         super.awakeFromNib()
-//        layer.cornerRadius = 10
+        layer.cornerRadius = 10
     }
 }

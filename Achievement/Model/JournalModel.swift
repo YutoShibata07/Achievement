@@ -17,4 +17,10 @@ class JournalModel{
         UserData.sharedData.journalsToShow = journalsToShow
         return
     }
+    
+    func savedData(_ value:[Journals]){
+           guard let data = try? JSONEncoder().encode(value) else{return}
+           ud.set(data, forKey: "JournalsToShow")
+           ud.synchronize()
+       }
 }

@@ -7,15 +7,19 @@
 //
 
 import Foundation
+import UIKit
 
 class Routines :Codable{
     var title:String
     var doneToday:Bool
     var coutinuousRecord:Int
     
+    
     init(title:String, doneToday:Bool,coutinuousRecord:Int) {
         self.title = title
         self.doneToday = doneToday
         self.coutinuousRecord = coutinuousRecord
+        
     }
 }
+

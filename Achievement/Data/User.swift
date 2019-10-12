@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import UIKit
+
+
 struct User {
     var isFirstVisit:Bool
     var doneCount = 0
@@ -26,7 +29,8 @@ class UserData{
     static let sharedData :UserData = UserData()
     var journalsToShow = [Journals]()
     var routinesToShow = [Routines]()
-    var genresToShow = ["読書"]
+    
+    var categoriesToShow = [Category.init(name: "読書", color: "レッド"),Category.init(name:"授業", color: "ブルー")]
     private init(){}
     
     func countDoneTask(){//既に達成したタスクの数を計算する。
@@ -39,5 +43,16 @@ class UserData{
     }
 
     
+    struct DefaultColors {
+        var names = ["レッド","ブルー","イエロー","パーポｳ","ピンク","ブラック","ブラウン"]
+        var colors:[UIColor]
+            = [UIColor.red, UIColor.blue, UIColor.yellow,UIColor.purple,UIColor.systemPink,UIColor.black, UIColor.brown ]
+    }
     
+    
+}
+struct DefaultColors {
+    var names = ["レッド","ブルー","イエロー","パーポｳ","ピンク","ブラック","ブラウン"]
+//    var colors:[UIColor]
+//        = [UIColor.red, UIColor.blue, UIColor.yellow,UIColor.purple,UIColor.systemPink,UIColor.black, UIColor.brown ]
 }

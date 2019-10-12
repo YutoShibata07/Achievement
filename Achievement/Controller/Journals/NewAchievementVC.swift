@@ -10,37 +10,42 @@ import UIKit
 
 class NewAchievementVC: UIViewController,UITextFieldDelegate {
     let ud = UserDefaults.standard
+    var newJournal:String = ""
     @IBOutlet weak var bgView: RoudedView!
     @IBOutlet weak var textField: UITextField!
+    
+    //--------override-------------------------
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(true)
+           bgView.layer.cornerRadius = 10
+       }
+       override func viewDidLoad() {
+           super.viewDidLoad()
+           // Do any additional setup after loading the view.
+       }
+    
+    //---------Custom Functions----------------
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         resignFirstResponder()
         return true
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        bgView.layer.cornerRadius = 10
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
+
     @IBAction func cancelBtnClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func addButtonClicked(_ sender: Any){
         if let textToShow = textField.text{
-            UserData.sharedData.journalsToShow.append(Journals(title: textToShow, isToday: true, genre:""))
-            savedData(UserData.sharedData.journalsToShow)
+//      UserData.sharedData.journalsToShow.append(Journals.init(title: textToShow, isToday: true,            categoryName: "", categorycolor: "red"))
+//      savedData(UserData.sharedData.journalsToShow)
+//      方針転換。カテゴリを決めた段階で新しくJournalを追加する。
+        newJournal = textToShow
         }
-        
     }
     
-    func savedData(_ value:[Journals]){
-        guard let data = try? JSONEncoder().encode(value) else { return }
-        ud.set(data, forKey: "JournalsToShow")
-        ud.synchronize()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? ClasifyViewController{
+            destination.newJournal = self.newJournal
+        }
     }
-    
-    
 
 }

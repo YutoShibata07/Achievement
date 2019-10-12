@@ -35,7 +35,11 @@ class NewRoutineVC: UIViewController,UITextFieldDelegate {
             UserData.sharedData.routinesToShow.append(Routines(title: newJournal, doneToday: false, coutinuousRecord: 0))
             savedData(UserData.sharedData.routinesToShow)
         }
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {
+                [presentingViewController] () -> Void in
+                    // 閉じた時に行いたい処理
+                    presentingViewController?.viewWillAppear(true)
+        })
     }
     
     

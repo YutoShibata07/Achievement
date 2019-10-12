@@ -13,8 +13,10 @@ class NewRoutineVC: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var textField: UITextField!
     var textToSend:String!
     @IBOutlet weak var bgView: UIView!
-    let ud = UserDefaults.standard
     @IBOutlet weak var decideBtn: UIButton!
+    var todoModel = TodoModel()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,22 +33,16 @@ class NewRoutineVC: UIViewController,UITextFieldDelegate {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func dicideBtnClicked(_ sender: Any){
+        todoModel.loadRoutines()
         if let newJournal = textField.text{
             UserData.sharedData.routinesToShow.append(Routines(title: newJournal, doneToday: false, coutinuousRecord: 0))
-            savedData(UserData.sharedData.routinesToShow)
         }
+        todoModel.savedData(UserData.sharedData.routinesToShow)
         dismiss(animated: true, completion: {
                 [presentingViewController] () -> Void in
                     // 閉じた時に行いたい処理
                     presentingViewController?.viewWillAppear(true)
         })
-    }
-    
-    
-    func savedData(_ value:[Routines]){
-        guard let data = try? JSONEncoder().encode(value) else{return}
-        ud.set(data, forKey: "routinesToShow")
-        ud.synchronize()
     }
     
 }

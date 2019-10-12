@@ -12,6 +12,9 @@ class GraphViewController: UIViewController {
 
     //-------constants and variables----------
     @IBOutlet weak var commentLbl: UILabel!
+    @IBOutlet weak var characterImage: UIImageView!
+    
+    var todoModel = TodoModel()
     let shapeLayer = CAShapeLayer()
     let pulsatingLayer = CAShapeLayer()
     let sharedUserData:UserData = UserData.sharedData
@@ -46,6 +49,7 @@ class GraphViewController: UIViewController {
         completedLbl.alpha = 0
         commentLbl.alpha = 0
         makePieChart()
+        characterImage.isHidden = true
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
@@ -55,6 +59,7 @@ class GraphViewController: UIViewController {
         super.viewDidAppear(true)
         shapeLayer.strokeEnd = 0
         startMoveChart()
+        print("start!")
     }
     
     
@@ -65,23 +70,28 @@ class GraphViewController: UIViewController {
         switch achieveRate {
         case 0..<0.4:
             commentLbl.text = "１分でいい。。続けるんや！"
+            characterImage.image = UIImage.init(named: "ガンジー")
         case 0.4..<0.7:
             commentLbl.text = "あと半分！！！"
+            characterImage.image = UIImage.init(named: "神父")
         case 0.7..<1:
             commentLbl.text = "後少し頑張れえええええ"
+            characterImage.image = UIImage.init(named: "メキシカン")
         case 1:
-            commentLbl.text = "流石です。お疲れ様でした。"
+            commentLbl.text = "流石である。あっぱれ"
+            characterImage.image = UIImage.init(named: "織田信長")
         default:
             break
         }
     }
+    
     private func makePieChart(){//達成率を表示する関数。
+        todoModel.loadRoutines()
         sharedUserData.data.doneCount = 0
         NumberOfTask = UserData.sharedData.routinesToShow.count
         for task  in UserData.sharedData.routinesToShow {
             if task.doneToday == true{
                 sharedUserData.data.doneCount += 1
-                print(task.title + "もやったよ")
             }
         }
         if NumberOfTask != 0{
@@ -120,6 +130,7 @@ class GraphViewController: UIViewController {
         layer.strokeEnd = CGFloat(strokeEnd)
         view.layer.addSublayer(layer)
     }
+    
     func startMoveChart(){
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         basicAnimation.duration = 1.3
@@ -128,6 +139,7 @@ class GraphViewController: UIViewController {
         UIView.animate(withDuration: 0.3, delay: 1.5, options: [.curveEaseIn], animations: {
             self.completedLbl.alpha = 1
             self.percentageLbl.alpha = 1
+            self.characterImage.isHidden = false
             self.changeComment()
         },completion: nil)
 //        basicAnimation.fillMode = CAMediaTimingFillMode.forwards//アニメーションが残り続けるようにする。

@@ -42,7 +42,6 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         todoModel.loadRoutines()
-        print("こんにちは")
         tableView.reloadData()
         todoModel.lastVisitTime = Date()
     }
@@ -60,12 +59,14 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        todoModel.loadRoutines()
         let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
             UserData.sharedData.routinesToShow.remove(at: indexPath.row)
             self.todoModel.savedData(UserData.sharedData.routinesToShow)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         deleteButton.backgroundColor = UIColor.red
+        todoModel.savedData(UserData.sharedData.routinesToShow)
         return [deleteButton]
     }
     

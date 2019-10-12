@@ -108,20 +108,41 @@
                                     <segue destination="dcS-zo-D1l" kind="show" id="QJ6-qi-X27"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="社長" translatesAutoresizingMaskIntoConstraints="NO" id="EqC-xh-U8B">
+                                <rect key="frame" x="20" y="480" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="3B6-v9-QSS"/>
+                                    <constraint firstAttribute="height" constant="70" id="fKo-LL-IWa"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="頭に浮かんだことを何でも記録しよう" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPP-0E-hGw">
+                                <rect key="frame" x="100" y="490" width="120" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="N4t-1R-Dq0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="efS-Hg-kRH" firstAttribute="leading" secondItem="bZZ-xY-lDc" secondAttribute="leading" id="2Io-5x-cIf"/>
                             <constraint firstItem="5hb-Od-62h" firstAttribute="leading" secondItem="bZZ-xY-lDc" secondAttribute="leading" constant="20" id="2tZ-BI-yFN"/>
+                            <constraint firstItem="lki-g8-ogI" firstAttribute="leading" secondItem="WPP-0E-hGw" secondAttribute="trailing" constant="20" id="4SR-eh-N18"/>
                             <constraint firstItem="5hb-Od-62h" firstAttribute="top" secondItem="g1s-Yz-9Jx" secondAttribute="bottom" constant="20" id="4qw-S5-PUY"/>
                             <constraint firstItem="bZZ-xY-lDc" firstAttribute="trailing" secondItem="efS-Hg-kRH" secondAttribute="trailing" id="6sM-b3-uIc"/>
                             <constraint firstItem="bZZ-xY-lDc" firstAttribute="trailing" secondItem="g1s-Yz-9Jx" secondAttribute="trailing" constant="20" id="C0N-yO-lMf"/>
                             <constraint firstItem="efS-Hg-kRH" firstAttribute="top" secondItem="bZZ-xY-lDc" secondAttribute="top" id="JPo-e4-PoN"/>
+                            <constraint firstItem="WPP-0E-hGw" firstAttribute="leading" secondItem="EqC-xh-U8B" secondAttribute="trailing" constant="10" id="ZB7-u3-yAb"/>
+                            <constraint firstItem="EqC-xh-U8B" firstAttribute="top" secondItem="5hb-Od-62h" secondAttribute="bottom" constant="40" id="bN5-Hj-k9h"/>
+                            <constraint firstItem="EqC-xh-U8B" firstAttribute="leading" secondItem="2AN-b5-yom" secondAttribute="leading" constant="20" id="h48-FH-UMa"/>
                             <constraint firstItem="g1s-Yz-9Jx" firstAttribute="leading" secondItem="bZZ-xY-lDc" secondAttribute="leading" constant="20" id="p50-dr-cHt"/>
                             <constraint firstItem="g1s-Yz-9Jx" firstAttribute="top" secondItem="efS-Hg-kRH" secondAttribute="bottom" constant="10" id="rWu-vt-W7j"/>
                             <constraint firstItem="bZZ-xY-lDc" firstAttribute="trailing" secondItem="5hb-Od-62h" secondAttribute="trailing" constant="20" id="teR-NW-OSO"/>
                             <constraint firstItem="lki-g8-ogI" firstAttribute="top" secondItem="5hb-Od-62h" secondAttribute="bottom" constant="20" id="vKR-wv-4ZX"/>
                             <constraint firstItem="bZZ-xY-lDc" firstAttribute="trailing" secondItem="lki-g8-ogI" secondAttribute="trailing" constant="20" id="xIv-Li-SuK"/>
+                            <constraint firstItem="WPP-0E-hGw" firstAttribute="top" secondItem="5hb-Od-62h" secondAttribute="bottom" constant="50" id="ybX-wH-BRY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bZZ-xY-lDc"/>
                     </view>
@@ -347,15 +368,36 @@
                                     <segue destination="58E-7W-1se" kind="show" id="mAg-WD-frx"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="キャリアウーマン" translatesAutoresizingMaskIntoConstraints="NO" id="a31-9A-w4B">
+                                <rect key="frame" x="20" y="480" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="K0q-tc-0VU"/>
+                                    <constraint firstAttribute="height" constant="70" id="kh2-vp-Tag"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大切なこと、、それは継続力。" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNA-5f-PCL">
+                                <rect key="frame" x="105" y="490" width="115" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="VES-Fd-DN6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vJe-8v-M3f" firstAttribute="leading" secondItem="cyD-ZZ-7cO" secondAttribute="leading" constant="20" id="8GX-eC-eW6"/>
                             <constraint firstItem="t8U-T8-0Jy" firstAttribute="leading" secondItem="cyD-ZZ-7cO" secondAttribute="leading" constant="20" id="AQH-93-O6c"/>
+                            <constraint firstItem="aNA-5f-PCL" firstAttribute="leading" secondItem="a31-9A-w4B" secondAttribute="trailing" constant="15" id="F3n-hn-sNe"/>
+                            <constraint firstItem="a31-9A-w4B" firstAttribute="top" secondItem="t8U-T8-0Jy" secondAttribute="bottom" constant="40" id="H8c-D9-keQ"/>
                             <constraint firstItem="vJe-8v-M3f" firstAttribute="top" secondItem="pMg-Pw-hI9" secondAttribute="bottom" constant="10" id="HMb-nh-aQF"/>
                             <constraint firstItem="cyD-ZZ-7cO" firstAttribute="trailing" secondItem="vJe-8v-M3f" secondAttribute="trailing" constant="20" id="MZk-fD-d8r"/>
                             <constraint firstItem="t8U-T8-0Jy" firstAttribute="top" secondItem="vJe-8v-M3f" secondAttribute="bottom" constant="20" id="X1d-Zd-rWd"/>
+                            <constraint firstItem="aNA-5f-PCL" firstAttribute="top" secondItem="t8U-T8-0Jy" secondAttribute="bottom" constant="50" id="dYy-nY-uxD"/>
                             <constraint firstItem="q1i-C9-0TB" firstAttribute="top" secondItem="t8U-T8-0Jy" secondAttribute="bottom" constant="20" id="dcJ-0L-OT3"/>
+                            <constraint firstItem="q1i-C9-0TB" firstAttribute="leading" secondItem="aNA-5f-PCL" secondAttribute="trailing" constant="20" id="eLh-fS-mpm"/>
+                            <constraint firstItem="a31-9A-w4B" firstAttribute="leading" secondItem="cyD-ZZ-7cO" secondAttribute="leading" constant="20" id="flW-sv-jJS"/>
                             <constraint firstItem="cyD-ZZ-7cO" firstAttribute="trailing" secondItem="q1i-C9-0TB" secondAttribute="trailing" constant="20" id="gCX-9J-ytM"/>
                             <constraint firstItem="pMg-Pw-hI9" firstAttribute="leading" secondItem="cyD-ZZ-7cO" secondAttribute="leading" id="gIT-N9-u2w"/>
                             <constraint firstItem="cyD-ZZ-7cO" firstAttribute="trailing" secondItem="t8U-T8-0Jy" secondAttribute="trailing" constant="20" id="izm-QJ-Bnf"/>
@@ -373,7 +415,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sd9-ez-Its" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2316" y="344"/>
+            <point key="canvasLocation" x="-2317.5" y="343.3098591549296"/>
         </scene>
         <!--New RoutineVC-->
         <scene sceneID="ivg-19-y9A">
@@ -875,35 +917,45 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="後少しだ！頑張れ！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GH2-S5-CqS">
-                                <rect key="frame" x="20" y="438" width="280" height="21"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="さすがである。あっぱれ！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GH2-S5-CqS">
+                                <rect key="frame" x="105" y="450" width="195" height="21"/>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="織田信長" translatesAutoresizingMaskIntoConstraints="NO" id="IFK-mP-sHK">
+                                <rect key="frame" x="20" y="421" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="0ia-ms-vqm"/>
+                                    <constraint firstAttribute="width" constant="70" id="dhN-e3-F8z"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="IFK-mP-sHK" secondAttribute="bottom" constant="28" id="0mJ-RX-mnW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4Di-e6-PYA" secondAttribute="trailing" constant="20" id="3LJ-BD-Dmz"/>
                             <constraint firstItem="mVx-fg-0hi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3jA-7D-WIP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GH2-S5-CqS" secondAttribute="bottom" constant="60" id="AzV-52-xTS"/>
+                            <constraint firstItem="GH2-S5-CqS" firstAttribute="leading" secondItem="IFK-mP-sHK" secondAttribute="trailing" constant="15" id="EFP-cz-mBD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mVx-fg-0hi" secondAttribute="trailing" id="RMN-kE-bZm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GH2-S5-CqS" secondAttribute="trailing" constant="20" id="Skd-Ag-ibz"/>
                             <constraint firstItem="mVx-fg-0hi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vvx-tb-N56"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="GH2-S5-CqS" secondAttribute="bottom" constant="48" id="Wwx-DE-fzF"/>
+                            <constraint firstItem="IFK-mP-sHK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="YIG-Uq-wO7"/>
                             <constraint firstItem="4Di-e6-PYA" firstAttribute="top" secondItem="mVx-fg-0hi" secondAttribute="bottom" constant="10" id="c1O-QR-rWf"/>
                             <constraint firstItem="4Di-e6-PYA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="cI1-m0-HhU"/>
-                            <constraint firstItem="GH2-S5-CqS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="kmA-bQ-Wf5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="bar_graph" id="hn4-aE-WU9"/>
                     <connections>
+                        <outlet property="characterImage" destination="IFK-mP-sHK" id="Fhi-mD-56e"/>
                         <outlet property="commentLbl" destination="GH2-S5-CqS" id="sU1-FG-ujZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-283" y="344"/>
+            <point key="canvasLocation" x="-283.125" y="343.3098591549296"/>
         </scene>
     </scenes>
     <resources>
@@ -914,5 +966,8 @@
         <image name="bar_graph" width="40" height="40"/>
         <image name="green_check" width="40" height="40"/>
         <image name="return②" width="100" height="100"/>
+        <image name="キャリアウーマン" width="128" height="128"/>
+        <image name="社長" width="128" height="128"/>
+        <image name="織田信長" width="128" height="128"/>
     </resources>
 </document>

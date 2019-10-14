@@ -46,7 +46,7 @@ class CategoryModel{
     
     func saveCategories(_ value:[Category]){
         guard let data = try? JSONEncoder().encode(value) else { return }
-        ud.set(data, forKey: "CategoriewToShow")
+        ud.set(data, forKey: "CategoriesToShow")
         ud.synchronize()
     }
     

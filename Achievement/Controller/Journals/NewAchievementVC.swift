@@ -19,14 +19,14 @@ class NewAchievementVC: UIViewController,UITextFieldDelegate {
            super.viewWillAppear(true)
            bgView.layer.cornerRadius = 10
        }
-       override func viewDidLoad() {
-           super.viewDidLoad()
-           // Do any additional setup after loading the view.
-       }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textField.delegate = self
+    }
     
     //---------Custom Functions----------------
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        resignFirstResponder()
+        textField.resignFirstResponder()
         return true
     }
 
@@ -35,8 +35,6 @@ class NewAchievementVC: UIViewController,UITextFieldDelegate {
     }
     @IBAction func addButtonClicked(_ sender: Any){
         if let textToShow = textField.text{
-//      UserData.sharedData.journalsToShow.append(Journals.init(title: textToShow, isToday: true,            categoryName: "", categorycolor: "red"))
-//      savedData(UserData.sharedData.journalsToShow)
 //      方針転換。カテゴリを決めた段階で新しくJournalを追加する。
         newJournal = textToShow
         }

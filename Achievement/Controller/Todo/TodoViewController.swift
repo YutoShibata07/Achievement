@@ -44,6 +44,7 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         todoModel.loadRoutines()
         tableView.reloadData()
         todoModel.lastVisitTime = Date()
+        print("todo Appear!")
     }
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,7 +53,8 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "routineCell", for: indexPath) as?TodoTableViewCell{
-            cell.configureCell(text: UserData.sharedData.routinesToShow[indexPath.row].title,routine: UserData.sharedData.routinesToShow[indexPath.row])
+            cell.configureCell(text: UserData.sharedData.routinesToShow[indexPath.row].title,
+                               routine: UserData.sharedData.routinesToShow[indexPath.row])
             return cell
         }
         return UITableViewCell()

@@ -105,7 +105,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="dcS-zo-D1l" kind="show" id="QJ6-qi-X27"/>
+                                    <segue destination="dcS-zo-D1l" kind="presentation" id="QJ6-qi-X27"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="社長" translatesAutoresizingMaskIntoConstraints="NO" id="EqC-xh-U8B">
@@ -183,10 +183,10 @@
             </objects>
             <point key="canvasLocation" x="240" y="-460.56338028169017"/>
         </scene>
-        <!--View Controller-->
+        <!--History View Controller-->
         <scene sceneID="XdW-lZ-h6F">
             <objects>
-                <viewController id="htc-kC-MgQ" sceneMemberID="viewController">
+                <viewController id="htc-kC-MgQ" customClass="HistoryViewController" customModule="Achievement" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4cJ-6o-gyu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -203,41 +203,82 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mER-rm-cwA">
                                 <rect key="frame" x="20" y="80" width="280" height="32.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="4z1-UD-x8i"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EGZ-HZ-Rih">
-                                <rect key="frame" x="15" y="157.5" width="290" height="402.5"/>
+                                <rect key="frame" x="15" y="159.5" width="290" height="400.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="4Tu-9g-Ma9">
-                                        <rect key="frame" x="0.0" y="28" width="290" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="38" id="j2J-xZ-NiZ" customClass="HistoryTableViewCell" customModule="Achievement" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="290" height="38"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Tu-9g-Ma9" id="YRp-gQ-fB4">
-                                            <rect key="frame" x="0.0" y="0.0" width="290" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j2J-xZ-NiZ" id="sEp-KN-CCC">
+                                            <rect key="frame" x="0.0" y="0.0" width="290" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリー" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4o-Ie-Slo" userLabel="CategoryNameLabel">
+                                                    <rect key="frame" x="50" y="8" width="220" height="22"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLP-Ae-YKj">
+                                                    <rect key="frame" x="5" y="5" width="27.5" height="28"/>
+                                                    <color key="backgroundColor" red="1" green="0.55697723040000002" blue="0.072731647489999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="27.5" id="pGH-7k-a8K"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="14"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="v4o-Ie-Slo" firstAttribute="leading" secondItem="sEp-KN-CCC" secondAttribute="leading" constant="50" id="14Q-Xg-7ZJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="v4o-Ie-Slo" secondAttribute="bottom" constant="8" id="OVy-gZ-woR"/>
+                                                <constraint firstItem="v4o-Ie-Slo" firstAttribute="top" secondItem="sEp-KN-CCC" secondAttribute="top" constant="8" id="Xq3-cr-s2E"/>
+                                                <constraint firstAttribute="trailing" secondItem="v4o-Ie-Slo" secondAttribute="trailing" constant="20" id="ZOP-Dc-JSI"/>
+                                                <constraint firstItem="vLP-Ae-YKj" firstAttribute="top" secondItem="sEp-KN-CCC" secondAttribute="top" constant="5" id="g1J-NF-srb"/>
+                                                <constraint firstItem="vLP-Ae-YKj" firstAttribute="leading" secondItem="sEp-KN-CCC" secondAttribute="leading" constant="5" id="qxb-gS-rnJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="vLP-Ae-YKj" secondAttribute="bottom" constant="5" id="raj-zs-Jpc"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="categoryNameLabel" destination="v4o-Ie-Slo" id="CbA-ox-GHh"/>
+                                            <outlet property="colorView" destination="vLP-Ae-YKj" id="WWt-IS-pg4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="U7W-3T-Tsj">
-                                <rect key="frame" x="90" y="120.5" width="140" height="27"/>
+                                <rect key="frame" x="90" y="120.5" width="140" height="29"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYd-cs-Gx2">
-                                        <rect key="frame" x="0.0" y="0.0" width="70" height="27"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYd-cs-Gx2" customClass="FadeEnableBtn" customModule="Achievement" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="29"/>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="13"/>
                                         <state key="normal" title="カテゴリー">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="toCategoryButton:" destination="L7A-As-tOf" eventType="touchUpInside" id="fNr-r2-79C"/>
+                                            <action selector="toCategoryButtonClicked:" destination="L7A-As-tOf" eventType="touchUpInside" id="179-RH-Ebf"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCh-12-Xti">
-                                        <rect key="frame" x="70" y="0.0" width="70" height="27"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <state key="normal" title="日付"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCh-12-Xti" customClass="FadeEnableBtn" customModule="Achievement" customModuleProvider="target">
+                                        <rect key="frame" x="70" y="0.0" width="70" height="29"/>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="12"/>
+                                        <state key="normal" title="日付">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toDateBtnClicked:" destination="L7A-As-tOf" eventType="touchUpInside" id="EAj-GM-KO0"/>
+                                            <action selector="toDateButton:" destination="L7A-As-tOf" eventType="touchUpInside" id="eRO-2d-Iqx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -263,8 +304,14 @@
                         <viewLayoutGuide key="safeArea" id="GTb-fs-cN3"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="History" id="srh-gb-8WW"/>
+                    <connections>
+                        <outlet property="tableView" destination="EGZ-HZ-Rih" id="0hQ-n2-Sz6"/>
+                        <outlet property="toCategoryButton" destination="eYd-cs-Gx2" id="hmP-PE-ASY"/>
+                        <outlet property="toDateButton" destination="vCh-12-Xti" id="fCy-yg-qq5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7q-VN-RjB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="L7A-As-tOf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="508.125" y="324.2957746478873"/>
         </scene>
@@ -439,7 +486,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="内容" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="wdC-zR-6Wa">
                                                 <rect key="frame" x="0.0" y="69" width="240" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="MfB-ua-aq8">
                                                 <rect key="frame" x="0.0" y="138" width="240" height="34"/>
@@ -517,10 +564,10 @@
                                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="19"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="内容" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="26F-xi-0sB">
+                                            <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="内容" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="26F-xi-0sB">
                                                 <rect key="frame" x="0.0" y="69" width="240" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="L8r-El-8zj">
                                                 <rect key="frame" x="0.0" y="138" width="240" height="34"/>
@@ -545,7 +592,7 @@
                                                         <connections>
                                                             <action selector="addButtonClicked:" destination="dcS-zo-D1l" eventType="touchUpInside" id="ZoJ-hz-naa"/>
                                                             <action selector="dicideBtnClicked:" destination="58E-7W-1se" eventType="touchUpInside" id="tT3-6s-zCe"/>
-                                                            <segue destination="I19-Jd-r7B" kind="show" id="1K7-5x-0Wo"/>
+                                                            <segue destination="I19-Jd-r7B" kind="presentation" id="1K7-5x-0Wo"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -572,6 +619,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5th-t6-KZE"/>
                     </view>
+                    <navigationItem key="navigationItem" id="eJ0-iG-cbA"/>
                     <connections>
                         <outlet property="bgView" destination="Oca-64-uuy" id="8zf-bt-SgU"/>
                         <outlet property="textField" destination="26F-xi-0sB" id="efk-OZ-vVq"/>
@@ -704,6 +752,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FVs-L4-r1P"/>
                     </view>
+                    <navigationItem key="navigationItem" id="AbQ-lb-0IC"/>
                     <connections>
                         <outlet property="headerLbl" destination="Hgn-Fw-O4f" id="DMu-Pn-9pd"/>
                         <outlet property="returnBtn" destination="l9q-yr-p46" id="T8z-yn-kC1"/>
@@ -858,6 +907,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gLK-oX-724"/>
                     </view>
+                    <navigationItem key="navigationItem" id="EVt-4K-gUA"/>
                     <connections>
                         <outlet property="addButton" destination="RZ7-QH-C1U" id="B9U-cr-ZbL"/>
                         <outlet property="cancelButton" destination="cee-QQ-pdC" id="quw-hX-pun"/>

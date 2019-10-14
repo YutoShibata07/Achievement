@@ -14,11 +14,11 @@ class FadeEnableBtn: UIButton {
         didSet{
             if isEnabled{
                 UIView.animate(withDuration: 0.2){
-                    self.alpha = 0.3
+                    self.alpha = 1.0
                 }
             }else{
                 UIView.animate(withDuration: 0.2){
-                    self.alpha = 1.0
+                    self.alpha = 0.3
                 }
             }
         }

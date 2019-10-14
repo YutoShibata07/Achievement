@@ -121,3 +121,23 @@ extension String{
     }
 }
 
+extension Journals:Equatable{  //JournalをソートするためにEquatableにする。
+    public static func ==(lhs:Journals, rhs:Journals) -> Bool{
+        return (lhs.categoryColor == rhs.categoryColor) && (lhs.categoryName == rhs.categoryName) && (lhs.isToday == lhs.isToday) && (lhs.title == rhs.title)
+    }
+}
+
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.hideKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func hideKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+

@@ -16,6 +16,8 @@
 		6974BE1F2325F3C200ABA858 /* NewRoutineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974BE1D2325F3C200ABA858 /* NewRoutineVC.swift */; };
 		697839C02344664800F13CC3 /* JournalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697839BF2344664800F13CC3 /* JournalModel.swift */; };
 		697839C223446F5E00F13CC3 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697839C123446F5E00F13CC3 /* TodoModel.swift */; };
+		698945FE2351F9240072EE28 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698945FD2351F9240072EE28 /* HistoryModel.swift */; };
+		69894600235217740072EE28 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698945FF235217730072EE28 /* HistoryTableViewCell.swift */; };
 		69AB0AA5232219110014905C /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB0AA4232219110014905C /* TodoViewController.swift */; };
 		69AB0AA72322192A0014905C /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB0AA62322192A0014905C /* AchievementViewController.swift */; };
 		69AB0AA92322193C0014905C /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB0AA82322193C0014905C /* GraphViewController.swift */; };
@@ -48,6 +50,8 @@
 		6974BE1D2325F3C200ABA858 /* NewRoutineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRoutineVC.swift; sourceTree = "<group>"; };
 		697839BF2344664800F13CC3 /* JournalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalModel.swift; sourceTree = "<group>"; };
 		697839C123446F5E00F13CC3 /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
+		698945FD2351F9240072EE28 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
+		698945FF235217730072EE28 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		69AB0AA4232219110014905C /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
 		69AB0AA62322192A0014905C /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		69AB0AA82322193C0014905C /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 				697839C123446F5E00F13CC3 /* TodoModel.swift */,
 				697839BF2344664800F13CC3 /* JournalModel.swift */,
 				69D07719235051500097A139 /* CategoryModel.swift */,
+				698945FD2351F9240072EE28 /* HistoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 				695313842327546800C79CD1 /* RoundedView.swift */,
 				692163BE2349BE180059F4D9 /* ClassifyTableViewCell.swift */,
 				692163C22349D7750059F4D9 /* SelectColorTableViewCell.swift */,
+				698945FF235217730072EE28 /* HistoryTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -343,6 +349,7 @@
 			files = (
 				69EC2240232211F300021C63 /* ViewController.swift in Sources */,
 				69AB0AA92322193C0014905C /* GraphViewController.swift in Sources */,
+				69894600235217740072EE28 /* HistoryTableViewCell.swift in Sources */,
 				697839C02344664800F13CC3 /* JournalModel.swift in Sources */,
 				69AB0AB5232219BE0014905C /* AchieveTableViewCell.swift in Sources */,
 				69AB0AA5232219110014905C /* TodoViewController.swift in Sources */,
@@ -357,6 +364,7 @@
 				69D0771A235051500097A139 /* CategoryModel.swift in Sources */,
 				692163BF2349BE190059F4D9 /* ClassifyTableViewCell.swift in Sources */,
 				69D1C074232760B0007B7714 /* Extension.swift in Sources */,
+				698945FE2351F9240072EE28 /* HistoryModel.swift in Sources */,
 				697839C223446F5E00F13CC3 /* TodoModel.swift in Sources */,
 				695313832326140E00C79CD1 /* FadeEnableButton.swift in Sources */,
 				69D1C083232E62FA007B7714 /* User.swift in Sources */,

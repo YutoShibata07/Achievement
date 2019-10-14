@@ -24,11 +24,11 @@ class NewRoutineVC: UIViewController,UITextFieldDelegate {
         textField.delegate = self
     }
    
-        
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        resignFirstResponder()
+        textField.resignFirstResponder()
         return true
     }
+    
     @IBAction func cancelBtnClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

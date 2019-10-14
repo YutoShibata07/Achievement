@@ -13,7 +13,7 @@ class JournalModel{
     
     func loadedData(){
         guard let data = ud.data(forKey: "JournalsToShow"),
-        let journalsToShow = try? JSONDecoder().decode([Journals].self, from: data) else{return}
+              let journalsToShow = try? JSONDecoder().decode([Journals].self, from: data) else{return}
         UserData.sharedData.journalsToShow = journalsToShow
         return
     }

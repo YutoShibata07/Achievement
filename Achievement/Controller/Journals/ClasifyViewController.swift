@@ -27,10 +27,12 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
+        
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        categoryModel.loadCategoris()
         return UserData.sharedData.categoriesToShow.count
     }
     
@@ -38,11 +40,24 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let classifyCell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? ClassifyTableViewCell{
+            categoryModel.loadCategoris()
             classifyCell.configureCell(text: UserData.sharedData.categoriesToShow[indexPath.row].name, color: UserData.sharedData.categoriesToShow[indexPath.row].color)
             //カテゴリ名とカラーを表示させる。ここまでは上手くいってる。
             return classifyCell
         }
+        categoryModel.saveCategories(UserData.sharedData.categoriesToShow)
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        categoryModel.loadCategoris()
+        let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
+            UserData.sharedData.journalsToShow.remove(at: indexPath.row)
+            self.categoryModel.saveCategories(UserData.sharedData.categoriesToShow)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        deleteButton.backgroundColor = UIColor.red
+        return [deleteButton]
     }
     
     
@@ -50,7 +65,6 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        categoryModel.loadCategoris()//カテゴリをロードする。→後で保存
         categoryModel.makeNewJournal(
             title: newJournal, //NewJournalVCから送られてきたnewJournalのタイトル。
             color: UserData.sharedData.categoriesToShow[indexPath.row].color,
@@ -58,11 +72,17 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
         )
         categoryModel.saveJournals(UserData.sharedData.journalsToShow)  //新たに要素が追加されたjournalsToShowを保存する。
         
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion:{
-            [presentingViewController] () -> Void in
-            presentingViewController?.presentingViewController?.viewWillAppear(true)
-        })//dismiss と同時に先頭のviewControllerのviewWillAppearを発動させたい。。。。。できない・・・・
+        guard let journalVC = self.presentingViewController!.presentingViewController else{
+            print("エラーあるよ")
+            return
+            
+        } //二つ前のviewControllerを取得しておく。
         
+        presentingViewController?.presentingViewController!.dismiss(animated: true, completion: {
+            [presentingViewController] () -> Void in
+            // 閉じた時に行いたい処理
+            journalVC.viewWillAppear(true)
+        })
     }
     
     @IBAction func returnBtnClicked(_ sender: Any) {

@@ -39,14 +39,14 @@ class TodoTableViewCell: UITableViewCell {
     func configureCell(text:String,routine:Routines){
         routineLbl.text = text
         doneBtn.isEnabled = true
-        if ((UserData.sharedData.data.isFirstVisit == false)||( routine.doneToday == true)){
+        if (routine.doneToday == true){
             //既にdoneButtonが押されていた場合はラベルのタイトルに斜線を引く。
             makeLblDone()
         }
     
     }
     
-    func makeLblDone(){
+    func makeLblDone(){ //ToDoを済ませたことを表すように下線を引くための関数。
         doneBtn.isEnabled = false
         if let routineLblText = routineLbl.text{
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: routineLblText)

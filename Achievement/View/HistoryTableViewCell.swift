@@ -13,9 +13,9 @@ class HistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryNameLabel: UILabel!
     
     @IBOutlet weak var colorView: UIView!
-    
-    
-    
+    var historyModel = HistoryModel()
+    var journalsWithDate = [String]()
+    var journalsReversed = [Journal]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +30,13 @@ class HistoryTableViewCell: UITableViewCell {
 
     func configureCell(title:String, color:UIColor){
         colorView.backgroundColor = color
+        categoryNameLabel.text = title
+    }
+    
+   
+    
+    func configureDateCell(title:String){
+        colorView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0)
         categoryNameLabel.text = title
     }
 }

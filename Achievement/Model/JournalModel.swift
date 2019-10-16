@@ -7,20 +7,39 @@
 //
 
 import Foundation
+import UIKit
 
 class JournalModel{
     let ud = UserDefaults.standard
     
     func loadedData(){
         guard let data = ud.data(forKey: "JournalsToShow"),
-              let journalsToShow = try? JSONDecoder().decode([Journals].self, from: data) else{return}
+            let journalsToShow = try? JSONDecoder().decode([Journal].self, from: data) else{return}
         UserData.sharedData.journalsToShow = journalsToShow
         return
     }
     
-    func savedData(_ value:[Journals]){
-           guard let data = try? JSONEncoder().encode(value) else{return}
-           ud.set(data, forKey: "JournalsToShow")
-           ud.synchronize()
-       }
+    func savedData(_ value:[Journal]){
+        guard let data = try? JSONEncoder().encode(value) else{return}
+        ud.set(data, forKey: "JournalsToShow")
+        ud.synchronize()
+    }
+    
+    func changeColorView(colorView:UIView, category:Category){
+        colorView.backgroundColor = category.color.toUIColor()
+    }
+    func changeTitle(titleLabel:UILabel, category:Category){
+        titleLabel.text = category.name
+    }
+    
+    func sortJournal(category:Category) -> [Journal]{
+        var sortedJournals = [Journal]()
+        loadedData()
+        for journal in UserData.sharedData.journalsToShow {
+            if journal.categoryName == category.name{
+                sortedJournals.append(journal)
+            }
+        }
+        return sortedJournals
+    }
 }

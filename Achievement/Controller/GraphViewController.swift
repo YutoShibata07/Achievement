@@ -45,6 +45,7 @@ class GraphViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        todoModel.loadRoutines()
         percentageLbl.alpha = 0
         completedLbl.alpha = 0
         commentLbl.alpha = 0

@@ -17,20 +17,20 @@ class CategoryModel{
 //        UserData.sharedData.journalsToShow.last.categoryColor = colorName
 //        UserData.sharedData.journalsToShow.last?.categoryName = categoryName
        }
-    func makeNewJournal(title:String, color:String, categoryName:String){
-        var newJournal = Journals(title: title, isToday: true, categoryName: categoryName, categorycolor: color)
+    func makeNewJournal(title:String, color:String, categoryName:String, creationDate:String){
+        var newJournal = Journal(title: title, isToday: true, categoryName: categoryName, categorycolor: color, creationDate: creationDate)
         UserData.sharedData.journalsToShow.append(newJournal)
     }
     
     func loadJournals(){
         guard let data = ud.data(forKey: "JournalsToShow"),
-        let journalsToShow = try? JSONDecoder().decode([Journals].self, from: data) else{return}
+        let journalsToShow = try? JSONDecoder().decode([Journal].self, from: data) else{return}
         UserData.sharedData.journalsToShow = journalsToShow
         return
     }
     
     
-    func saveJournals(_ value:[Journals]){
+    func saveJournals(_ value:[Journal]){
         guard let data = try? JSONEncoder().encode(value) else { return }
         ud.set(data, forKey: "JournalsToShow")
         ud.synchronize()

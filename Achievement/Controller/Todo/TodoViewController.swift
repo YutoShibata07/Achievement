@@ -23,10 +23,15 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        todoModel.loadRoutines()
         if todoModel.lastVisitTime != nil{
             UserData.sharedData.data.isFirstVisit = compareTime(time: todoModel.lastVisitTime)
             //最終ログインの時間が前の3時よりも昔か後か。前だったらisFirstVisit = Trueとなる。
-        }else{
+        }else{ //アプリに訪れたことのないユーザーに対する処理。
             UserData.sharedData.data.isFirstVisit = true
             print("本日初めてのログインです。")
         }
@@ -35,14 +40,10 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             todoModel.resetData()
             UserData.sharedData.data.recentCount.remove(at: 0)//3日前のデータを消す。
             UserData.sharedData.data.recentCount.append(0)
+            todoModel.savedData(UserData.sharedData.routinesToShow)
+            //リセットした状態を保存する。
         }
         todoModel.lastVisitTime = Date()//最終ログイン時間を今の時間に設定する。
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        todoModel.loadRoutines()
-        tableView.reloadData()
         todoModel.lastVisitTime = Date()
         print("todo Appear!")
     }

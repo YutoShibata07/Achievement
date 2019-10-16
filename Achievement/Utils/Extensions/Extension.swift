@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension UIViewController{
+    
     func getToday(format:String = "MM/dd") -> String{
         let now = Date()
         let formatter = DateFormatter()
@@ -121,8 +122,8 @@ extension String{
     }
 }
 
-extension Journals:Equatable{  //JournalをソートするためにEquatableにする。
-    public static func ==(lhs:Journals, rhs:Journals) -> Bool{
+extension Journal:Equatable{  //JournalをソートするためにEquatableにする。
+    public static func ==(lhs:Journal, rhs:Journal) -> Bool{
         return (lhs.categoryColor == rhs.categoryColor) && (lhs.categoryName == rhs.categoryName) && (lhs.isToday == lhs.isToday) && (lhs.title == rhs.title)
     }
 }

@@ -27,9 +27,9 @@ struct User {
 class UserData{
     var data = User(isFirstVisit: true)
     static let sharedData :UserData = UserData()
-    var journalsToShow = [Journals]()
+    var journalsToShow = [Journal]()
     var routinesToShow = [Routines]()
-    
+    var journalsReversed = [Journal]()
     var categoriesToShow = [Category.init(name: "読書", color: "レッド"),Category.init(name:"授業", color: "ブルー")]
     private init(){}
     
@@ -43,7 +43,7 @@ class UserData{
     }
 
     
-    struct DefaultColors {
+    struct DefaultColors { //初期状態のアプリに表示するデフォルトのカテゴリ。
         var names = ["レッド","ブルー","イエロー","パーポｳ","ピンク","ブラック","ブラウン"]
         var colors:[UIColor]
             = [UIColor.red, UIColor.blue, UIColor.yellow,UIColor.purple,UIColor.systemPink,UIColor.black, UIColor.brown ]

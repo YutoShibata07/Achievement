@@ -27,7 +27,6 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
-        
     }
     
     
@@ -45,14 +44,13 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
             //カテゴリ名とカラーを表示させる。ここまでは上手くいってる。
             return classifyCell
         }
-        categoryModel.saveCategories(UserData.sharedData.categoriesToShow)
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         categoryModel.loadCategoris()
         let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
-            UserData.sharedData.journalsToShow.remove(at: indexPath.row)
+            UserData.sharedData.categoriesToShow.remove(at: indexPath.row)
             self.categoryModel.saveCategories(UserData.sharedData.categoriesToShow)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -63,12 +61,11 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         categoryModel.makeNewJournal(
             title: newJournal, //NewJournalVCから送られてきたnewJournalのタイトル。
             color: UserData.sharedData.categoriesToShow[indexPath.row].color,
-            categoryName: UserData.sharedData.categoriesToShow[indexPath.row].name
+            categoryName: UserData.sharedData.categoriesToShow[indexPath.row].name, creationDate: getToday()
         )
         categoryModel.saveJournals(UserData.sharedData.journalsToShow)  //新たに要素が追加されたjournalsToShowを保存する。
         

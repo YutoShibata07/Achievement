@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Journal :Codable{
+class Journal :Codable{
     var title:String
     var isToday:Bool
     var categoryColor:String

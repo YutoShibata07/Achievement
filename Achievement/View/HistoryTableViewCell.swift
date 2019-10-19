@@ -12,6 +12,7 @@ class HistoryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var categoryNameLabel: UILabel!
     
+    @IBOutlet weak var widthConstraint: NSLayoutConstraint!
     @IBOutlet weak var colorView: UIView!
     var historyModel = HistoryModel()
     var journalsWithDate = [String]()
@@ -29,6 +30,7 @@ class HistoryTableViewCell: UITableViewCell {
     }
 
     func configureCell(title:String, color:UIColor){
+        widthConstraint.constant = 27.5
         colorView.backgroundColor = color
         categoryNameLabel.text = title
     }
@@ -36,6 +38,7 @@ class HistoryTableViewCell: UITableViewCell {
    
     
     func configureDateCell(title:String){
+        widthConstraint.constant = 0
         colorView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0)
         categoryNameLabel.text = title
     }

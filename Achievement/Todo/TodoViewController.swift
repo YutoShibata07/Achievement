@@ -44,7 +44,7 @@ class TodoViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             //リセットした状態を保存する。
         }
         todoModel.lastVisitTime = Date()//最終ログイン時間を今の時間に設定する。
-        todoModel.lastVisitTime = Date()
+        tableView.reloadData()
         print("todo Appear!")
     }
    

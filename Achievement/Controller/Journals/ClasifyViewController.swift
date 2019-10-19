@@ -79,6 +79,7 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
             [presentingViewController] () -> Void in
             // 閉じた時に行いたい処理
             journalVC.viewWillAppear(true)
+            journalVC.viewWillDisappear(true)
         })
     }
     

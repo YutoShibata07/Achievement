@@ -10,7 +10,13 @@ import Foundation
 import UIKit
 
 class JournalModel{
+    
+    
     let ud = UserDefaults.standard
+    var lastVisitTime:Date!
+    
+    
+    
     
     func loadedData(){
         guard let data = ud.data(forKey: "JournalsToShow"),
@@ -23,6 +29,12 @@ class JournalModel{
         guard let data = try? JSONEncoder().encode(value) else{return}
         ud.set(data, forKey: "JournalsToShow")
         ud.synchronize()
+    }
+    
+    func resetData(){//今日の分のデータをリセットする。
+        for data in UserData.sharedData.journalsToShow {
+            data.isToday = false
+        }
     }
     
     func changeColorView(colorView:UIView, category:Category){

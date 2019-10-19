@@ -25,6 +25,8 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
 //--------------override-----------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        historyModel.isDate = false
+        toCategoryButton.isEnabled = false
         tableView.delegate = self
         
         tableView.dataSource = self
@@ -70,6 +72,8 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
 //-----------------CustomFunctions-----------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        historyModel.loadCategories()
+        historyModel.loadJournals()
         if historyModel.isDate == false{ //カテゴリー表示の場合。
             return UserData.sharedData.categoriesToShow.count
         }else{                           //日付表示の場合。
@@ -81,12 +85,10 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let categoryCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? HistoryTableViewCell{
             if historyModel.isDate == false{//これでカテゴリ毎に表示する
-                print(categories.count)
                 categoryCell.configureCell(title: categories[indexPath.row].name,
                                            color: categories[indexPath.row].color.toUIColor())
                 return categoryCell
             }else{//これで日付毎に表示する。
-                print(HistoryModel.getJournalsWithDate().count)
                 categoryCell.configureDateCell(title: HistoryModel.getJournalsWithDate()[indexPath.row])
                 return categoryCell
             }

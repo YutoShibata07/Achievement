@@ -10,6 +10,15 @@ import Foundation
 
 class TodoModel{
     
+    //      func countDoneTask(){既に達成したタスクの数を計算する。
+    //        for task in routinesToShow{
+    //            if task.doneToday == true{
+    //                 data.doneCount += 1
+    //            }
+    //        }
+    ////        data.recentCount[2] = data.doneCount//recentCountの中の今日の分のデータを更新する。
+    //    }
+    
     let ud = UserDefaults.standard
     var lastVisitTime:Date!
     //var routines = UserData.sharedData.routinesToShow //名前が長すぎるので変数を作った。

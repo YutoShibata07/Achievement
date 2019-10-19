@@ -102,7 +102,6 @@
 		697839BE2344661900F13CC3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				697839C123446F5E00F13CC3 /* TodoModel.swift */,
 				697839BF2344664800F13CC3 /* JournalModel.swift */,
 				69D07719235051500097A139 /* CategoryModel.swift */,
 				698945FD2351F9240072EE28 /* HistoryModel.swift */,
@@ -132,6 +131,9 @@
 			children = (
 				69AB0AA4232219110014905C /* TodoViewController.swift */,
 				6974BE1D2325F3C200ABA858 /* NewRoutineVC.swift */,
+				69D1C07B232DE9A5007B7714 /* Routines.swift */,
+				69AB0AB22322199E0014905C /* TodoTableViewCell.swift */,
+				697839C123446F5E00F13CC3 /* TodoModel.swift */,
 			);
 			path = Todo;
 			sourceTree = "<group>";
@@ -188,6 +190,7 @@
 				69EC2244232211F500021C63 /* Assets.xcassets */,
 				69EC2246232211F500021C63 /* LaunchScreen.storyboard */,
 				69EC2249232211F500021C63 /* Info.plist */,
+				69D1C07923277510007B7714 /* Todo */,
 			);
 			path = Achievement;
 			sourceTree = "<group>";
@@ -195,7 +198,6 @@
 		69EC224F2322136500021C63 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				69D1C07923277510007B7714 /* Todo */,
 				69D1C07A2327751D007B7714 /* Journals */,
 				69AB0AA82322193C0014905C /* GraphViewController.swift */,
 				6991BF3623546EA8003DB7A7 /* History */,
@@ -207,7 +209,6 @@
 		69EC22502322137800021C63 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				69AB0AB22322199E0014905C /* TodoTableViewCell.swift */,
 				69AB0AB4232219BE0014905C /* AchieveTableViewCell.swift */,
 				695313822326140E00C79CD1 /* FadeEnableButton.swift */,
 				695313842327546800C79CD1 /* RoundedView.swift */,
@@ -222,7 +223,6 @@
 		69EC22512322137E00021C63 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				69D1C07B232DE9A5007B7714 /* Routines.swift */,
 				69D1C082232E62FA007B7714 /* User.swift */,
 				69A8C5382356DE28003CE68A /* Journal.swift */,
 			);

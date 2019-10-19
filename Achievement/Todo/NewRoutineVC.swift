@@ -34,14 +34,17 @@ class NewRoutineVC: UIViewController,UITextFieldDelegate {
     }
     @IBAction func dicideBtnClicked(_ sender: Any){
         todoModel.loadRoutines()
-        if let newJournal = textField.text{
-            UserData.sharedData.routinesToShow.append(Routines(title: newJournal, doneToday: false, coutinuousRecord: 0))
+        if let newTodo = textField.text{
+            UserData.sharedData.routinesToShow.append(Routines(title: newTodo, doneToday: false, coutinuousRecord: 0))
         }
         todoModel.savedData(UserData.sharedData.routinesToShow)
+        guard let todoVC = self.presentingViewController else{return}
         dismiss(animated: true, completion: {
-                [presentingViewController] () -> Void in
-                    // 閉じた時に行いたい処理
-                    presentingViewController?.viewWillAppear(true)
+            [presentingViewController] () -> Void in
+            // 閉じた時に行いたい処理
+            todoVC.viewWillAppear(true)
+            print("viewWillAppearにしたよ")
+            todoVC.viewDidDisappear(true)
         })
     }
     

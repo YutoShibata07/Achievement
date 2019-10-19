@@ -29,7 +29,7 @@ class HistoryModel{
     
     func saveCategories(_ value:[Category]){
         guard let data = try? JSONEncoder().encode(value) else { return }
-        ud.set(data, forKey: "CategoriewToShow")
+        ud.set(data, forKey: "CategoriesToShow")
         ud.synchronize()
     }
     func loadJournals(){
@@ -44,18 +44,16 @@ class HistoryModel{
         var journalsWithDate = [String]()
         var journalsReversed = UserData.sharedData.journalsReversed
         for i in 0...journalsReversed.count - 1{
-            if i == 0{
-                journalsWithDate.append(contentsOf:[journalsReversed[i].creationDate,                journalsReversed[i].title])
-            }else if i == journalsReversed.count - 1{
-                journalsWithDate.append(journalsReversed[i].title)
-            }else if journalsReversed[i].creationDate != journalsReversed[i + 1].creationDate{
-                journalsWithDate.append(contentsOf:[journalsReversed[i].title,                journalsReversed[i + 1].creationDate])
+            if i == 0{//一つ目の要素は何があっても日付を挿入する。
+                journalsWithDate.append(contentsOf:[journalsReversed[i].creationDate,
+                                                    "  " + journalsReversed[i].title])
+            }else if journalsReversed[i].creationDate != journalsReversed[i - 1].creationDate{
+                //前の要素の日にちと違かったら日付を挿入してからジャーナルのタイトルを加える。
+                journalsWithDate.append(contentsOf:[journalsReversed[i].creationDate,
+                                                    "  " + journalsReversed[i].title])
             }else{
-                journalsWithDate.append(journalsReversed[i].title)
+                journalsWithDate.append("  " + journalsReversed[i].title)
             }
-        }
-        for journal in journalsWithDate {
-            print(journal)
         }
         return journalsWithDate
     }

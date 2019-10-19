@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 class CategoryHistoryViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
    
     
@@ -19,6 +20,11 @@ class CategoryHistoryViewController: UIViewController,UITableViewDelegate,UITabl
     var journalModel = JournalModel()
     var selectedCategory:Category!
     var sortedJournals = [Journal]()
+    var selectedJournalTitle:String!
+    
+    
+    
+    //----------override-------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +39,16 @@ class CategoryHistoryViewController: UIViewController,UITableViewDelegate,UITabl
         journalModel.changeTitle(titleLabel: categoryTitleLabel, category: selectedCategory)
         sortedJournals = journalModel.sortJournal(category: selectedCategory) //表示するカテゴリをソートする。
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? AddDetailViewController{
+            destination.journalTitle = self.selectedJournalTitle
+        }
+    }
+    
+    
+    
+    
     
     @IBAction func backButtonClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -49,6 +65,11 @@ class CategoryHistoryViewController: UIViewController,UITableViewDelegate,UITabl
             return historyCell
         }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedJournalTitle = sortedJournals[indexPath.row].title
+        performSegue(withIdentifier: "toDetailSegue", sender: nil)
     }
        
     

@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     
@@ -46,11 +47,20 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
         tableView.reloadData()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destionation = segue.destination as? CategoryHistoryViewController{
-            destionation.selectedCategory = historyModel.selectedCategory
+        if historyModel.isDate == false{
+            if let destionation = segue.destination as? CategoryHistoryViewController{
+                destionation.selectedCategory = historyModel.selectedCategory
+            }
+        }else{
+            if let destination = segue.destination as? AddDetailViewController{
+                destination.journalTitle = historyModel.selectedJournal
+            }
         }
     }
-      
+     
+
+    
+    
     
     
 //--------------IBAction-------------------------
@@ -98,9 +108,14 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        historyModel.selectedCategory = UserData.sharedData.categoriesToShow[indexPath.row]
-        performSegue(withIdentifier: "toCategoryHistory", sender: self)
-        
+        if historyModel.isDate == false{
+            historyModel.selectedCategory = UserData.sharedData.categoriesToShow[indexPath.row]
+            performSegue(withIdentifier: "toCategoryHistory", sender: self)
+        } else{
+            historyModel.selectedJournal = HistoryModel.getJournalsWithDate()[indexPath.row]
+            print(historyModel.selectedJournal)
+            performSegue(withIdentifier: "toDetailSegue", sender: self)
+        }
     }
     
 

@@ -16,6 +16,7 @@ class HistoryModel{
     let ud = UserDefaults.standard
     var isDate:Bool! //現在開いているページが日付表示かカテゴリー表示か
     var selectedCategory:Category!
+    var selectedJournal:String!
     var numberOfDate:Int! = 0   //途中で挿入する日付の数
     var numberOfShowingDate:Int! = 0//既に表示されている日付の数。
     
@@ -46,13 +47,13 @@ class HistoryModel{
         for i in 0...journalsReversed.count - 1{
             if i == 0{//一つ目の要素は何があっても日付を挿入する。
                 journalsWithDate.append(contentsOf:[journalsReversed[i].creationDate,
-                                                    "  " + journalsReversed[i].title])
+                                                    journalsReversed[i].title])
             }else if journalsReversed[i].creationDate != journalsReversed[i - 1].creationDate{
                 //前の要素の日にちと違かったら日付を挿入してからジャーナルのタイトルを加える。
                 journalsWithDate.append(contentsOf:[journalsReversed[i].creationDate,
-                                                    "  " + journalsReversed[i].title])
+                                                    journalsReversed[i].title])
             }else{
-                journalsWithDate.append("  " + journalsReversed[i].title)
+                journalsWithDate.append(journalsReversed[i].title)
             }
         }
         return journalsWithDate

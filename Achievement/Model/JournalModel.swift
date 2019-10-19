@@ -16,6 +16,15 @@ class JournalModel{
     var lastVisitTime:Date!
     
     
+    func sortDisplayingJournal(journals:[Journal]) -> [Journal]{
+        var displayingJournals = [Journal]()
+        for journal in journals{
+            if journal.isToday == true{
+                displayingJournals.append(journal)
+            }
+        }
+        return displayingJournals
+    }
     
     
     func loadedData(){

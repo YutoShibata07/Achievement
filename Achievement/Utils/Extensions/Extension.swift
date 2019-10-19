@@ -78,6 +78,8 @@ class dateLbl:UILabel{
     }
 }
 
+@available(iOS 13.0, *)
+@available(iOS 13.0, *)
 extension UIViewController{
     func simpleAlert(title:String,msg:String){
     //alertの内容をmsgとして設定することで様々に使い分けることができる。
@@ -85,6 +87,16 @@ extension UIViewController{
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
+    
+    func dismissAlert(title:String, msg:String, vc:UIViewController){
+        let alert = UIAlertController(title: title, message: msg , preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+            vc.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(alertAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 
@@ -122,9 +134,9 @@ extension String{
     }
 }
 
-extension Journal:Equatable{  //JournalをソートするためにEquatableにする。
+extension Journal:Equatable{  //JournalをタイトルでソートするためにEquatableにする。
     public static func ==(lhs:Journal, rhs:Journal) -> Bool{
-        return (lhs.categoryColor == rhs.categoryColor) && (lhs.categoryName == rhs.categoryName) && (lhs.isToday == lhs.isToday) && (lhs.title == rhs.title)
+        return lhs.title == rhs.title
     }
 }
 

@@ -15,6 +15,7 @@ class Journal :Codable{
     var categoryColor:String
     var categoryName:String
     var creationDate:String!//このJournalが作成された日にちを保持する。
+    var detail:String?
     //ジャーナルが属するカテゴリー。名前と色の二つの属性を持つ。
     
     init(title:String,isToday:Bool, categoryName:String, categorycolor:String, creationDate:String) {

@@ -15,6 +15,8 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var dateLbl: UILabel!
     
     var journalModel = JournalModel()
+    var displayingJournals = [Journal]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +44,8 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
             journalModel.savedData(UserData.sharedData.journalsToShow)
         }
         
-        
+        self.displayingJournals = journalModel.sortDisplayingJournal(journals: UserData.sharedData.journalsToShow)
+        print(displayingJournals.count)
         journalModel.lastVisitTime = Date()//最終ログイン時間を今の時間に設定する。
         tableView.reloadData()
     }
@@ -53,12 +56,12 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserData.sharedData.journalsToShow.count
+        return displayingJournals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let achieveCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? AchieveTableViewCell{
-            achieveCell.configureCell(event: UserData.sharedData.journalsToShow[indexPath.row].title,                  color: UserData.sharedData.journalsToShow[indexPath.row].categoryColor)
+            achieveCell.configureCell(event: displayingJournals[indexPath.row].title,                                           color: displayingJournals[indexPath.row].categoryColor)
             return achieveCell
         }
         return UITableViewCell()
@@ -68,7 +71,12 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         journalModel.loadedData()
         let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
-            UserData.sharedData.journalsToShow.remove(at: indexPath.row)
+            
+            //UserDataの方で消す対象となるJournalを検索する。Title以外はテキトー。
+            let deleteIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: self.displayingJournals[indexPath.row].title, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
+            
+            
+            UserData.sharedData.journalsToShow.remove(at:deleteIndex!)
             self.journalModel.savedData(UserData.sharedData.journalsToShow)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }

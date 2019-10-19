@@ -28,19 +28,10 @@ class UserData{
     var data = User(isFirstVisit: true)
     static let sharedData :UserData = UserData()
     var journalsToShow = [Journal]()
-    var routinesToShow = [Routines]()
     var journalsReversed = [Journal]()
     var categoriesToShow = [Category.init(name: "読書", color: "レッド"),Category.init(name:"授業", color: "ブルー")]
     private init(){}
     
-    func countDoneTask(){//既に達成したタスクの数を計算する。
-        for task in routinesToShow{
-            if task.doneToday == true{
-                 data.doneCount += 1
-            }
-        }
-//        data.recentCount[2] = data.doneCount//recentCountの中の今日の分のデータを更新する。
-    }
 
     
     struct DefaultColors { //初期状態のアプリに表示するデフォルトのカテゴリ。

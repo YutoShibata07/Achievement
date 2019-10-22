@@ -38,6 +38,7 @@ class CategoryHistoryViewController: UIViewController,UITableViewDelegate,UITabl
         journalModel.changeColorView(colorView: self.colorView, category: selectedCategory)
         journalModel.changeTitle(titleLabel: categoryTitleLabel, category: selectedCategory)
         sortedJournals = journalModel.sortJournal(category: selectedCategory) //表示するカテゴリをソートする。
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,7 +57,7 @@ class CategoryHistoryViewController: UIViewController,UITableViewDelegate,UITabl
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sortedJournals.count
+        return sortedJournals.count //カテゴリーに従ってソートをしたJournalsを表示する。
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

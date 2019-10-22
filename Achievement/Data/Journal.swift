@@ -40,3 +40,14 @@ struct Category:Codable{
     }
 }
 
+
+class DateMixedJournal{
+    var title:String!
+    var isDate:Bool!
+    
+    init(title:String, isDate:Bool) {
+        self.title = title
+        self.isDate = isDate
+    }
+}
+

@@ -1099,13 +1099,23 @@
                                     <constraint firstAttribute="width" constant="70" id="dhN-e3-F8z"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vac-Sr-zP0" customClass="MacawChartView" customModule="Achievement" customModuleProvider="target">
+                                <rect key="frame" x="20" y="150" width="280" height="280"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Vac-Sr-zP0" secondAttribute="height" multiplier="1:1" id="OAr-rD-Ne9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="IFK-mP-sHK" secondAttribute="bottom" constant="28" id="0mJ-RX-mnW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Vac-Sr-zP0" secondAttribute="trailing" constant="20" id="18J-PN-Ugx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4Di-e6-PYA" secondAttribute="trailing" constant="20" id="3LJ-BD-Dmz"/>
                             <constraint firstItem="mVx-fg-0hi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3jA-7D-WIP"/>
+                            <constraint firstItem="Vac-Sr-zP0" firstAttribute="top" secondItem="4Di-e6-PYA" secondAttribute="bottom" constant="30" id="Asy-FI-Vcm"/>
                             <constraint firstItem="GH2-S5-CqS" firstAttribute="leading" secondItem="IFK-mP-sHK" secondAttribute="trailing" constant="15" id="EFP-cz-mBD"/>
+                            <constraint firstItem="Vac-Sr-zP0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="F16-pu-WfH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mVx-fg-0hi" secondAttribute="trailing" id="RMN-kE-bZm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GH2-S5-CqS" secondAttribute="trailing" constant="20" id="Skd-Ag-ibz"/>
                             <constraint firstItem="mVx-fg-0hi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vvx-tb-N56"/>
@@ -1117,10 +1127,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="bar_graph" id="hn4-aE-WU9"/>
+                    <connections>
+                        <outlet property="graphView" destination="Vac-Sr-zP0" id="Z6d-ZP-Uqn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-332" y="343"/>
+            <point key="canvasLocation" x="-444.375" y="343.3098591549296"/>
         </scene>
         <!--Add Detail View Controller-->
         <scene sceneID="JSE-Ok-Zf7">
@@ -1144,12 +1157,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYU-cD-KLb" customClass="RoudedView" customModule="Achievement" customModuleProvider="target">
                                 <rect key="frame" x="20" y="124" width="280" height="300"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="7O3-p0-4iA">
-                                        <rect key="frame" x="20" y="20" width="240" height="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="7O3-p0-4iA">
+                                        <rect key="frame" x="20" y="15" width="240" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="eP3-U3-VtA"/>
+                                            <constraint firstAttribute="height" constant="30" id="eP3-U3-VtA"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1185,7 +1198,7 @@
                                 <color key="backgroundColor" red="0.36862745099999999" green="0.76078431369999999" blue="0.12549019610000001" alpha="0.65579516270000004" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="WpV-DJ-jlw" firstAttribute="leading" secondItem="PYU-cD-KLb" secondAttribute="leading" constant="20" id="1VG-cw-DDZ"/>
-                                    <constraint firstItem="7O3-p0-4iA" firstAttribute="top" secondItem="PYU-cD-KLb" secondAttribute="top" constant="20" id="ExD-l8-fqx"/>
+                                    <constraint firstItem="7O3-p0-4iA" firstAttribute="top" secondItem="PYU-cD-KLb" secondAttribute="top" constant="15" id="ExD-l8-fqx"/>
                                     <constraint firstAttribute="bottom" secondItem="WpV-DJ-jlw" secondAttribute="bottom" constant="15" id="K2b-mR-rro"/>
                                     <constraint firstAttribute="trailing" secondItem="7O3-p0-4iA" secondAttribute="trailing" constant="20" id="Kse-un-F60"/>
                                     <constraint firstAttribute="bottom" secondItem="SCq-5w-4bn" secondAttribute="bottom" constant="15" id="XBF-wN-ofj"/>
@@ -1194,14 +1207,21 @@
                                     <constraint firstItem="7O3-p0-4iA" firstAttribute="leading" secondItem="PYU-cD-KLb" secondAttribute="leading" constant="20" id="y0r-hC-kIE"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="詳細なメモを残す。" translatesAutoresizingMaskIntoConstraints="NO" id="hZv-eZ-QEX">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZv-eZ-QEX">
                                 <rect key="frame" x="36" y="199" width="248" height="150"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="kLv-GP-4Zd"/>
                                 </constraints>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="15"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="詳細なメモを残す。">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="15" name="HiraMaruProN-W4"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                         </subviews>
@@ -1246,6 +1266,6 @@
         <image name="織田信長" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="guu-7D-QWM"/>
+        <segue reference="zlV-nB-Apk"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -70,7 +70,6 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
         categoryModel.saveJournals(UserData.sharedData.journalsToShow)  //新たに要素が追加されたjournalsToShowを保存する。
         
         guard let journalVC = self.presentingViewController!.presentingViewController else{
-            print("エラーあるよ")
             return
             
         } //二つ前のviewControllerを取得しておく。

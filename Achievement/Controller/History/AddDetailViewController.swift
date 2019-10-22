@@ -28,6 +28,7 @@ class AddDetailViewController: UIViewController, UITextViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         textView.layer.cornerRadius = 8
+        titleLabel.numberOfLines = 0
         titleLabel.text = journalTitle
         journalModel.loadedData()
         let index = UserData.sharedData.journalsToShow.index(of: Journal.init(title: journalTitle, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))

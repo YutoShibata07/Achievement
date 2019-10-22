@@ -7,13 +7,24 @@
 //
 
 import UIKit
+import Macaw
 
 class GraphViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var graphView: MacawChartView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+        graphView.contentMode = .scaleAspectFit
+        graphView.backgroundColor = UIColor.black
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        graphView.layer.cornerRadius = 8
+        MacawChartView.playAimation()
     }
     
 

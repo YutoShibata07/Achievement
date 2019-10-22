@@ -140,6 +140,12 @@ extension Journal:Equatable{  //Journalをタイトルでソートするため�
     }
 }
 
+extension DateMixedJournal:Equatable{
+    public static func == (lhs:DateMixedJournal, rhs:DateMixedJournal) -> Bool{
+        return lhs.title == rhs.title
+    }
+}
+
 
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
@@ -152,5 +158,7 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
+
 
 

@@ -40,20 +40,35 @@ class HistoryModel{
         return
     }
     
-    static func getJournalsWithDate() -> [String]{
+    
+    func savedData(_ value:[Journal]){
+        guard let data = try? JSONEncoder().encode(value) else{return}
+        ud.set(data, forKey: "JournalsToShow")
+        ud.synchronize()
+    }
+    
+    
+    static func getJournalsWithDate() -> [DateMixedJournal]{
+        
         UserData.sharedData.journalsReversed = UserData.sharedData.journalsToShow.reversed()
-        var journalsWithDate = [String]()
-        var journalsReversed = UserData.sharedData.journalsReversed
-        for i in 0...journalsReversed.count - 1{
-            if i == 0{//一つ目の要素は何があっても日付を挿入する。
-                journalsWithDate.append(contentsOf:[journalsReversed[i].creationDate,
-                                                    journalsReversed[i].title])
-            }else if journalsReversed[i].creationDate != journalsReversed[i - 1].creationDate{
-                //前の要素の日にちと違かったら日付を挿入してからジャーナルのタイトルを加える。
-                journalsWithDate.append(contentsOf:[journalsReversed[i].creationDate,
-                                                    journalsReversed[i].title])
-            }else{
-                journalsWithDate.append(journalsReversed[i].title)
+        var journalsWithDate = [DateMixedJournal]()
+        if UserData.sharedData.journalsReversed.count != 0{
+            
+            var journalsReversed = UserData.sharedData.journalsReversed
+            for i in 0...journalsReversed.count - 1{
+                if i == 0{//一つ目の要素は何があっても日付を挿入する。
+                    journalsWithDate.append(
+                        contentsOf:[DateMixedJournal(title: journalsReversed[i].creationDate, isDate:true),
+                                    
+                                    DateMixedJournal(title: journalsReversed[i].title, isDate: false)])
+                }else if journalsReversed[i].creationDate != journalsReversed[i - 1].creationDate{
+                    //前の要素の日にちと違かったら日付を挿入してからジャーナルのタイトルを加える。
+                    journalsWithDate.append(
+                        contentsOf:[DateMixedJournal(title: journalsReversed[i].creationDate,isDate: true),
+                                    DateMixedJournal(title: journalsReversed[i].title, isDate: false)])
+                }else{//普通にジャーナルを追加する。
+                    journalsWithDate.append(DateMixedJournal(title: journalsReversed[i].title, isDate: false))
+                }
             }
         }
         return journalsWithDate

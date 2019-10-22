@@ -18,8 +18,10 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     
-    var categories = [Category]()
+    
     var historyModel = HistoryModel()
+    var journalsWithDate = [DateMixedJournal]()
+    //日付とジャーナルを合わせた配列。isDate == trueならば削除できないし、文字も太く表示する。
     
     
     
@@ -35,15 +37,16 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("History が　Appearしたよ！")
         super.viewWillAppear(true)
         historyModel.loadCategories()
         historyModel.loadJournals()
-        categories = UserData.sharedData.categoriesToShow
         if historyModel.isDate == nil{
             historyModel.isDate = false
             toCategoryButton.isEnabled = false
             toDateButton.isEnabled = true
         }
+       
         tableView.reloadData()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,7 +60,10 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
             }
         }
     }
-     
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+    }
 
     
     
@@ -85,22 +91,37 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
         historyModel.loadCategories()
         historyModel.loadJournals()
         if historyModel.isDate == false{ //カテゴリー表示の場合。
+             print("category!! \(UserData.sharedData.categoriesToShow.count)")
             return UserData.sharedData.categoriesToShow.count
         }else{                           //日付表示の場合。
+            print("セルの数は\(HistoryModel.getJournalsWithDate().count)")
             return HistoryModel.getJournalsWithDate().count
             //挿入する日付の数だけRowSectionの数を増やす。
+            
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        historyModel.loadJournals()
+        historyModel.loadCategories()
+        journalsWithDate = HistoryModel.getJournalsWithDate()
         if let categoryCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? HistoryTableViewCell{
+            
             if historyModel.isDate == false{//これでカテゴリ毎に表示する
-                categoryCell.configureCell(title: categories[indexPath.row].name,
-                                           color: categories[indexPath.row].color.toUIColor())
+                categoryCell.configureCell(
+                    title: UserData.sharedData.categoriesToShow[indexPath.row].name,
+                    color: UserData.sharedData.categoriesToShow[indexPath.row].color.toUIColor())
                 return categoryCell
+                
             }else{//これで日付毎に表示する。
-                categoryCell.configureDateCell(title: HistoryModel.getJournalsWithDate()[indexPath.row])
-                return categoryCell
+                if journalsWithDate.count != 0{
+                    categoryCell.notDate = (HistoryModel.getJournalsWithDate()[indexPath.row].isDate == false)
+                    //表示するセルが日付なのか日記の内容なのかを渡す。
+                    categoryCell.configureDateCell(title: journalsWithDate[indexPath.row].title)
+                    return categoryCell
+                }else{
+                    return categoryCell
+                }
             }
         }
         return UITableViewCell()
@@ -108,16 +129,59 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        historyModel.loadJournals()
+        historyModel.loadCategories()
+        journalsWithDate = HistoryModel.getJournalsWithDate()
+        
+        
         if historyModel.isDate == false{
             historyModel.selectedCategory = UserData.sharedData.categoriesToShow[indexPath.row]
             performSegue(withIdentifier: "toCategoryHistory", sender: self)
         } else{
-            historyModel.selectedJournal = HistoryModel.getJournalsWithDate()[indexPath.row]
-            print(historyModel.selectedJournal)
+            if journalsWithDate[indexPath.row].isDate == true{
+                return
+                //選択するCellが日付を表示しているのならばセレクトしても何も起きないようにする。
+            }
+            historyModel.selectedJournal = journalsWithDate[indexPath.row].title
             performSegue(withIdentifier: "toDetailSegue", sender: self)
         }
     }
     
-
-  
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        var numberOfSameDateJournals  = 0
+        //同じ日付のjournalを収容する配列。ある日付のJournalが全て消去されたかどうかを判断する。
+       
+        //日付を表示しているセルに対しては削除させないようにする。
+        if journalsWithDate[indexPath.row].isDate == true{
+            return nil
+        }
+       
+        let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
+            
+            //UserDataの方で消す対象となるJournalを検索する。Title以外はテキトー。
+            let deleteIndex = UserData.sharedData.journalsToShow.index(of:Journal.init(title: self.journalsWithDate[indexPath.row].title, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
+            
+            for journal in UserData.sharedData.journalsToShow {
+                if journal.creationDate == UserData.sharedData.journalsToShow[deleteIndex!].creationDate{
+                    numberOfSameDateJournals += 1
+                }
+            }
+            
+            UserData.sharedData.journalsToShow.remove(at:deleteIndex!)
+            self.historyModel.savedData(UserData.sharedData.journalsToShow)
+            
+            if numberOfSameDateJournals == 1{
+                let anotherIndexPass:IndexPath = [0, indexPath.row - 1 ]
+                tableView.deleteRows(at: [anotherIndexPass], with: .fade)
+            }
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        deleteButton.backgroundColor = UIColor.red
+        return [deleteButton]
+    }
+    
+    
 }

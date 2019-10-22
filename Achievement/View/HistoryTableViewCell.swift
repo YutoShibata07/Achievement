@@ -17,6 +17,7 @@ class HistoryTableViewCell: UITableViewCell {
     var historyModel = HistoryModel()
     var journalsWithDate = [String]()
     var journalsReversed = [Journal]()
+    var notDate:Bool! //日付を表示していなければスペースを作る。
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,8 +39,13 @@ class HistoryTableViewCell: UITableViewCell {
    
     
     func configureDateCell(title:String){
-        widthConstraint.constant = 0
         colorView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0)
+        if self.notDate == true{
+            widthConstraint.constant = 20
+        }else{
+            widthConstraint.constant = 0
+        }
+        categoryNameLabel.font = UIFont.boldSystemFont(ofSize: 17)
         categoryNameLabel.text = title
     }
 }

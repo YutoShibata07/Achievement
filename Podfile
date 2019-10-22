@@ -8,4 +8,6 @@ target 'Achievement' do
   # Pods for Achievement
   pod 'SCLAlertView'
   pod 'MaterialComponents/Buttons'
+  pod 'ScrollableGraphView'
+  pod "Macaw", "0.9.5"
 end

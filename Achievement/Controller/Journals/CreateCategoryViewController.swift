@@ -76,7 +76,6 @@ class CreateCategoryViewController: UIViewController, UITableViewDelegate,UITabl
             simpleAlert(title: "エラー", msg: "カラーが選択されていません")
             return }
         UserData.sharedData.categoriesToShow.append(Category(name: newCategoryTitle, color: selectedColor))
-        print(UserData.sharedData.categoriesToShow)
         categoryModel.saveCategories(UserData.sharedData.categoriesToShow)
         
         dismiss(animated: true, completion: {

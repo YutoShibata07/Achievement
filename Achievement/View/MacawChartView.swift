@@ -10,21 +10,25 @@ import Foundation
 import Macaw
 
 class MacawChartView:MacawView{
-    static let lastFiveShows = createDummyData()
+    static let lastSevenShows = createDummyData()
     static let maxValue = 6000
     static let maxValueLineHeight = 180
-    static let lineWidth:Double = 275
+    static let lineWidth:Double = 385
 
     static let dataDivisor = Double(maxValue/maxValueLineHeight)
-    static let adjustData:[Double] = lastFiveShows.map({$0.viewCount / dataDivisor})
+    static let adjustData:[Double] = lastSevenShows.map({$0.viewCount / dataDivisor})
     static var animations :[Animation] = []
-
+    
+    
 
     
+
 
     required init?(coder aDecoder: NSCoder) {
         super.init(node:MacawChartView.createChart(), coder: aDecoder)
         backgroundColor = .clear
+        self.layer.cornerRadius = 8
+        self.layer.masksToBounds = true
     }
 
     private static func createChart() -> Group{
@@ -46,6 +50,7 @@ class MacawChartView:MacawView{
 
         for i in 1...maxLines {
             let y = yAxisHeight - (Double(i) * lineSpacing)
+            //Yの値を表示するためのライン。全部で６本ある。少しY軸より左側から始めるので x1 = -5
             let valueLine = Line(x1: -5, y1: y, x2: lineWidth, y2: y).stroke(fill:Color.white.with(a: 0.10))
             let valueText = Text(text: "\(i * lineInterval)", align: .max, baseline: .mid, place: .move(dx: -10, dy: y))
             valueText.fill = Color.white
@@ -65,13 +70,13 @@ class MacawChartView:MacawView{
         var newNodes:[Node] = []
         
         for i in 1...adjustData.count {
-            let x = (Double(i) * 50) //棒グラフの感覚は50
-            let valueText = Text(text: lastFiveShows[i - 1].showNumber, align:.max, baseline:.mid, place:.move(dx:x, dy:chartBaseY + 10))
+            let x = (Double(i) * 51) //棒グラフの感覚は50
+            let valueText = Text(text: lastSevenShows[i - 1].showNumber, align:.max, baseline:.mid, place:.move(dx:x, dy:chartBaseY + 10))//文字はx軸の少し下に置く。
             valueText.fill = Color.white
             newNodes.append(valueText)
         }
         
-        let xAxis = Line(x1: 0, y1: chartBaseY, x2: lineWidth, y2: chartBaseY).stroke(fill: Color.white.with(a: 0.25))
+        let xAxis = Line(x1: 0, y1: chartBaseY, x2: lineWidth, y2: chartBaseY).stroke(fill: Color.white.with(a: 0.5))
         newNodes.append(xAxis)
         return newNodes
     }
@@ -98,14 +103,31 @@ class MacawChartView:MacawView{
         animations.combine().play()
     }
 
-    private static func createDummyData() -> [SwiftNewsVideo]{
-        let one = SwiftNewsVideo(showNumber: "55", viewCount: 3456)
-        let two = SwiftNewsVideo(showNumber: "56", viewCount: 5200)
-        let three = SwiftNewsVideo(showNumber: "57", viewCount: 4250)
-        let four = SwiftNewsVideo(showNumber: "58", viewCount: 3600)
-        let five = SwiftNewsVideo(showNumber: "59", viewCount: 4823)
+    private static func createDummyData() -> [JournalsCount]{
+        let oneWeek = self.getOneWeek()
+        let one = JournalsCount(showNumber: oneWeek[0], viewCount: 3456)
+        let two = JournalsCount(showNumber: oneWeek[1], viewCount: 5200)
+        let three = JournalsCount(showNumber: oneWeek[2], viewCount: 4250)
+        let four = JournalsCount(showNumber: oneWeek[3], viewCount: 3600)
+        let five = JournalsCount(showNumber: oneWeek[4], viewCount: 4823)
+        let six = JournalsCount(showNumber: oneWeek[5], viewCount: 5000)
+        let seven = JournalsCount(showNumber: oneWeek[6], viewCount: 4300)
 
-        return [one, two, three, four, five]
+        return [one, two, three, four, five, six , seven]
+    }
+    
+    
+    private static  func getOneWeek(format:String = "MM/dd") -> [String]{
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        var week:[Date] = []
+        var stringWeek :[String] = []
+        for i in 1...7{
+            var j = 7 - i
+            week.append(Date(timeIntervalSinceNow: TimeInterval(-j*24*60*60)))
+            stringWeek.append(formatter.string(from: week[i - 1] as Date))
+        }
+        return stringWeek
     }
     
     

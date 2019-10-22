@@ -48,7 +48,4 @@ struct DefaultColors {
 //        = [UIColor.red, UIColor.blue, UIColor.yellow,UIColor.purple,UIColor.systemPink,UIColor.black, UIColor.brown ]
 }
 
-struct SwiftNewsVideo {
-    var showNumber: String
-    var viewCount:Double
-}
+

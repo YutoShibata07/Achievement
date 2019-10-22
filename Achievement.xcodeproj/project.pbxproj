@@ -90,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		694C4E94235F41DC0098BCFF /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				6990EEA1235AAFF800B734A7 /* GraphViewController.swift */,
+				69A14CA9235EEA080086D9AF /* GraphData.swift */,
+			);
+			path = Graph;
+			sourceTree = "<group>";
+		};
 		6974BE212325F3D500ABA858 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,8 +197,7 @@
 				69D1C07A2327751D007B7714 /* Journals */,
 				6991BF3623546EA8003DB7A7 /* History */,
 				69AB0AAC2322195C0014905C /* MenuViewController.swift */,
-				6990EEA1235AAFF800B734A7 /* GraphViewController.swift */,
-				69A14CA9235EEA080086D9AF /* GraphData.swift */,
+				694C4E94235F41DC0098BCFF /* Graph */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

@@ -1101,7 +1101,7 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vac-Sr-zP0" customClass="MacawChartView" customModule="Achievement" customModuleProvider="target">
                                 <rect key="frame" x="20" y="150" width="280" height="280"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.36862745099999999" green="0.76078431369999999" blue="0.12549019610000001" alpha="0.65579516270000004" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Vac-Sr-zP0" secondAttribute="height" multiplier="1:1" id="OAr-rD-Ne9"/>
                                 </constraints>

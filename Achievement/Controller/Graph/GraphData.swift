@@ -8,4 +8,9 @@
 
 import Foundation
 
+struct JournalsCount {
+    var showNumber: String
+    var viewCount:Double
+}
+
 

@@ -19,11 +19,14 @@ class GraphViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         graphView.contentMode = .scaleAspectFit
-        graphView.backgroundColor = UIColor.black
+        graphView.backgroundColor = UIColor.init(hex: "5EC220")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         graphView.layer.cornerRadius = 8
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         MacawChartView.playAimation()
     }
     

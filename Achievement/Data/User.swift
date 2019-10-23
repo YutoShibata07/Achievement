@@ -29,23 +29,19 @@ class UserData{
     static let sharedData :UserData = UserData()
     var journalsToShow = [Journal]()
     var journalsReversed = [Journal]()
-    var categoriesToShow = [Category.init(name: "読書", color: "レッド"),Category.init(name:"授業", color: "ブルー")]
+    var categoriesToShow = [Category.init(name: "読書", color: "レッド"),Category.init(name:"分類なし", color: "グレー")]
     private init(){}
     
 
     
     struct DefaultColors { //初期状態のアプリに表示するデフォルトのカテゴリ。
-        var names = ["レッド","ブルー","イエロー","パーポｳ","ピンク","ブラック","ブラウン"]
+        var names = ["レッド","ブルー","イエロー","パーポｳ","ピンク","ブラック","ブラウン","グレー"]
         var colors:[UIColor]
-            = [UIColor.red, UIColor.blue, UIColor.yellow,UIColor.purple,UIColor.systemPink,UIColor.black, UIColor.brown ]
+            = [UIColor.red, UIColor.blue, UIColor.yellow,UIColor.purple,UIColor.systemPink,UIColor.black, UIColor.brown, UIColor.gray ]
     }
     
     
 }
-struct DefaultColors {
-    var names = ["レッド","ブルー","イエロー","パーポｳ","ピンク","ブラック","ブラウン"]
-//    var colors:[UIColor]
-//        = [UIColor.red, UIColor.blue, UIColor.yellow,UIColor.purple,UIColor.systemPink,UIColor.black, UIColor.brown ]
-}
+
 
 

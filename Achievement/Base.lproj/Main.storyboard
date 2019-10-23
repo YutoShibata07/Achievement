@@ -1223,7 +1223,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="グラフ" image="chart.bar" catalog="system" id="hn4-aE-WU9"/>
                     <connections>
-                        <outlet property="graphView" destination="Vac-Sr-zP0" id="Z6d-ZP-Uqn"/>
+                        <outlet property="dateLabel" destination="4Di-e6-PYA" id="ju7-44-pou"/>
+                        <outlet property="graphView" destination="Vac-Sr-zP0" id="1Jh-yk-UR3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

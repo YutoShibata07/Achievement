@@ -42,7 +42,7 @@ class CreateCategoryViewController: UIViewController, UITableViewDelegate,UITabl
     //------Custom Funtions------------
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DefaultColors().names.count
+        return UserData.DefaultColors().names.count
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -51,13 +51,13 @@ class CreateCategoryViewController: UIViewController, UITableViewDelegate,UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedColor = DefaultColors().names[indexPath.row]
+        selectedColor = UserData.DefaultColors().names[indexPath.row]
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let colorCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? SelectColorTableViewCell{
-            colorCell.configureCell(colorName: DefaultColors().names[indexPath.row],
-                                    color: DefaultColors().names[indexPath.row].toUIColor())
+            colorCell.configureCell(colorName: UserData.DefaultColors().names[indexPath.row],
+                                    color: UserData.DefaultColors().names[indexPath.row].toUIColor())
             return colorCell
         }
         return UITableViewCell()

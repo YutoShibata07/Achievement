@@ -12,8 +12,13 @@ import Macaw
 class GraphViewController: UIViewController {
     
     
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    
     @IBOutlet weak var graphView: MacawChartView!
+//    let graphView = MacawChartView()
     var graphModel = GraphModel()
+    
     
     
     override func viewDidLoad() {
@@ -23,20 +28,31 @@ class GraphViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         GraphModel.loadJournals()
+       
+//        //自分でViewを設置する。
+//        self.view.addSubview(graphView)
+//
+//        graphView.translatesAutoresizingMaskIntoConstraints = false
+//        graphView.topAnchor.constraint(equalTo:self.dateLabel.bottomAnchor, constant: 30)
+//        graphView.leadingAnchor.constraint(equalTo:self.view.leadingAnchor, constant: 20).isActive = true
+//        graphView.trailingAnchor.constraint(equalTo:self.view.leadingAnchor, constant: 20).isActive = true
+//        graphView.heightAnchor.constraint(equalTo:graphView.widthAnchor, constant: 0).isActive = true
+//
+//        
+//
         self.graphView.contentMode = .scaleAspectFit
-        self.graphView.backgroundColor = UIColor.init(hex: "5EC220")
+        graphView.backgroundColor = UIColor.init(hex: "5EC220")
         print("GraphがAppearしたよ！！！")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         MacawChartView.playAimation()
-        
     }
     
-    
-   
-    
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+    }
 
 }

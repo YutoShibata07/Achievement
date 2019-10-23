@@ -11,16 +11,14 @@ import Macaw
 
 class MacawChartView:MacawView{
     static let lastSevenShows = createDummyData()
-    static let maxValue = 6000
+    static let maxValue = getWeeklyJournalsCount(week: getOneWeek()).max()
     static let maxValueLineHeight = 180
     static let lineWidth:Double = 385
-
-    static let dataDivisor = Double(maxValue/maxValueLineHeight)
-    static let adjustData:[Double] = lastSevenShows.map({$0.viewCount / dataDivisor})
+    static let dataDivisor = round(Double(maxValue!)/Double(maxValueLineHeight) * 1000) / 1000
+    static let adjustData:[Double] = lastSevenShows.map({Double($0.viewCount) / dataDivisor})
     static var animations :[Animation] = []
+    var graphModel = GraphModel()
     
-    
-
     
 
 
@@ -42,7 +40,7 @@ class MacawChartView:MacawView{
 
     private static func addYAxisItems() -> [Node]{
         let maxLines = 6
-        let lineInterval = Int(maxValue/maxLines)
+        let lineInterval = Int(maxValue!/maxLines)
         let yAxisHeight:Double = 200
         let lineSpacing:Double = 30
 
@@ -83,7 +81,7 @@ class MacawChartView:MacawView{
 
 
     private static func createBars() -> Group{
-        let fill = LinearGradient.init(degree: 90, from: Color(val: 0xff4704), to: Color(val:0xff4704).with(a: 0.33))
+        let fill = LinearGradient.init(degree: 90, from: Color.black, to: Color.black.with(a: 0.6))
         let items = adjustData.map{ _ in Group()}
         
         animations = items.enumerated().map{(i: Int, item:Group) in
@@ -103,32 +101,56 @@ class MacawChartView:MacawView{
         animations.combine().play()
     }
 
+    
+    //1週間の日にちを取得する。
+    private static  func getOneWeek(format:String = "MM/dd") -> [String]{
+          let formatter = DateFormatter()
+          formatter.dateFormat = format
+          var week:[Date] = []
+          var stringWeek :[String] = []
+          for i in 1...7{
+              var j = 7 - i
+              week.append(Date(timeIntervalSinceNow: TimeInterval(-j*24*60*60)))
+              stringWeek.append(formatter.string(from: week[i - 1] as Date))
+          }
+          return stringWeek
+      }
+      
+    
+    //直近一週間でどれくらいのメモを書いたのかを記録する。
+    private static func getWeeklyJournalsCount(week:[String]) -> [Int]{
+        GraphModel.loadJournals()
+        var updateJournals = UserData.sharedData.journalsToShow
+        var countsInWeek = [0,0,0,0,0,0,0]
+        
+        for i in 0...6{ //7日前から始めて７日分計算する。　i=0なら７日前。
+            for jounral in updateJournals {
+                if week[i] == jounral.creationDate{
+                    countsInWeek[i] += 1
+                }
+            }
+        }
+        return countsInWeek
+      }
+    
+    
+    
+    
     private static func createDummyData() -> [JournalsCount]{
         let oneWeek = self.getOneWeek()
-        let one = JournalsCount(showNumber: oneWeek[0], viewCount: 3456)
-        let two = JournalsCount(showNumber: oneWeek[1], viewCount: 5200)
-        let three = JournalsCount(showNumber: oneWeek[2], viewCount: 4250)
-        let four = JournalsCount(showNumber: oneWeek[3], viewCount: 3600)
-        let five = JournalsCount(showNumber: oneWeek[4], viewCount: 4823)
-        let six = JournalsCount(showNumber: oneWeek[5], viewCount: 5000)
-        let seven = JournalsCount(showNumber: oneWeek[6], viewCount: 4300)
+        let weeklyCount:[Int] = getWeeklyJournalsCount(week: oneWeek)
+        let one = JournalsCount(showNumber: oneWeek[0], viewCount: weeklyCount[0])
+        let two = JournalsCount(showNumber: oneWeek[1], viewCount: weeklyCount[1])
+        let three = JournalsCount(showNumber: oneWeek[2], viewCount: weeklyCount[2])
+        let four = JournalsCount(showNumber: oneWeek[3], viewCount: weeklyCount[3])
+        let five = JournalsCount(showNumber: oneWeek[4], viewCount: weeklyCount[4])
+        let six = JournalsCount(showNumber: oneWeek[5], viewCount: weeklyCount[5])
+        let seven = JournalsCount(showNumber: oneWeek[6], viewCount: weeklyCount[6])
 
         return [one, two, three, four, five, six , seven]
     }
     
     
-    private static  func getOneWeek(format:String = "MM/dd") -> [String]{
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        var week:[Date] = []
-        var stringWeek :[String] = []
-        for i in 1...7{
-            var j = 7 - i
-            week.append(Date(timeIntervalSinceNow: TimeInterval(-j*24*60*60)))
-            stringWeek.append(formatter.string(from: week[i - 1] as Date))
-        }
-        return stringWeek
-    }
     
     
 }

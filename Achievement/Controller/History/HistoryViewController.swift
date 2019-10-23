@@ -152,35 +152,47 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         var numberOfSameDateJournals  = 0
         //同じ日付のjournalを収容する配列。ある日付のJournalが全て消去されたかどうかを判断する。
-       
-        //日付を表示しているセルに対しては削除させないようにする。
-        if journalsWithDate[indexPath.row].isDate == true{
-            return nil
-        }
-       
-        let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
-            
-            //UserDataの方で消す対象となるJournalを検索する。Title以外はテキトー。
-            let deleteIndex = UserData.sharedData.journalsToShow.index(of:Journal.init(title: self.journalsWithDate[indexPath.row].title, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
-            
-            for journal in UserData.sharedData.journalsToShow {
-                if journal.creationDate == UserData.sharedData.journalsToShow[deleteIndex!].creationDate{
-                    numberOfSameDateJournals += 1
+        
+        
+        if historyModel.isDate == true{//日付表示だった場合のセル消去について
+            if journalsWithDate[indexPath.row].isDate == true{
+                return nil        //日付を表示しているセルに対しては削除させないようにする。
+            }
+            let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
+                
+                //UserDataの方で消す対象となるJournalを検索する。Title以外はテキトー。
+                let deleteIndex = UserData.sharedData.journalsToShow.index(of:Journal.init(title: self.journalsWithDate[indexPath.row].title, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
+                
+                for journal in UserData.sharedData.journalsToShow {
+                    if journal.creationDate == UserData.sharedData.journalsToShow[deleteIndex!].creationDate{
+                        numberOfSameDateJournals += 1
+                    }
                 }
+                
+                UserData.sharedData.journalsToShow.remove(at:deleteIndex!)
+                self.historyModel.savedData(UserData.sharedData.journalsToShow)
+                
+                if numberOfSameDateJournals == 1{
+                    let anotherIndexPass:IndexPath = [0, indexPath.row - 1 ]
+                    tableView.deleteRows(at: [anotherIndexPass], with: .fade)
+                }
+                
+                tableView.deleteRows(at: [indexPath], with: .fade)
             }
+            deleteButton.backgroundColor = UIColor.red
+            return [deleteButton]
             
-            UserData.sharedData.journalsToShow.remove(at:deleteIndex!)
-            self.historyModel.savedData(UserData.sharedData.journalsToShow)
-            
-            if numberOfSameDateJournals == 1{
-                let anotherIndexPass:IndexPath = [0, indexPath.row - 1 ]
-                tableView.deleteRows(at: [anotherIndexPass], with: .fade)
+        }else{
+            let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
+                
+                //UserDataの方で消す対象となるJournalを検索する。Title以外はテキトー。
+                UserData.sharedData.categoriesToShow.remove(at:indexPath.row)
+                self.historyModel.saveCategories(UserData.sharedData.categoriesToShow)
+                tableView.deleteRows(at: [indexPath], with: .fade)
             }
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            deleteButton.backgroundColor = UIColor.red
+            return [deleteButton]
         }
-        deleteButton.backgroundColor = UIColor.red
-        return [deleteButton]
     }
     
     

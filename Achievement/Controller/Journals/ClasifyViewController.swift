@@ -69,7 +69,7 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
         )
         categoryModel.saveJournals(UserData.sharedData.journalsToShow)  //新たに要素が追加されたjournalsToShowを保存する。
         
-        guard let journalVC = self.presentingViewController!.presentingViewController else{
+        guard let journalVC = self.presentingViewController else{
             return
             
         } //二つ前のviewControllerを取得しておく。
@@ -78,7 +78,7 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
             [presentingViewController] () -> Void in
             // 閉じた時に行いたい処理
             journalVC.viewWillAppear(true)
-            journalVC.viewWillDisappear(true)
+           // journalVC.viewWillDisappear(true)//この行が他のVCを開いてもViewWillAppearが呼ばれない諸悪の根源。
         })
     }
     

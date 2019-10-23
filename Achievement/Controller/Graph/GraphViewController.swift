@@ -13,22 +13,30 @@ class GraphViewController: UIViewController {
     
     
     @IBOutlet weak var graphView: MacawChartView!
-    
+    var graphModel = GraphModel()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        graphView.contentMode = .scaleAspectFit
-        graphView.backgroundColor = UIColor.init(hex: "5EC220")
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        graphView.layer.cornerRadius = 8
+        GraphModel.loadJournals()
+        self.graphView.contentMode = .scaleAspectFit
+        self.graphView.backgroundColor = UIColor.init(hex: "5EC220")
+        print("GraphがAppearしたよ！！！")
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         MacawChartView.playAimation()
+        
     }
+    
+    
+   
+    
     
 
 }

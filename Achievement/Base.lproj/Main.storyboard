@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Achievement View Controller-->
+        <!--ジャーナル-->
         <scene sceneID="bp8-Nn-NLu">
             <objects>
                 <viewController id="u2v-Kr-dMm" customClass="AchievementViewController" customModule="Achievement" customModuleProvider="target" sceneMemberID="viewController">
@@ -146,7 +146,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bZZ-xY-lDc"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Achievement" id="A7M-4f-yV7"/>
+                    <tabBarItem key="tabBarItem" title="ジャーナル" image="pencil" catalog="system" id="A7M-4f-yV7"/>
                     <connections>
                         <outlet property="addBtn" destination="lki-g8-ogI" id="cSe-HD-Yh2"/>
                         <outlet property="dateLbl" destination="efS-Hg-kRH" id="AJG-uj-8KI"/>
@@ -157,33 +157,128 @@
             </objects>
             <point key="canvasLocation" x="-1423.125" y="344.36619718309862"/>
         </scene>
-        <!--View Controller-->
+        <!--設定-->
         <scene sceneID="P5Q-vl-5Sk">
             <objects>
-                <viewController id="Icg-M0-ADV" sceneMemberID="viewController">
+                <viewController id="Icg-M0-ADV" customClass="MenuViewController" customModule="Achievement" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="loQ-jt-m9U">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zr-9e-zHd">
-                                <rect key="frame" x="75" y="90" width="178" height="99"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.57999785958904104" green="0.90461394955479457" blue="0.14988227739726026" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メニュー" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEr-SZ-fMs">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                                <color key="backgroundColor" red="0.36862745099999999" green="0.76078431369999999" blue="0.12549019610000001" alpha="0.65579516270000004" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="Hbk-YV-zGp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="27"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="設定" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYB-lL-BZJ">
+                                <rect key="frame" x="20" y="80" width="280" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="fkd-Np-B5v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nJ4-Od-GSk">
+                                <rect key="frame" x="20" y="118" width="280" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="mLs-Hd-vsM"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Adu-wl-Aso" style="IBUITableViewCellStyleDefault" id="WjP-EH-6Rc" customClass="SettingTableViewCell" customModule="Achievement" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="280" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WjP-EH-6Rc" id="bGx-kX-x9g">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Adu-wl-Aso" customClass="通知">
+                                                    <rect key="frame" x="15" y="0.0" width="250" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="Adu-wl-Aso" id="TTA-SZ-iCN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="その他" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLO-c4-srE">
+                                <rect key="frame" x="20" y="348" width="280" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="nMV-Q3-MLf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pep-I6-e99">
+                                <rect key="frame" x="20" y="386" width="280" height="120"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="fqW-MJ-Jb3"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="GP1-ac-9aN" style="IBUITableViewCellStyleDefault" id="KlB-Js-ts4" customClass="OthersTableViewCell" customModule="Achievement" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="280" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KlB-Js-ts4" id="hyn-tH-KRc">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="よくある質問" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GP1-ac-9aN">
+                                                    <rect key="frame" x="15" y="0.0" width="250" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="GP1-ac-9aN" id="9od-VA-Pxz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gjc-GU-nT6" firstAttribute="trailing" secondItem="nJ4-Od-GSk" secondAttribute="trailing" constant="20" id="9NP-Wf-AuG"/>
+                            <constraint firstItem="dYB-lL-BZJ" firstAttribute="leading" secondItem="loQ-jt-m9U" secondAttribute="leading" constant="20" id="A5U-AT-gFN"/>
+                            <constraint firstItem="bEr-SZ-fMs" firstAttribute="top" secondItem="loQ-jt-m9U" secondAttribute="top" id="M1F-tO-NFb"/>
+                            <constraint firstItem="Pep-I6-e99" firstAttribute="top" secondItem="PLO-c4-srE" secondAttribute="bottom" constant="8" id="SMp-4y-3hJ"/>
+                            <constraint firstAttribute="trailing" secondItem="dYB-lL-BZJ" secondAttribute="trailing" constant="20" id="Tuq-JZ-8K1"/>
+                            <constraint firstItem="bEr-SZ-fMs" firstAttribute="leading" secondItem="loQ-jt-m9U" secondAttribute="leading" id="aWJ-sB-IbX"/>
+                            <constraint firstItem="PLO-c4-srE" firstAttribute="top" secondItem="nJ4-Od-GSk" secondAttribute="bottom" constant="30" id="c5X-AE-ha2"/>
+                            <constraint firstAttribute="trailing" secondItem="PLO-c4-srE" secondAttribute="trailing" constant="20" id="df1-Et-D6Q"/>
+                            <constraint firstItem="dYB-lL-BZJ" firstAttribute="top" secondItem="bEr-SZ-fMs" secondAttribute="bottom" constant="10" id="gtX-gW-lxN"/>
+                            <constraint firstAttribute="trailing" secondItem="bEr-SZ-fMs" secondAttribute="trailing" id="h6n-lf-vxa"/>
+                            <constraint firstItem="PLO-c4-srE" firstAttribute="leading" secondItem="loQ-jt-m9U" secondAttribute="leading" constant="20" id="l0D-C9-oGg"/>
+                            <constraint firstItem="nJ4-Od-GSk" firstAttribute="leading" secondItem="gjc-GU-nT6" secondAttribute="leading" constant="20" id="naE-xv-q1s"/>
+                            <constraint firstItem="gjc-GU-nT6" firstAttribute="trailing" secondItem="Pep-I6-e99" secondAttribute="trailing" constant="20" id="qK7-OZ-WeO"/>
+                            <constraint firstItem="Pep-I6-e99" firstAttribute="leading" secondItem="gjc-GU-nT6" secondAttribute="leading" constant="20" id="y2W-D2-SfL"/>
+                            <constraint firstItem="nJ4-Od-GSk" firstAttribute="top" secondItem="dYB-lL-BZJ" secondAttribute="bottom" constant="8" id="ynb-xz-Lfh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gjc-GU-nT6"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Menu" id="7lh-Qn-kDd"/>
+                    <tabBarItem key="tabBarItem" title="設定" image="house" catalog="system" id="7lh-Qn-kDd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfB-vN-cYr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="240" y="-460.56338028169017"/>
         </scene>
-        <!--History View Controller-->
+        <!--記録-->
         <scene sceneID="XdW-lZ-h6F">
             <objects>
                 <viewController id="htc-kC-MgQ" customClass="HistoryViewController" customModule="Achievement" customModuleProvider="target" sceneMemberID="viewController">
@@ -306,7 +401,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GTb-fs-cN3"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="History" id="srh-gb-8WW"/>
+                    <tabBarItem key="tabBarItem" title="記録" image="book.circle.fill" catalog="system" id="srh-gb-8WW"/>
                     <connections>
                         <outlet property="tableView" destination="EGZ-HZ-Rih" id="0hQ-n2-Sz6"/>
                         <outlet property="toCategoryButton" destination="eYd-cs-Gx2" id="hmP-PE-ASY"/>
@@ -1039,10 +1134,10 @@
             </objects>
             <point key="canvasLocation" x="474" y="1122"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tabbar Controller-->
         <scene sceneID="gdo-1l-8qd">
             <objects>
-                <tabBarController id="oRh-uh-9DM" sceneMemberID="viewController">
+                <tabBarController id="oRh-uh-9DM" customClass="TabbarController" customModule="Achievement" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LqW-bF-vIR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1059,7 +1154,7 @@
             </objects>
             <point key="canvasLocation" x="-1423" y="-460"/>
         </scene>
-        <!--Graph View Controller-->
+        <!--グラフ-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="GraphViewController" customModule="Achievement" customModuleProvider="target" sceneMemberID="viewController">
@@ -1126,7 +1221,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="bar_graph" id="hn4-aE-WU9"/>
+                    <tabBarItem key="tabBarItem" title="グラフ" image="chart.bar" catalog="system" id="hn4-aE-WU9"/>
                     <connections>
                         <outlet property="graphView" destination="Vac-Sr-zP0" id="Z6d-ZP-Uqn"/>
                     </connections>
@@ -1254,12 +1349,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Achievement" width="40" height="40"/>
-        <image name="History" width="40" height="40"/>
-        <image name="Menu" width="40" height="40"/>
         <image name="Todo" width="40" height="40"/>
-        <image name="bar_graph" width="40" height="40"/>
+        <image name="book.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="chart.bar" catalog="system" width="64" height="44"/>
         <image name="green_check" width="40" height="40"/>
+        <image name="house" catalog="system" width="64" height="54"/>
+        <image name="pencil" catalog="system" width="64" height="56"/>
         <image name="return②" width="100" height="100"/>
         <image name="キャリアウーマン" width="128" height="128"/>
         <image name="社長" width="128" height="128"/>

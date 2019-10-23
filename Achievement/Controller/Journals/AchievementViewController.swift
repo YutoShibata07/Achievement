@@ -45,7 +45,6 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         
         self.displayingJournals = journalModel.sortDisplayingJournal(journals: UserData.sharedData.journalsToShow)
-        print(displayingJournals.count)
         journalModel.lastVisitTime = Date()//最終ログイン時間を今の時間に設定する。
         tableView.reloadData()
     }

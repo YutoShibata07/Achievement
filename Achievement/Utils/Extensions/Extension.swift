@@ -97,6 +97,19 @@ extension UIViewController{
         present(alert, animated: true, completion: nil)
     }
     
+    
+    func categoryAlert(handler:@escaping ((UIAlertAction) -> Void)){
+        let alert = UIAlertController(title: "アラート表示", message: "このカテゴリーのメモは「分類なし」に移動します", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler:handler
+        ))
+        alert.addAction(UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
+            (action :UIAlertAction!) -> Void in
+            return
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 

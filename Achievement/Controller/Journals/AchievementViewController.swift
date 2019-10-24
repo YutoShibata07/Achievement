@@ -66,7 +66,7 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
         return UITableViewCell()
     }
     
-    
+   
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         journalModel.loadedData()
         let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
@@ -77,7 +77,12 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
             
             UserData.sharedData.journalsToShow.remove(at:deleteIndex!)
             self.journalModel.savedData(UserData.sharedData.journalsToShow)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            if self.displayingJournals.count == 1{
+                self.displayingJournals.remove(at: indexPath.row)
+                tableView.reloadData()
+            }else{
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
         }
         deleteButton.backgroundColor = UIColor.red
         return [deleteButton]

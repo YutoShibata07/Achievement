@@ -17,7 +17,7 @@
 		694C4E93235EEF8A0098BCFF /* MacawChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C4E92235EEF8A0098BCFF /* MacawChartView.swift */; };
 		695313832326140E00C79CD1 /* FadeEnableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695313822326140E00C79CD1 /* FadeEnableButton.swift */; };
 		695313852327546800C79CD1 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695313842327546800C79CD1 /* RoundedView.swift */; };
-		69757D32235FF6B800C1094C /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69757D31235FF6B800C1094C /* TabbarController.swift */; };
+		69757D32235FF6B800C1094C /* AchieveTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69757D31235FF6B800C1094C /* AchieveTabbarController.swift */; };
 		697839C02344664800F13CC3 /* JournalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697839BF2344664800F13CC3 /* JournalModel.swift */; };
 		698945FE2351F9240072EE28 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698945FD2351F9240072EE28 /* HistoryModel.swift */; };
 		69894600235217740072EE28 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698945FF235217730072EE28 /* HistoryTableViewCell.swift */; };
@@ -55,7 +55,7 @@
 		694C4E92235EEF8A0098BCFF /* MacawChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacawChartView.swift; sourceTree = "<group>"; };
 		695313822326140E00C79CD1 /* FadeEnableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeEnableButton.swift; sourceTree = "<group>"; };
 		695313842327546800C79CD1 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
-		69757D31235FF6B800C1094C /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		69757D31235FF6B800C1094C /* AchieveTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveTabbarController.swift; sourceTree = "<group>"; };
 		697839BF2344664800F13CC3 /* JournalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalModel.swift; sourceTree = "<group>"; };
 		698945FD2351F9240072EE28 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		698945FF235217730072EE28 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 		69EC224F2322136500021C63 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				69757D31235FF6B800C1094C /* TabbarController.swift */,
+				69757D31235FF6B800C1094C /* AchieveTabbarController.swift */,
 				69D1C07A2327751D007B7714 /* Journals */,
 				6991BF3623546EA8003DB7A7 /* History */,
 				69AB0AAC2322195C0014905C /* MenuViewController.swift */,
@@ -382,7 +382,7 @@
 				692163BF2349BE190059F4D9 /* ClassifyTableViewCell.swift in Sources */,
 				69D1C074232760B0007B7714 /* Extension.swift in Sources */,
 				694C4E93235EEF8A0098BCFF /* MacawChartView.swift in Sources */,
-				69757D32235FF6B800C1094C /* TabbarController.swift in Sources */,
+				69757D32235FF6B800C1094C /* AchieveTabbarController.swift in Sources */,
 				698945FE2351F9240072EE28 /* HistoryModel.swift in Sources */,
 				695313832326140E00C79CD1 /* FadeEnableButton.swift in Sources */,
 				69A8C5392356DE28003CE68A /* Journal.swift in Sources */,

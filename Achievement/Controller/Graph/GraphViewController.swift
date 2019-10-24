@@ -20,29 +20,19 @@ class GraphViewController: UIViewController {
     var graphModel = GraphModel()
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         GraphModel.loadJournals()
-       
-//        //自分でViewを設置する。
-//        self.view.addSubview(graphView)
-//
-//        graphView.translatesAutoresizingMaskIntoConstraints = false
-//        graphView.topAnchor.constraint(equalTo:self.dateLabel.bottomAnchor, constant: 30)
-//        graphView.leadingAnchor.constraint(equalTo:self.view.leadingAnchor, constant: 20).isActive = true
-//        graphView.trailingAnchor.constraint(equalTo:self.view.leadingAnchor, constant: 20).isActive = true
-//        graphView.heightAnchor.constraint(equalTo:graphView.widthAnchor, constant: 0).isActive = true
-//
-//        
-//
+        var journalsCount = MacawChartView.createWeekData()
+        MacawChartView.adjustData = journalsCount.map({Double(($0.viewCount)) / MacawChartView.dataDivisor})
+        //ViewWillAppearが起きるたびにデータを更新する
         self.graphView.contentMode = .scaleAspectFit
         graphView.backgroundColor = UIColor.init(hex: "5EC220")
-        print("GraphがAppearしたよ！！！")
     }
     
     override func viewDidAppear(_ animated: Bool) {

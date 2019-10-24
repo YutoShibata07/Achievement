@@ -29,7 +29,7 @@ class UserData{
     static let sharedData :UserData = UserData()
     var journalsToShow = [Journal]()
     var journalsReversed = [Journal]()
-    var categoriesToShow = [Category.init(name: "読書", color: "レッド"),Category.init(name:"分類なし", color: "グレー")]
+    var categoriesToShow = [Category.init(name: "読書", color: "レッド"),Category(name: "ToDo", color: "ブルー"),Category.init(name:"分類なし", color: "グレー")]
     private init(){}
     
 

@@ -18,8 +18,9 @@ class MacawChartView:MacawView{
     static var maxValue = getWeeklyJournalsCount(week: getOneWeek()).max()
     static let maxValueLineHeight = 180
     static let lineWidth:Double = 385
-    static let dataDivisor = round(Double(maxValue!)/Double(maxValueLineHeight) * 1000) / 1000
-    static let adjustData:[Double] = lastSevenShows.map({Double($0.viewCount) / dataDivisor})
+    static let maxGraphValue = 10//グラフの上限を１0に定める。10以上は流石にない。。。
+    static let dataDivisor = round(Double(maxGraphValue)/Double(maxValueLineHeight) * 1000) / 1000
+    static var adjustData:[Double] = lastSevenShows.map({Double($0.viewCount) / dataDivisor})
     static var animations :[Animation] = []
     var graphModel = GraphModel()
     
@@ -31,18 +32,6 @@ class MacawChartView:MacawView{
         self.layer.masksToBounds = true
     }
     
-//    override init(frame frame: CGRect) {
-//        super.init(frame: frame)
-//        backgroundColor = UIColor.init(hex: "5EC220", alpha: 1)
-//        self.layer.cornerRadius = 8
-//        self.layer.masksToBounds = true
-//
-//    }
-//
-//    convenience init() {
-//        self.init(frame: CGRect.zero)
-//    }
-
     
     private static func createChart() -> Group{
         var items :[Node] = addXAxisItems() + addYAxisItems()
@@ -55,25 +44,25 @@ class MacawChartView:MacawView{
 
     private static func addYAxisItems() -> [Node]{
         print("maxValue:\(maxValue)")
-        let maxLines = 6
-        let lineInterval = Double(maxValue! / maxLines)
+        let maxLines = 5
+        let lineInterval = Double(maxGraphValue / maxLines)
         print("LineInterval\(lineInterval)")
         let yAxisHeight:Double = 200
-        let lineSpacing:Double = 30
+        let lineSpacing:Double = 36
 
         var newNodes:[Node] = []
 
         for i in 1...maxLines {
             let y = yAxisHeight - (Double(i) * lineSpacing)
-            //Yの値を表示するためのライン。全部で６本ある。少しY軸より左側から始めるので x1 = -5
+            //Yの値を表示するためのライン。全部で5本ある。少しY軸より左側から始めるので x1 = -5
             let valueLine = Line(x1: -5, y1: y, x2: lineWidth, y2: y).stroke(fill:Color.white.with(a: 0.10))
-            let valueText = Text(text: "\((Double(i) * lineInterval))", align: .max, baseline: .mid, place: .move(dx: -5, dy: y))
+            let valueText = Text(text: "\(Int((Double(i) * lineInterval)))", align: .max, baseline: .mid, place: .move(dx: -5, dy: y))
             valueText.fill = Color.white
             newNodes.append(valueLine)
             newNodes.append(valueText)
         }
 
-        let yAxis = Line(x1: 10, y1: 0, x2: 10, y2: yAxisHeight).stroke(fill:Color.white.with(a: 0.25))
+        let yAxis = Line(x1:0, y1: 0, x2:0, y2: yAxisHeight).stroke(fill:Color.white.with(a: 0.25))
 
         newNodes.append(yAxis)
 
@@ -85,13 +74,13 @@ class MacawChartView:MacawView{
         var newNodes:[Node] = []
         
         for i in 1...adjustData.count {
-            let x = (Double(i) * 51) //棒グラフの感覚は50
+            let x = (Double(i) * 51.5) //棒グラフの感覚は50
             let valueText = Text(text: lastSevenShows[i - 1].showNumber, align:.max, baseline:.mid, place:.move(dx:x, dy:chartBaseY + 10))//文字はx軸の少し下に置く。
             valueText.fill = Color.white
             newNodes.append(valueText)
         }
         
-        let xAxis = Line(x1: 10, y1: chartBaseY, x2: lineWidth + 10, y2: chartBaseY).stroke(fill: Color.white.with(a: 0.5))
+        let xAxis = Line(x1: 0, y1: chartBaseY, x2: lineWidth, y2: chartBaseY).stroke(fill: Color.white.with(a: 0.5))
         newNodes.append(xAxis)
         return newNodes
     }
@@ -102,7 +91,7 @@ class MacawChartView:MacawView{
         let items = adjustData.map{ _ in Group()}
         
         animations = items.enumerated().map{(i: Int, item:Group) in
-            item.contentsVar.animation(delay:Double(i) * 0.1){ t in
+            item.contentsVar.animation(delay:Double(i) * 0.05){ t in
                 let height = adjustData[i] * t
                 let rect = Rect(x: Double(i) * 50 + 25, y: 200 - height, w: 30, h: height)
                 return [rect.fill(with:fill)]
@@ -154,7 +143,7 @@ class MacawChartView:MacawView{
     
     
     
-    private static func createWeekData() -> [JournalsCount]{
+    static func createWeekData() -> [JournalsCount]{
         let oneWeek = self.getOneWeek()
         let weeklyCount:[Int] = getWeeklyJournalsCount(week: oneWeek)
         let one = JournalsCount(showNumber: oneWeek[0], viewCount: weeklyCount[0])

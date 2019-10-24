@@ -33,7 +33,6 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
         tableView.delegate = self
         
         tableView.dataSource = self
-//        self.toCategoryButton.isEnabled = false//デフォルトはカテゴリー表示にする。
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,6 +100,8 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
     }
     
+    
+    //------------------------セルの生成に関して------------------------
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         historyModel.loadJournals()
         historyModel.loadCategories()
@@ -128,6 +129,8 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     
+    
+    //---------------------------セル選択時に関してーーーーーーーーーーーーーーーーーーー
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         historyModel.loadJournals()
         historyModel.loadCategories()
@@ -147,16 +150,19 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
     }
     
-    
+     //---------------------------セルの消去に関してーーーーーーーーーーーーーーーーーーー
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
         
         var numberOfSameDateJournals  = 0
         //同じ日付のjournalを収容する配列。ある日付のJournalが全て消去されたかどうかを判断する。
         
+       
         
-        if historyModel.isDate == true{//日付表示だった場合のセル消去について
+        if historyModel.isDate == true{
+            //---------日付表示だった場合のセル消去について-------------
             if journalsWithDate[indexPath.row].isDate == true{
-                return nil        //日付を表示しているセルに対しては削除させないようにする。
+                return nil   //日付を表示しているセルに対しては削除させないようにする。
             }
             let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
                 
@@ -169,26 +175,40 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
                     }
                 }
                 
+                
+                self.journalsWithDate.remove(at: indexPath.row)
                 UserData.sharedData.journalsToShow.remove(at:deleteIndex!)
                 self.historyModel.savedData(UserData.sharedData.journalsToShow)
                 
-                if numberOfSameDateJournals == 1{
-                    let anotherIndexPass:IndexPath = [0, indexPath.row - 1 ]
-                    tableView.deleteRows(at: [anotherIndexPass], with: .fade)
-                }
                 
-                tableView.deleteRows(at: [indexPath], with: .fade)
+                if numberOfSameDateJournals == 1{
+                    tableView.reloadData()
+                    print(self.journalsWithDate.count)
+                    print("indexPath.row\(indexPath.row)")
+                }else{tableView.deleteRows(at: [indexPath], with: .fade)}
             }
-            deleteButton.backgroundColor = UIColor.red
+            
+             deleteButton.backgroundColor = UIColor.red
             return [deleteButton]
             
+            
         }else{
+            //-------------カテゴリー表示だった場合のセルの削除に関して-----------
             let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
                 
-                //UserDataの方で消す対象となるJournalを検索する。Title以外はテキトー。
-                UserData.sharedData.categoriesToShow.remove(at:indexPath.row)
-                self.historyModel.saveCategories(UserData.sharedData.categoriesToShow)
-                tableView.deleteRows(at: [indexPath], with: .fade)
+                //分類なしカテゴリーは消させない。。。
+                if UserData.sharedData.categoriesToShow[indexPath.row].name == "分類なし"{
+                    self.simpleAlert(title: "アラート表示", msg: "このカテゴリーは消せません")
+                }
+                
+                //アラートを表示する。
+                self.categoryAlert { (self) in
+                    UserData.sharedData.categoriesToShow.remove(at:indexPath.row)
+                    HistoryViewController().historyModel.saveCategories(UserData.sharedData.categoriesToShow)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+                
+                
             }
             deleteButton.backgroundColor = UIColor.red
             return [deleteButton]

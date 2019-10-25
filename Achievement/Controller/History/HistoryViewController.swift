@@ -36,7 +36,6 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("History が　Appearしたよ！")
         super.viewWillAppear(true)
         historyModel.loadCategories()
         historyModel.loadJournals()

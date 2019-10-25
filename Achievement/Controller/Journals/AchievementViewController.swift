@@ -44,13 +44,10 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
             journalModel.savedData(UserData.sharedData.journalsToShow)
         }
         
-        self.displayingJournals = journalModel.sortDisplayingJournal(journals: UserData.sharedData.journalsToShow)
+        self.displayingJournals = journalModel.sortDisplayingJournal(journals: UserData.sharedData.journalsToShow, VC:self)
         journalModel.lastVisitTime = Date()//最終ログイン時間を今の時間に設定する。
-        tableView.reloadData()
+//        tableView.reloadData()
     }
-    
-    
-    
     
     
     
@@ -73,12 +70,12 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
             
             //UserDataの方で消す対象となるJournalを検索する。Title以外はテキトー。
             let deleteIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: self.displayingJournals[indexPath.row].title, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
-            
+            print(deleteIndex)
             
             UserData.sharedData.journalsToShow.remove(at:deleteIndex!)
+            self.displayingJournals.remove(at: indexPath.row)
             self.journalModel.savedData(UserData.sharedData.journalsToShow)
             if self.displayingJournals.count == 1{
-                self.displayingJournals.remove(at: indexPath.row)
                 tableView.reloadData()
             }else{
                 tableView.deleteRows(at: [indexPath], with: .fade)

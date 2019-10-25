@@ -16,10 +16,10 @@ class JournalModel{
     var lastVisitTime:Date!
     
     
-    func sortDisplayingJournal(journals:[Journal]) -> [Journal]{
+    func sortDisplayingJournal(journals:[Journal], VC:UIViewController) -> [Journal]{
         var displayingJournals = [Journal]()
         for journal in journals{
-            if journal.isToday == true{
+            if journal.creationDate == VC.getToday(){
                 displayingJournals.append(journal)
             }
         }

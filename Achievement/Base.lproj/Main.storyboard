@@ -11,7 +11,7 @@
         <!--ジャーナル-->
         <scene sceneID="bp8-Nn-NLu">
             <objects>
-                <viewController id="u2v-Kr-dMm" customClass="AchievementViewController" customModule="Achievement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JournalViewController" id="u2v-Kr-dMm" customClass="AchievementViewController" customModule="Achievement" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2AN-b5-yom">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,7 +105,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="dcS-zo-D1l" kind="presentation" id="QJ6-qi-X27"/>
+                                    <segue destination="dcS-zo-D1l" kind="modal" id="QJ6-qi-X27"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="社長" translatesAutoresizingMaskIntoConstraints="NO" id="EqC-xh-U8B">
@@ -807,7 +807,7 @@
                                                         <connections>
                                                             <action selector="addButtonClicked:" destination="dcS-zo-D1l" eventType="touchUpInside" id="ZoJ-hz-naa"/>
                                                             <action selector="dicideBtnClicked:" destination="58E-7W-1se" eventType="touchUpInside" id="tT3-6s-zCe"/>
-                                                            <segue destination="I19-Jd-r7B" kind="presentation" id="1K7-5x-0Wo"/>
+                                                            <segue destination="I19-Jd-r7B" kind="modal" id="1K7-5x-0Wo"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -976,7 +976,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MBB-ko-pc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-444" y="1122"/>
+            <point key="canvasLocation" x="-486" y="1122"/>
         </scene>
         <!--Create Category View Controller-->
         <scene sceneID="rax-El-PGC">
@@ -1229,7 +1229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-512" y="424"/>
+            <point key="canvasLocation" x="-94" y="448"/>
         </scene>
         <!--Add Detail View Controller-->
         <scene sceneID="JSE-Ok-Zf7">

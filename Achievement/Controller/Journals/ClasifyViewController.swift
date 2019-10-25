@@ -27,6 +27,7 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
+        print("reloadしたよ！")
     }
     
     
@@ -69,16 +70,24 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
         )
         categoryModel.saveJournals(UserData.sharedData.journalsToShow)  //新たに要素が追加されたjournalsToShowを保存する。
         
-        guard let journalVC = self.presentingViewController  else{
-            return
-            
-        } //二つ前のviewControllerを取得しておく。
+        
         
         presentingViewController?.presentingViewController!.dismiss(animated: true, completion: {
             [presentingViewController] () -> Void in
             // 閉じた時に行いたい処理
-            journalVC.viewWillAppear(true)
-           // journalVC.viewWillDisappear(true)//この行が他のVCを開いてもViewWillAppearが呼ばれない諸悪の根源。
+            if #available(iOS 13.0, *) {
+                guard let journalVC = self.storyboard?.instantiateViewController(identifier: "JournalViewController") as? AchievementViewController else{
+                    print("error")
+                    return
+                }
+                journalVC.viewWillAppear(true)
+//                journalVC.tableView.reloadData()
+                print(journalVC)
+            }else {
+                
+            }
+            
+//          journalVC.viewWillDisappear(true)//この行が他のVCを開いてもViewWillAppearが呼ばれない諸悪の根源。
         })
     }
     

@@ -9,9 +9,9 @@
 import UIKit
 
 @available(iOS 13.0, *)
-class AddDetailViewController: UIViewController, UITextViewDelegate {
+class AddDetailViewController: UIViewController, UITextViewDelegate ,UITextFieldDelegate{
 
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
@@ -23,13 +23,13 @@ class AddDetailViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.delegate = self
+        titleTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         textView.layer.cornerRadius = 8
-        titleLabel.numberOfLines = 0
-        titleLabel.text = journalTitle
+        titleTextField.text = journalTitle
         journalModel.loadedData()
         let index = UserData.sharedData.journalsToShow.index(of: Journal.init(title: journalTitle, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
         if let detail = UserData.sharedData.journalsToShow[index!].detail{
@@ -44,11 +44,21 @@ class AddDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if(text == "\n") {
-            textView.resignFirstResponder()
-            return false
-        }
+    
+    
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        var edittedIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: journalTitle, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
+        UserData.sharedData.journalsToShow[edittedIndex!].title = self.titleTextField.text!
+        //タイトルを更新する。
+    }
+    
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        titleTextField.resignFirstResponder()
         return true
     }
     

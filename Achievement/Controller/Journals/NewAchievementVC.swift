@@ -24,19 +24,10 @@ class NewAchievementVC: UIViewController,UITextFieldDelegate {
         textField.delegate = self
     }
     
-    //---------Custom Functions----------------
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-
-    @IBAction func cancelBtnClicked(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    @IBAction func addButtonClicked(_ sender: Any){
-        if let textToShow = textField.text{
-//      方針転換。カテゴリを決めた段階で新しくJournalを追加する。
-        newJournal = textToShow
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (self.textField.isFirstResponder) {
+            self.textField.resignFirstResponder()
         }
     }
     
@@ -45,5 +36,35 @@ class NewAchievementVC: UIViewController,UITextFieldDelegate {
             destination.newJournal = self.newJournal
         }
     }
+    
+    
+
+    //-----------IBActions------------------
+    @IBAction func cancelBtnClicked(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func addButtonClicked(_ sender: Any){
+        if let textToShow = textField.text, textToShow.isNotEmpty == true{
+//      方針転換。カテゴリを決めた段階で新しくJournalを追加する。
+        newJournal = textToShow
+        }else{
+            if #available(iOS 13.0, *) {
+                simpleAlert(title: "エラー", msg: "内容が入力されていません")
+                return
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+    }
+    
+    
+    //---------Custom Functions----------------
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    
 
 }

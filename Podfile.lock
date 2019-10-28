@@ -1,72 +1,28 @@
 PODS:
+  - IQKeyboardManagerSwift (6.5.2)
   - Macaw (0.9.5):
     - SWXMLHash
-  - MaterialComponents/AnimationTiming (92.5.0)
-  - MaterialComponents/Buttons (92.5.0):
-    - MaterialComponents/Elevation
-    - MaterialComponents/Ink
-    - MaterialComponents/private/Math
-    - MaterialComponents/Ripple
-    - MaterialComponents/ShadowElevations
-    - MaterialComponents/ShadowLayer
-    - MaterialComponents/Shapes
-    - MaterialComponents/Typography
-    - MDFInternationalization
-    - MDFTextAccessibility
-  - MaterialComponents/Elevation (92.5.0):
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/Ink (92.5.0):
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/private/Application (92.5.0)
-  - MaterialComponents/private/Color (92.5.0)
-  - MaterialComponents/private/Math (92.5.0)
-  - MaterialComponents/Ripple (92.5.0):
-    - MaterialComponents/AnimationTiming
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-  - MaterialComponents/ShadowElevations (92.5.0)
-  - MaterialComponents/ShadowLayer (92.5.0):
-    - MaterialComponents/ShadowElevations
-  - MaterialComponents/Shapes (92.5.0):
-    - MaterialComponents/private/Color
-    - MaterialComponents/private/Math
-    - MaterialComponents/ShadowLayer
-  - MaterialComponents/Typography (92.5.0):
-    - MaterialComponents/private/Application
-    - MaterialComponents/private/Math
-  - MDFInternationalization (2.0.0)
-  - MDFTextAccessibility (2.0.0)
   - SCLAlertView (0.8)
-  - ScrollableGraphView (4.0.6)
   - SWXMLHash (5.0.1)
 
 DEPENDENCIES:
+  - IQKeyboardManagerSwift
   - Macaw (= 0.9.5)
-  - MaterialComponents/Buttons
   - SCLAlertView
-  - ScrollableGraphView
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - IQKeyboardManagerSwift
     - Macaw
-    - MaterialComponents
-    - MDFInternationalization
-    - MDFTextAccessibility
     - SCLAlertView
-    - ScrollableGraphView
     - SWXMLHash
 
 SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: c75366f1f19590e8caeae45fcd5815c9289d6099
   Macaw: 10bf9e327cb75f24e3225d5229a80ed544df85f0
-  MaterialComponents: 268edb7e34f1277b79d20f701b6ae30c7cd0179a
-  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
-  MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
-  ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
   SWXMLHash: 9cc0c2e4807926c74377724aa8722ee5707a0485
 
-PODFILE CHECKSUM: 52b24ba9cf6dc5a37e6fecae088974334bdf06f6
+PODFILE CHECKSUM: ab3b89ec42fb965cb5373634fbdbea5bc27a2e32
 
 COCOAPODS: 1.7.5

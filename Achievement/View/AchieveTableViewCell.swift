@@ -43,6 +43,10 @@ class AchieveTableViewCell: UITableViewCell {
             colorView.backgroundColor = UIColor.purple
         case "イエロー":
             colorView.backgroundColor = UIColor.yellow
+        case "シアン":
+            colorView.backgroundColor = UIColor.cyan
+        case "オレンジ":
+            colorView.backgroundColor = UIColor.orange
             
         default:
             colorView.backgroundColor = UIColor.gray

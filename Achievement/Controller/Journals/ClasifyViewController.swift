@@ -30,6 +30,9 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
         print("reloadしたよ！")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         categoryModel.loadCategoris()
@@ -75,19 +78,19 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
         presentingViewController?.presentingViewController!.dismiss(animated: true, completion: {
             [presentingViewController] () -> Void in
             // 閉じた時に行いたい処理
+            
             if #available(iOS 13.0, *) {
                 guard let journalVC = self.storyboard?.instantiateViewController(identifier: "JournalViewController") as? AchievementViewController else{
                     print("error")
                     return
                 }
                 journalVC.viewWillAppear(true)
-//                journalVC.tableView.reloadData()
+               
                 print(journalVC)
             }else {
-                
+
             }
-            
-//          journalVC.viewWillDisappear(true)//この行が他のVCを開いてもViewWillAppearが呼ばれない諸悪の根源。
+
         })
     }
     

@@ -25,31 +25,15 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("appear")
         super.viewWillAppear(true)
         journalModel.loadedData()
-        
-        
-        //ーーーーーーーーーーここからデータをリセットするかどうかの判断を行うーーーーーーーーーーーーーーーー
-        if journalModel.lastVisitTime != nil{
-            UserData.sharedData.data.isFirstVisit = compareTime(time: journalModel.lastVisitTime)
-            //最終ログインの時間が前の3時よりも昔か後か。前だったらisFirstVisit = Trueとなる。
-        }else{ //アプリに訪れたことのないユーザーに対する処理。
-            UserData.sharedData.data.isFirstVisit = true
-            print("本日初めてのログインです。")
-        }
-        if UserData.sharedData.data.isFirstVisit == true{
-            print("本日初めてのログインなのでデータをリセットします。")
-            journalModel.resetData()
-            //リセットした状態を保存する。
-            journalModel.savedData(UserData.sharedData.journalsToShow)
-        }
-        
         self.displayingJournals = journalModel.sortDisplayingJournal(journals: UserData.sharedData.journalsToShow, VC:self)
-        journalModel.lastVisitTime = Date()//最終ログイン時間を今の時間に設定する。
-//        tableView.reloadData()
+        self.tableView?.reloadData()
+        
     }
     
-    
+   
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayingJournals.count
@@ -64,6 +48,10 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
    
+    
+    
+    //------------セルの削除に関する内容---------------------------------------
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         journalModel.loadedData()
         let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
@@ -85,9 +73,9 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
         return [deleteButton]
     }
     
-    func updateJournals(){
-        journalModel.loadedData()
-        self.tableView.reloadData()
-    }
-    
+//    func updateJournals(){
+//        journalModel.loadedData()
+//        self.tableView.reloadData()
+//    }
+//
 }

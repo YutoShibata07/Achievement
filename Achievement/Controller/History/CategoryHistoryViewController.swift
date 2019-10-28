@@ -72,6 +72,27 @@ class CategoryHistoryViewController: UIViewController,UITableViewDelegate,UITabl
         self.selectedJournalTitle = sortedJournals[indexPath.row].title
         performSegue(withIdentifier: "toDetailSegue", sender: nil)
     }
-       
+      
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        journalModel.loadedData()
+        let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
+            
+            //UserDataの方で消す対象となるJournalを検索する。Title以外はテキトー。
+            let deleteIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: self.sortedJournals[indexPath.row].title, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
+            print(deleteIndex)
+            
+            UserData.sharedData.journalsToShow.remove(at:deleteIndex!)
+            self.sortedJournals.remove(at: indexPath.row)
+            self.journalModel.savedData(UserData.sharedData.journalsToShow)
+            if self.sortedJournals.count == 1{
+                tableView.reloadData()
+            }else{
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        }
+        deleteButton.backgroundColor = UIColor.red
+        return [deleteButton]
+    }
+    
     
 }

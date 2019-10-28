@@ -35,9 +35,9 @@ class UserData{
 
     
     struct DefaultColors { //初期状態のアプリに表示するデフォルトのカテゴリ。
-        var names = ["レッド","ブルー","イエロー","パーポｳ","ピンク","ブラック","ブラウン","グレー"]
+        var names = ["レッド","ブルー","イエロー","パーポｳ","ピンク","ブラック","ブラウン","グレー","シアン","オレンジ"]
         var colors:[UIColor]
-            = [UIColor.red, UIColor.blue, UIColor.yellow,UIColor.purple,UIColor.systemPink,UIColor.black, UIColor.brown, UIColor.gray ]
+            = [UIColor.red, UIColor.blue, UIColor.yellow,UIColor.purple,UIColor.systemPink,UIColor.black, UIColor.brown, UIColor.gray , UIColor.cyan, UIColor.orange]
     }
     
     

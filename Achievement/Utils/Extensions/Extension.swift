@@ -141,6 +141,10 @@ extension String{
             return UIColor.brown
         case  "イエロー":
             return UIColor.yellow
+        case "シアン":
+            return UIColor.cyan
+        case "オレンジ":
+            return UIColor.orange
         default:
             return UIColor.gray
         }

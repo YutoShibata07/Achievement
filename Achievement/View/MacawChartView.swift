@@ -18,11 +18,18 @@ class MacawChartView:MacawView{
     static var maxValue = getWeeklyJournalsCount(week: getOneWeek()).max()
     static let maxValueLineHeight = 180
     static let lineWidth:Double = 385
-    static let maxGraphValue = 10//グラフの上限を１0に定める。10以上は流石にない。。。
+    static var maxGraphValue = 10//グラフの上限を１0に定める。10以上は流石にない。。。
     static let dataDivisor = round(Double(maxGraphValue)/Double(maxValueLineHeight) * 1000) / 1000
     static var adjustData:[Double] = lastSevenShows.map({Double($0.viewCount) / dataDivisor})
     static var animations :[Animation] = []
+    static let maxLines = 5
+    static var lineInterval = Double(maxGraphValue / maxLines)
     var graphModel = GraphModel()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        print("LineInterval is \(MacawChartView.lineInterval)")
+    }
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,7 +43,6 @@ class MacawChartView:MacawView{
     private static func createChart() -> Group{
         var items :[Node] = addXAxisItems() + addYAxisItems()
         items.append(createBars())
-
         return Group(contents: items, place: .identity)
     }
 
@@ -44,14 +50,16 @@ class MacawChartView:MacawView{
 
     private static func addYAxisItems() -> [Node]{
         print("maxValue:\(maxValue)")
-        let maxLines = 5
-        let lineInterval = Double(maxGraphValue / maxLines)
         print("LineInterval\(lineInterval)")
         let yAxisHeight:Double = 200
         let lineSpacing:Double = 36
 
         var newNodes:[Node] = []
 
+        if maxValue! > 10 {
+            MacawChartView.lineInterval *= 2
+            //10を超えるジャーナルを１日で書いた人のグラフの最大値はmaxValueにする。
+        }
         for i in 1...maxLines {
             let y = yAxisHeight - (Double(i) * lineSpacing)
             //Yの値を表示するためのライン。全部で5本ある。少しY軸より左側から始めるので x1 = -5
@@ -92,8 +100,13 @@ class MacawChartView:MacawView{
         
         animations = items.enumerated().map{(i: Int, item:Group) in
             item.contentsVar.animation(delay:Double(i) * 0.05){ t in
-                let height = adjustData[i] * t
-                let rect = Rect(x: Double(i) * 50 + 25, y: 200 - height, w: 30, h: height)
+                var height = 0
+                if maxValue! > 10 {
+                    height = Int(adjustData[i] * t * 0.5)
+                }else{
+                    height = Int(adjustData[i] * t)
+                }
+                let rect = Rect(x: Double(i) * 50 + 25, y: Double(200 - height), w: 30, h: Double(height))
                 return [rect.fill(with:fill)]
             }
         }

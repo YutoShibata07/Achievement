@@ -12,9 +12,8 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
     //--------Variable------------
     @IBOutlet weak var headerLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    var newJournal:String = ""
-    
     @IBOutlet weak var returnBtn: UIButton!
+    var newJournal:String = ""
     var categoryModel =  CategoryModel()
     
     

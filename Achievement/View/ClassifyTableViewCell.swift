@@ -46,6 +46,8 @@ class ClassifyTableViewCell: UITableViewCell {
             colorView.backgroundColor = UIColor.yellow
         case "オレンジ":
             colorView.backgroundColor = UIColor.orange
+        case "シアン":
+            colorView.backgroundColor = UIColor.cyan
             
         default:
             colorView.backgroundColor = UIColor.gray

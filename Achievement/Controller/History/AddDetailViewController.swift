@@ -51,8 +51,7 @@ class AddDetailViewController: UIViewController, UITextViewDelegate ,UITextField
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         var edittedIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: journalTitle, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
-        UserData.sharedData.journalsToShow[edittedIndex!].title = self.titleTextField.text!
-        //タイトルを更新する。
+       
     }
     
     
@@ -74,11 +73,19 @@ class AddDetailViewController: UIViewController, UITextViewDelegate ,UITextField
             dismissAlert(title: "警告", msg: "詳細メモを消去します", vc: self)
             return
         }
-        let index = UserData.sharedData.journalsToShow.index(of: Journal.init(title: journalTitle, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
+        let index = UserData.sharedData.journalsToShow.index(of: Journal(title: journalTitle, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
         UserData.sharedData.journalsToShow[index!].detail = detail
-        
+        guard let journalTitle = self.titleTextField.text else{
+            simpleAlert(title: "エラー", msg: "タイトルが入力されていません")
+            return
+        }
+        UserData.sharedData.journalsToShow[index!].title = journalTitle
         journalModel.savedData(UserData.sharedData.journalsToShow)
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {
+            [presentingViewController] () -> Void in
+            // 閉じた時に行いたい処理
+            presentingViewController?.viewWillAppear(true)
+        })
     }
     
     

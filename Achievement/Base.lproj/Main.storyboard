@@ -26,7 +26,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New journal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1s-Yz-9Jx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today's Journal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1s-Yz-9Jx">
                                 <rect key="frame" x="20" y="80" width="280" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="t5M-cU-m7j"/>
@@ -191,7 +191,7 @@
                                     <constraint firstAttribute="height" constant="150" id="mLs-Hd-vsM"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Adu-wl-Aso" rowHeight="35" style="IBUITableViewCellStyleDefault" id="WjP-EH-6Rc" customClass="SettingTableViewCell" customModule="Achievement" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingCell" textLabel="Adu-wl-Aso" rowHeight="35" style="IBUITableViewCellStyleDefault" id="WjP-EH-6Rc" customClass="SettingTableViewCell" customModule="Achievement" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="280" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WjP-EH-6Rc" id="bGx-kX-x9g">
@@ -229,7 +229,7 @@
                                     <constraint firstAttribute="height" constant="150" id="fqW-MJ-Jb3"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="GP1-ac-9aN" rowHeight="35" style="IBUITableViewCellStyleDefault" id="KlB-Js-ts4" customClass="OthersTableViewCell" customModule="Achievement" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OthersCell" textLabel="GP1-ac-9aN" rowHeight="35" style="IBUITableViewCellStyleDefault" id="KlB-Js-ts4" customClass="OthersTableViewCell" customModule="Achievement" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="280" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KlB-Js-ts4" id="hyn-tH-KRc">
@@ -273,6 +273,10 @@
                         <viewLayoutGuide key="safeArea" id="gjc-GU-nT6"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="設定" image="house" catalog="system" id="7lh-Qn-kDd"/>
+                    <connections>
+                        <outlet property="othresTableView" destination="Pep-I6-e99" id="Lpu-6P-xC4"/>
+                        <outlet property="settingTableView" destination="nJ4-Od-GSk" id="4nf-te-x6k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfB-vN-cYr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -407,7 +411,7 @@
                         <outlet property="toCategoryButton" destination="eYd-cs-Gx2" id="hmP-PE-ASY"/>
                         <outlet property="toDateButton" destination="vCh-12-Xti" id="fCy-yg-qq5"/>
                         <segue destination="e4n-rj-oP3" kind="show" identifier="toCategoryHistory" id="9zx-fE-eOh"/>
-                        <segue destination="ulU-U5-CSR" kind="show" identifier="toDetailSegue" id="zlV-nB-Apk"/>
+                        <segue destination="ulU-U5-CSR" kind="modal" identifier="toDetailSegue" modalPresentationStyle="fullScreen" id="zlV-nB-Apk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7q-VN-RjB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -523,7 +527,7 @@
                         <outlet property="categoryTitleLabel" destination="UuS-qW-K4G" id="UQF-sf-bss"/>
                         <outlet property="colorView" destination="90G-5X-XBM" id="OpC-eP-A5j"/>
                         <outlet property="tableView" destination="a0r-Yj-HUQ" id="cuP-0F-fcb"/>
-                        <segue destination="ulU-U5-CSR" kind="show" identifier="toDetailSegue" id="guu-7D-QWM"/>
+                        <segue destination="ulU-U5-CSR" kind="modal" identifier="toDetailSegue" modalPresentationStyle="fullScreen" id="guu-7D-QWM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0O-df-JGt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1102,7 +1106,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.89964148116438358" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.94970034246575341" alpha="0.95443600171232879" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="We9-s9-69g" firstAttribute="leading" secondItem="gLK-oX-724" secondAttribute="leading" id="5zs-8F-wYl"/>
                             <constraint firstItem="cee-QQ-pdC" firstAttribute="leading" secondItem="gLK-oX-724" secondAttribute="leading" constant="20" id="6jc-X7-RJJ"/>
@@ -1236,7 +1240,7 @@
             <objects>
                 <viewController id="ulU-U5-CSR" customClass="AddDetailViewController" customModule="Achievement" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jKC-sI-5oz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9月 6日" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xx-t7-0Lb" customClass="dateLbl" customModule="Achievement" customModuleProvider="target">

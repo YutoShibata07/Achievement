@@ -28,7 +28,7 @@ class GraphViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         GraphModel.loadJournals()
-        var journalsCount = MacawChartView.createWeekData()
+        var journalsCount = MacawChartView.createWeekData()      //一週間のデータを取得する。
         MacawChartView.adjustData = journalsCount.map({Double(($0.viewCount)) / MacawChartView.dataDivisor})
         //ViewWillAppearが起きるたびにデータを更新する
         self.graphView.contentMode = .scaleAspectFit

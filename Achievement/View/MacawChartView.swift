@@ -28,13 +28,13 @@ class MacawChartView:MacawView{
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("LineInterval is \(MacawChartView.lineInterval)")
+        self.backgroundColor = UIColor.init(hex: "5EC220")
     }
     
     
     required init?(coder aDecoder: NSCoder) {
         super.init(node:MacawChartView.createChart(), coder: aDecoder)
-        backgroundColor = UIColor.init(hex: "5EC220", alpha: 1)
+        backgroundColor = UIColor.init(hex: "47BF73", alpha: 1)
         self.layer.cornerRadius = 8
         self.layer.masksToBounds = true
     }
@@ -49,7 +49,6 @@ class MacawChartView:MacawView{
 
 
     private static func addYAxisItems() -> [Node]{
-        print("maxValue:\(maxValue)")
         print("LineInterval\(lineInterval)")
         let yAxisHeight:Double = 200
         let lineSpacing:Double = 36
@@ -140,7 +139,6 @@ class MacawChartView:MacawView{
     private static func getWeeklyJournalsCount(week:[String]) -> [Int]{
         GraphModel.loadJournals()
         var updateJournals = UserData.sharedData.journalsToShow
-        print(UserData.sharedData.journalsToShow.count)
         var countsInWeek = [0,0,0,0,0,0,0]
         
         for i in 0...6{ //7日前から始めて７日分計算する。　i=0なら７日前。

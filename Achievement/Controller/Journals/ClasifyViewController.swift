@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import StoreKit
+
+
 
 class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //--------Variable------------
@@ -26,7 +29,6 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
-        print("reloadしたよ！")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,7 +46,6 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
         if let classifyCell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? ClassifyTableViewCell{
             categoryModel.loadCategoris()
             classifyCell.configureCell(text: UserData.sharedData.categoriesToShow[indexPath.row].name, color: UserData.sharedData.categoriesToShow[indexPath.row].color)
-            //カテゴリ名とカラーを表示させる。ここまでは上手くいってる。
             return classifyCell
         }
         return UITableViewCell()
@@ -62,17 +63,20 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     
-    
+    //-------------------カテゴリーの決定時の処理ーーーーーーーーーーーーーーーーーーー
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        categoryModel.loadJournals()
         categoryModel.makeNewJournal(
             title: newJournal, //NewJournalVCから送られてきたnewJournalのタイトル。
             color: UserData.sharedData.categoriesToShow[indexPath.row].color,
             categoryName: UserData.sharedData.categoriesToShow[indexPath.row].name, creationDate: getToday()
         )
+        UserData.sharedData.numberOfJournals += 1
+        if UserData.sharedData.numberOfJournals == 7{
+            categoryModel.makeReview()
+        }
         categoryModel.saveJournals(UserData.sharedData.journalsToShow)  //新たに要素が追加されたjournalsToShowを保存する。
-        
-        
         
         presentingViewController?.presentingViewController!.dismiss(animated: true, completion: {
             [presentingViewController] () -> Void in
@@ -84,12 +88,12 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
                     return
                 }
                 journalVC.viewWillAppear(true)
-               
+                
                 print(journalVC)
             }else {
-
+                
             }
-
+            
         })
     }
     

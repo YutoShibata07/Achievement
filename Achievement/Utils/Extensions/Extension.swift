@@ -40,7 +40,6 @@ extension UIViewController{
             isBefore = false
         }
         if isBefore == nil{
-            print("Wow")
             return true
         }
         return false

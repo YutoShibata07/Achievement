@@ -7,8 +7,13 @@
 //
 
 import Foundation
+import MessageUI
 
 class MenuModel{
-    var setting:[String] = ["通知","頂いたご意見を元に追加予定"]
+    var setting:[String] = ["通知"]
     var others:[String] = ["このアプリを評価する","ご意見・ご要望"]
+    
 }
+
+
+

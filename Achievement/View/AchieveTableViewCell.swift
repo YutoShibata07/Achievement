@@ -17,7 +17,6 @@ class AchieveTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        ContentView.backgroundColor = UIColor.init(hex: "5EC220")
         ContentView.layer.cornerRadius = 8
     }
 

@@ -31,6 +31,7 @@ class HistoryTableViewCell: UITableViewCell {
     }
 
     func configureCell(title:String, color:UIColor){
+        self.backgroundColor = .clear
         widthConstraint.constant = 27.5
         colorView.backgroundColor = color
         categoryNameLabel.text = title
@@ -38,14 +39,22 @@ class HistoryTableViewCell: UITableViewCell {
     
    
     
-    func configureDateCell(title:String){
+    func configureDateCell(journal:DateMixedJournal){
+        let colorIndex = UserData.sharedData.journalsToShow.index(of:Journal.init(title: journal.title, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
         colorView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0)
+        
+        if notDate == true{
+            self.backgroundColor = UserData.sharedData.journalsToShow[colorIndex!].categoryColor.toUIColor().withAlphaComponent(0.04)
+        }else {
+            self.backgroundColor = UIColor.clear
+        }
+        
         if self.notDate == true{
             widthConstraint.constant = 20
         }else{
             widthConstraint.constant = 0
         }
         categoryNameLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        categoryNameLabel.text = title
+        categoryNameLabel.text = journal.title
     }
 }

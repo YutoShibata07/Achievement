@@ -27,8 +27,10 @@ struct User {
 class UserData{
     var data = User(isFirstVisit: true)
     static let sharedData :UserData = UserData()
+    var numberOfJournals = 0
     var journalsToShow = [Journal]()
     var journalsReversed = [Journal]()
+    var notificationTime = Date()
     var categoriesToShow = [Category.init(name: "読書", color: "レッド"),Category(name: "ToDo", color: "ブルー"),Category.init(name:"分類なし", color: "グレー")]
     private init(){}
     

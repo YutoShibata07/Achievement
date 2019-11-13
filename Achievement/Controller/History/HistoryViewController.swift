@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GoogleMobileAds
+
 
 @available(iOS 13.0, *)
 class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
@@ -64,6 +66,24 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
 
     
+//    override func viewDidLayoutSubviews(){
+//        //  広告インスタンス作成
+//        var admobView = GADBannerView()
+//        admobView = GADBannerView(adSize:kGADAdSizeBanner)
+//
+//        //  広告位置設定
+//        let safeArea = self.view.safeAreaInsets.bottom
+//        admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - safeArea - admobView.frame.height)
+//        admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
+//
+//        //  広告ID設定ca-app-pub-7252408232726748/4859564922
+//        admobView.adUnitID = "ca-app-pub-7252408232726748/4859564922"
+//
+//        //  広告表示
+//        admobView.rootViewController = self
+//        admobView.load(GADRequest())
+//        self.view.addSubview(admobView)
+//    }
     
     
     
@@ -117,7 +137,7 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 if journalsWithDate.count != 0{
                     categoryCell.notDate = (HistoryModel.getJournalsWithDate()[indexPath.row].isDate == false)
                     //表示するセルが日付なのか日記の内容なのかを渡す。
-                    categoryCell.configureDateCell(title: journalsWithDate[indexPath.row].title)
+                    categoryCell.configureDateCell(journal: journalsWithDate[indexPath.row])
                     return categoryCell
                 }else{
                     return categoryCell

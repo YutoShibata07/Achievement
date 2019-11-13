@@ -8,6 +8,8 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import  Firebase
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +20,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
+        // Use Firebase library to configure APIs  
+        FirebaseApp.configure()
+        
+        let center = UNUserNotificationCenter.current()
+
+        // ------------------------------------
+        // 前準備: ユーザに通知の許可を求める
+        // ------------------------------------
+
+        // request to notify for user
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if granted {
+                print("Allowed")
+            } else {
+                print("Didn't allowed")
+            }
+        }
+        
+        
+        GADMobileAds.configure(withApplicationID:"ca-app-pub-7252408232726748~6308377965")
+        
         return true
     }
 
@@ -27,8 +50,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        let trigger:UNNotificationTrigger
+        let content = UNMutableNotificationContent()
+        let ud = UserDefaults.standard
+        var time = ud.object(forKey: "NotificationTime") as? Date
+        let component = Calendar.current.dateComponents([.hour, .minute], from: time ?? Date())
+        trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
+        
+        
+        content.title = ""
+        content.body = "メモを活用して日常を振り返ろう"
+        content.sound = UNNotificationSound.default
+        
+        let request = UNNotificationRequest(identifier: "output_notification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

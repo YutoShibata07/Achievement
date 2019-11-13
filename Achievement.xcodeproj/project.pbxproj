@@ -15,6 +15,7 @@
 		692163C32349D7750059F4D9 /* SelectColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692163C22349D7750059F4D9 /* SelectColorTableViewCell.swift */; };
 		6938C89D23389ECB002C5978 /* ClasifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938C89C23389ECB002C5978 /* ClasifyViewController.swift */; };
 		694C4E93235EEF8A0098BCFF /* MacawChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694C4E92235EEF8A0098BCFF /* MacawChartView.swift */; };
+		695028DF237020F400D718C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 695028DE237020F400D718C2 /* GoogleService-Info.plist */; };
 		6950CF372367F615008253AE /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6950CF362367F615008253AE /* MenuModel.swift */; };
 		695313832326140E00C79CD1 /* FadeEnableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695313822326140E00C79CD1 /* FadeEnableButton.swift */; };
 		695313852327546800C79CD1 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695313842327546800C79CD1 /* RoundedView.swift */; };
@@ -36,6 +37,7 @@
 		69D1C078232773A6007B7714 /* NewAchievementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1C077232773A6007B7714 /* NewAchievementVC.swift */; };
 		69D1C083232E62FA007B7714 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D1C082232E62FA007B7714 /* User.swift */; };
 		69DA7AD22354699A00D33D08 /* CategoryHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA7AD12354699A00D33D08 /* CategoryHistoryViewController.swift */; };
+		69E9A54F2379972F00224254 /* NotificationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E9A54E2379972F00224254 /* NotificationSettingViewController.swift */; };
 		69EC223E232211F300021C63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC223D232211F300021C63 /* AppDelegate.swift */; };
 		69EC2240232211F300021C63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC223F232211F300021C63 /* ViewController.swift */; };
 		69EC2243232211F300021C63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69EC2241232211F300021C63 /* Main.storyboard */; };
@@ -54,6 +56,7 @@
 		692163C22349D7750059F4D9 /* SelectColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorTableViewCell.swift; sourceTree = "<group>"; };
 		6938C89C23389ECB002C5978 /* ClasifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClasifyViewController.swift; sourceTree = "<group>"; };
 		694C4E92235EEF8A0098BCFF /* MacawChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacawChartView.swift; sourceTree = "<group>"; };
+		695028DE237020F400D718C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6950CF362367F615008253AE /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		695313822326140E00C79CD1 /* FadeEnableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeEnableButton.swift; sourceTree = "<group>"; };
 		695313842327546800C79CD1 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
@@ -75,7 +78,9 @@
 		69D1C077232773A6007B7714 /* NewAchievementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAchievementVC.swift; sourceTree = "<group>"; };
 		69D1C082232E62FA007B7714 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		69DA7AD12354699A00D33D08 /* CategoryHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHistoryViewController.swift; sourceTree = "<group>"; };
-		69EC223A232211F300021C63 /* Achievement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Achievement.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		69E9A54D2377B19F00224254 /* アウトプット.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "アウトプット.entitlements"; sourceTree = "<group>"; };
+		69E9A54E2379972F00224254 /* NotificationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewController.swift; sourceTree = "<group>"; };
+		69EC223A232211F300021C63 /* アウトプット.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "アウトプット.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69EC223D232211F300021C63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69EC223F232211F300021C63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		69EC2242232211F300021C63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -112,6 +117,7 @@
 			children = (
 				69AB0AAC2322195C0014905C /* MenuViewController.swift */,
 				6950CF362367F615008253AE /* MenuModel.swift */,
+				69E9A54E2379972F00224254 /* NotificationSettingViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -184,7 +190,7 @@
 		69EC223B232211F300021C63 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				69EC223A232211F300021C63 /* Achievement.app */,
+				69EC223A232211F300021C63 /* アウトプット.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,6 +198,7 @@
 		69EC223C232211F300021C63 /* Achievement */ = {
 			isa = PBXGroup;
 			children = (
+				69E9A54D2377B19F00224254 /* アウトプット.entitlements */,
 				69D1C07F232DF401007B7714 /* Utils */,
 				6974BE212325F3D500ABA858 /* Xibs */,
 				69EC22512322137E00021C63 /* Data */,
@@ -204,6 +211,7 @@
 				69EC2244232211F500021C63 /* Assets.xcassets */,
 				69EC2246232211F500021C63 /* LaunchScreen.storyboard */,
 				69EC2249232211F500021C63 /* Info.plist */,
+				695028DE237020F400D718C2 /* GoogleService-Info.plist */,
 			);
 			path = Achievement;
 			sourceTree = "<group>";
@@ -282,7 +290,7 @@
 			);
 			name = Achievement;
 			productName = Achievement;
-			productReference = 69EC223A232211F300021C63 /* Achievement.app */;
+			productReference = 69EC223A232211F300021C63 /* アウトプット.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -326,6 +334,7 @@
 				69EC2248232211F500021C63 /* LaunchScreen.storyboard in Resources */,
 				69EC2245232211F500021C63 /* Assets.xcassets in Resources */,
 				69EC2243232211F300021C63 /* Main.storyboard in Resources */,
+				695028DF237020F400D718C2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +393,7 @@
 				6990EEA4235AB1EE00B734A7 /* AddDetailViewController.swift in Sources */,
 				69031FDA236029AD0073BD8F /* SettingTableViewCell.swift in Sources */,
 				69AB0AB5232219BE0014905C /* AchieveTableViewCell.swift in Sources */,
+				69E9A54F2379972F00224254 /* NotificationSettingViewController.swift in Sources */,
 				69031FDC23602A790073BD8F /* OthersTableViewCell.swift in Sources */,
 				692163C32349D7750059F4D9 /* SelectColorTableViewCell.swift in Sources */,
 				69AB0AAD2322195C0014905C /* MenuViewController.swift in Sources */,
@@ -558,6 +568,7 @@
 			baseConfigurationReference = 3ED95454CD85641BBA617394 /* Pods-Achievement.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Achievement/アウトプット.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V3RGPYQSL2;
 				INFOPLIST_FILE = Achievement/Info.plist;
@@ -565,8 +576,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.yuto19990715.Achievement;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "アウトプット";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_ENABLE_BATCH_MODE = No;
 				SWIFT_VERSION = 5.0;
@@ -579,6 +591,7 @@
 			baseConfigurationReference = EAD5A36391369A8FE5160AE6 /* Pods-Achievement.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Achievement/アウトプット.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V3RGPYQSL2;
 				INFOPLIST_FILE = Achievement/Info.plist;
@@ -586,8 +599,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.yuto19990715.Achievement;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "アウトプット";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_ENABLE_BATCH_MODE = No;
 				SWIFT_VERSION = 5.0;

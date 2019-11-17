@@ -12,5 +12,7 @@ target 'Achievement' do
   pod 'Firebase/AdMob'
   pod 'Eureka'
   pod 'RealmSwift'
+  pod 'Firebase/Analytics'
+  
 
 end

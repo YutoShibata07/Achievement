@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 class JournalModel{
     
@@ -52,7 +53,6 @@ class JournalModel{
     func changeTitle(titleLabel:UILabel, category:Category){
         titleLabel.text = category.name
     }
-    
     func sortJournal(category:Category) -> [Journal]{
         var sortedJournals = [Journal]()
         loadedData()
@@ -63,4 +63,23 @@ class JournalModel{
         }
         return sortedJournals
     }
+    
+    
+    //---------------Realmを用いたデータの保存、読み込み--------------------
+    func realmSave(_ value:[RealmJournal]){
+        do{
+            let realm = try Realm()
+            try! realm.write {
+                RealmUserData.setValue(value, forKey: "journalsToShow")
+            }
+        }catch{
+            print("エラー")
+        }
+    }
+    
+    func realmLoad(){
+        
+    }
+    
+   
 }

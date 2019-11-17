@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import RealmSwift
+
 
 class Journal :Codable{
     var title:String
@@ -51,3 +53,37 @@ class DateMixedJournal{
     }
 }
 
+class RealmJournal:Object{
+    @objc dynamic var title:String
+    @objc dynamic var categoryColor:String
+    @objc dynamic var categoryName:String
+    @objc dynamic var creationDate:String!//このJournalが作成された日にちを保持する。
+    @objc dynamic var detail:String?
+    //ジャーナルが属するカテゴリー。名前と色の二つの属性を持つ。
+    
+    init(title:String, categoryName:String, categorycolor:String, creationDate:String) {
+        self.title = title
+        self.categoryName = categoryName
+        self.categoryColor = categorycolor
+        self.creationDate = creationDate
+    }
+    
+    override required init() {
+        fatalError("init() has not been implemented")
+    }
+}
+
+class RealmCategory:Object{
+     @objc dynamic var name :String!
+     @objc dynamic var color:String!
+       
+    
+    init(name:String, color:String) {
+        self.name = name
+        self.color = color
+    }
+    
+    override required init() {
+        fatalError("init() has not been implemented")
+    }
+}

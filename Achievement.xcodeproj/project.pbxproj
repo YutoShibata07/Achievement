@@ -282,7 +282,7 @@
 				69EC2236232211F300021C63 /* Sources */,
 				69EC2237232211F300021C63 /* Frameworks */,
 				69EC2238232211F300021C63 /* Resources */,
-				24EA6D895FBBD53AE32055E3 /* [CP] Embed Pods Frameworks */,
+				0A38961D3562794A853721DC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -341,7 +341,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		24EA6D895FBBD53AE32055E3 /* [CP] Embed Pods Frameworks */ = {
+		0A38961D3562794A853721DC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -576,7 +576,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.yuto19990715.Achievement;
 				PRODUCT_NAME = "アウトプット";
 				SWIFT_COMPILATION_MODE = singlefile;
@@ -599,7 +599,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.yuto19990715.Achievement;
 				PRODUCT_NAME = "アウトプット";
 				SWIFT_COMPILATION_MODE = wholemodule;

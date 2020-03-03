@@ -28,6 +28,8 @@ class AchieveTableViewCell: UITableViewCell {
     func configureCell(event:String, color :String){
         achieveLbl.text = event
         switch color {
+        case "クリア":
+            colorView.backgroundColor = UIColor.clear
         case "レッド":
             colorView.backgroundColor = UIColor.red
         case "ブルー":

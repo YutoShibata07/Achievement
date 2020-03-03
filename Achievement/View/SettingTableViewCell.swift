@@ -10,6 +10,8 @@ import UIKit
 
 class SettingTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var settingImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +24,8 @@ class SettingTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func configureCell(title:String){
+    func configureCell(title:String, imageName:String){
         titleLabel.text = title
+        self.settingImage.image = UIImage(named:imageName)
     }
 }

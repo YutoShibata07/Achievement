@@ -10,9 +10,10 @@ target 'Achievement' do
   pod "Macaw", "0.9.5"
   pod 'IQKeyboardManagerSwift'
   pod 'Firebase/AdMob'
-  pod 'Eureka'
+  
   pod 'RealmSwift'
   pod 'Firebase/Analytics'
+  pod 'Siren'
   
 
 end

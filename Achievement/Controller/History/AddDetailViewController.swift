@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMobileAds
 
-@available(iOS 13.0, *)
+
 class AddDetailViewController: UIViewController, UITextViewDelegate ,UITextFieldDelegate{
 
     @IBOutlet weak var textView: UITextView!
@@ -19,11 +19,26 @@ class AddDetailViewController: UIViewController, UITextViewDelegate ,UITextField
     var journalTitle:String!
     let journalModel = JournalModel()
 
+    var dynamicColor:UIColor!
+    
+    
        
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.delegate = self
         titleTextField.delegate = self
+        if #available(iOS 13.0, *){
+            dynamicColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
+                switch traitCollection.userInterfaceStyle {
+                case .unspecified,
+                     .light: return .black
+                case .dark: return .white
+                }
+            }
+        }else{
+            dynamicColor = .black
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,13 +46,17 @@ class AddDetailViewController: UIViewController, UITextViewDelegate ,UITextField
         titleTextField.text = journalTitle
         journalModel.loadedData()
         textView.layer.cornerRadius = 8
-        let index = UserData.sharedData.journalsToShow.index(of: Journal.init(title: journalTitle, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
+        let index = UserData.sharedData.journalsToShow.index(of: Journal.init(title: journalTitle, isToday: true, categoryName: "", categorycolor: "", creationDate: "", detail: ""))
+        //詳細メモを表示させるメモのインデックスをまず調べる
         if let detail = UserData.sharedData.journalsToShow[index!].detail{
-            self.textView.text = detail
-            self.textView.textColor = .black
-        }else{
-            textView.text = "詳細なメモを残す"
-            textView.textColor = .lightGray
+            if detail == ""{
+                textView.text = "詳細なメモを残す"
+                textView.textColor = .lightGray
+            }else{
+                self.textView.text = detail
+                self.textView.textColor = dynamicColor
+            }
+            
         }
         view.bringSubviewToFront(textView)
         
@@ -49,32 +68,19 @@ class AddDetailViewController: UIViewController, UITextViewDelegate ,UITextField
         }
     }
     
-    override func viewDidLayoutSubviews(){
-        //  広告インスタンス作成
-        var admobView = GADBannerView()
-        admobView = GADBannerView(adSize:kGADAdSizeBanner)
-        
-        //  広告位置設定
-        let safeArea = self.view.safeAreaInsets.bottom
-        admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - safeArea - admobView.frame.height)
-        admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
-        
-        //  広告ID設定ca-app-pub-7252408232726748/4859564922
-        admobView.adUnitID = "ca-app-pub-7252408232726748/4859564922"
-        
-        //  広告表示
-        admobView.rootViewController = self
-        admobView.load(GADRequest())
-        self.view.addSubview(admobView)
+    func textViewDidChange(_ textView: UITextView) {
+        textView.textColor = dynamicColor
     }
     
+   
+
       
     
     
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        var edittedIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: journalTitle, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
+        var edittedIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: journalTitle, isToday: true, categoryName: "", categorycolor: "", creationDate: "",detail: ""))
        
     }
     
@@ -95,13 +101,21 @@ class AddDetailViewController: UIViewController, UITextViewDelegate ,UITextField
     
     @IBAction func saveButtonClicked(_ sender: Any) {
         guard let detail = textView.text , detail.isNotEmpty == true else {
-            dismissAlert(title: "警告", msg: "詳細メモを消去します", vc: self)
+            if #available(iOS 13.0, *) {
+                dismissAlert(title: "警告", msg: "詳細メモを消去します", vc: self)
+            } else {
+                // Fallback on earlier versions
+            }
             return
         }
-        let index = UserData.sharedData.journalsToShow.index(of: Journal(title: journalTitle, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
+        let index = UserData.sharedData.journalsToShow.index(of: Journal(title: journalTitle, isToday: true, categoryName: "", categorycolor: "", creationDate: "",detail: ""))
         UserData.sharedData.journalsToShow[index!].detail = detail
         guard let journalTitle = self.titleTextField.text else{
-            simpleAlert(title: "エラー", msg: "タイトルが入力されていません")
+            if #available(iOS 13.0, *) {
+                simpleAlert(title: "エラー", msg: "タイトルが入力されていません")
+            } else {
+                // Fallback on earlier versions
+            }
             return
         }
         UserData.sharedData.journalsToShow[index!].title = journalTitle

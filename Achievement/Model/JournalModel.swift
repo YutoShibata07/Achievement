@@ -24,6 +24,7 @@ class JournalModel{
                 displayingJournals.append(journal)
             }
         }
+        
         return displayingJournals
     }
     
@@ -31,7 +32,7 @@ class JournalModel{
     func loadedData(){
         guard let data = ud.data(forKey: "JournalsToShow"),
             let journalsToShow = try? JSONDecoder().decode([Journal].self, from: data) else{return}
-        UserData.sharedData.journalsToShow = journalsToShow
+        UserData.sharedData.journalsToShow = journalsToShow       
         return
     }
     
@@ -64,21 +65,10 @@ class JournalModel{
         return sortedJournals
     }
     
-    
-    //---------------Realmを用いたデータの保存、読み込み--------------------
-    func realmSave(_ value:[RealmJournal]){
-        do{
-            let realm = try Realm()
-            try! realm.write {
-                RealmUserData.setValue(value, forKey: "journalsToShow")
-            }
-        }catch{
-            print("エラー")
-        }
-    }
-    
-    func realmLoad(){
-        
+    func saveEmotionalJournals(_ value:[Journal]){
+        guard let data = try? JSONEncoder().encode(value) else{return}
+        ud.set(data, forKey: "emotionalJournals")
+        ud.synchronize()
     }
     
    

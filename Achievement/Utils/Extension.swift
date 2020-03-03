@@ -17,6 +17,14 @@ extension UIViewController{
         formatter.dateFormat = format
         return formatter.string(from: now as Date)
     }
+    func getDate(format:String = "/dd/") -> String {
+
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: now as Date)
+    }
+
     func getTodayDetail(format:String = "yyyy-MM-dd") -> String{
         let now = Date()
         let formatter = DateFormatter()
@@ -131,15 +139,15 @@ extension String{
         case "グリーン":
             return UIColor.green
         case "パーポｳ":
-            return UIColor.purple
+            return UIColor.init(hex: "9f1f5c")
         case "ブラック":
             return UIColor.black
         case "ピンク":
-            return UIColor.systemPink
+            return UIColor.init(hex: "ed6498")
         case "ブラウン":
             return UIColor.brown
         case  "イエロー":
-            return UIColor.yellow
+            return UIColor.init(hex: "fbb03b")
         case "シアン":
             return UIColor.cyan
         case "オレンジ":
@@ -155,6 +163,12 @@ extension Journal:Equatable{  //Journalをタイトルでソートするため�
         return lhs.title == rhs.title
     }
 }
+extension Category:Equatable{
+    public static func ==(lhs:Category, rhs:Category) -> Bool{
+        return lhs.name == rhs.name
+    }
+}
+
 
 extension DateMixedJournal:Equatable{
     public static func == (lhs:DateMixedJournal, rhs:DateMixedJournal) -> Bool{
@@ -174,7 +188,6 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
-
 
 
 

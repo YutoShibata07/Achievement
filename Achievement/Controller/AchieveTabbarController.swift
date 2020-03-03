@@ -34,7 +34,6 @@ class AchieveTabbarController: UITabBarController,UITabBarControllerDelegate {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
     }
     
-
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if viewController is TabbarDelegate{
             let graphView = viewController as? TabbarDelegate

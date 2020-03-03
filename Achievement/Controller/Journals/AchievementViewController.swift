@@ -8,67 +8,101 @@
 
 import UIKit
 import GoogleMobileAds
+import RealmSwift
 
+@available(iOS 13.0, *)
 class AchievementViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var dateLbl: UILabel!
-    
+    @IBOutlet weak var praseLabel: UILabel!
+    var bannerView: GADBannerView!
+    var random:Int!
     var journalModel = JournalModel()
     var displayingJournals = [Journal]()
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.layer.cornerRadius = 8
+        
+        
+        bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        addBannerViewToView(bannerView)
+        bannerView.adUnitID = "ca-app-pub-7252408232726748/4859564922"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        random = Int.random(in: 0...3)
+        setCommentLabel(random: 4)
+        praseLabel.textColor = .black
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       
         super.viewWillAppear(true)
+        
         journalModel.loadedData()
         self.displayingJournals = journalModel.sortDisplayingJournal(journals: UserData.sharedData.journalsToShow, VC:self)
         self.tableView?.reloadData()
         
     }
     
+    //-------広告の配置に関する関数-----------------
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: bottomLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
+    }
    
     
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        if displayingJournals.count == 0{
+//            return 1
+//        }
         return displayingJournals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let achieveCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? AchieveTableViewCell{
             achieveCell.configureCell(event: displayingJournals[indexPath.row].title,                                           color: displayingJournals[indexPath.row].categoryColor)
+        
+//これはできればやりたいができない。。。
+//            if displayingJournals.count == 0{
+//                achieveCell.configureCell(event: "今日はまだアウトプットしていません", color:"クリア")
+//            }else{
+//                achieveCell.configureCell(event: displayingJournals[indexPath.row].title,                                           color: displayingJournals[indexPath.row].categoryColor)
+//
+//            }
             return achieveCell
         }
+            
+        
         return UITableViewCell()
     }
     
     
+
+        
     
-   
-    
-//    override func viewDidLayoutSubviews(){
-//        //  広告インスタンス作成
-//        var admobView = GADBannerView()
-//        admobView = GADBannerView(adSize:kGADAdSizeBanner)
-//
-//        //  広告位置設定
-//        let safeArea = self.view.safeAreaInsets.bottom
-//        admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - safeArea - admobView.frame.height)
-//        admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
-//
-//        //  広告ID設定ca-app-pub-7252408232726748/4859564922
-//        admobView.adUnitID = "ca-app-pub-7252408232726748/4859564922"
-//
-//        //  広告表示
-//        admobView.rootViewController = self
-//        admobView.load(GADRequest())
-//        self.view.addSubview(admobView)
-//    }
 
 
     
@@ -79,7 +113,7 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
         let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
             
             //UserDataの方で消す対象となるJournalを検索する。Title以外はテキトー。
-            let deleteIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: self.displayingJournals[indexPath.row].title, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
+            let deleteIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: self.displayingJournals[indexPath.row].title, isToday: true, categoryName: "", categorycolor: "", creationDate: "",detail: ""))
             
             
             UserData.sharedData.journalsToShow.remove(at:deleteIndex!)
@@ -95,9 +129,22 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
         return [deleteButton]
     }
     
-//    func updateJournals(){
-//        journalModel.loadedData()
-//        self.tableView.reloadData()
-//    }
-//
+    func setCommentLabel(random:Int){
+        print(random)
+               switch random {
+               case 0:
+                   praseLabel.text = "思いついたことを何でも気軽にメモしよう"
+               case 1:
+                   praseLabel.text = "本で知ったちょっとした知識を話せる男になりたい"
+               case 2:
+                   praseLabel.text = "あ！！この雑学アウトプットに残したやつだ！！！"
+               case 3:
+                   praseLabel.text = "最後に読んだ本の内容覚えとんのか？こまめに記録！"
+               case 4:
+                praseLabel.text = "＋ボタンを押して今日のアウトプットを作成しよう"
+               default:
+                   return
+               }
+    }
+    
 }

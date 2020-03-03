@@ -26,9 +26,12 @@ class MacawChartView:MacawView{
     static var lineInterval = Double(maxGraphValue / maxLines)
     var graphModel = GraphModel()
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.init(hex: "5EC220")
+        
+           
     }
     
     
@@ -94,7 +97,9 @@ class MacawChartView:MacawView{
 
 
     private static func createBars() -> Group{
+        
         let fill = LinearGradient.init(degree: 90, from: Color.black, to: Color.black.with(a: 0.6))
+                   
         let items = adjustData.map{ _ in Group()}
         
         animations = items.enumerated().map{(i: Int, item:Group) in

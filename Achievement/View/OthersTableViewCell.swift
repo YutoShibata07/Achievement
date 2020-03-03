@@ -11,6 +11,8 @@ import UIKit
 class OthersTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var othersImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,8 +24,9 @@ class OthersTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(title:String){
+    func configureCell(title:String,imageName:String){
         titleLabel.text = title
+        self.othersImageView.image = UIImage(named: imageName)
     }
 
 }

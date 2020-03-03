@@ -10,9 +10,10 @@ import Foundation
 import MessageUI
 
 class MenuModel{
-    var setting:[String] = ["通知"]
+    var setting:[String] = ["エモい通知","エモい通知とは"]
     var others:[String] = ["このアプリを評価する","ご意見・ご要望"]
-    
+    var settingImages:[String] = ["通知","question"]
+    var othersImages:[String] = ["star","mail"]
 }
 
 

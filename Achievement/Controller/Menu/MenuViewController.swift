@@ -12,11 +12,15 @@ import StoreKit
 import MessageUI
 import UserNotifications
 
+@available(iOS 13.0, *)
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
     @IBOutlet weak var settingTableView: UITableView!
     @IBOutlet weak var othresTableView: UITableView!
+    @IBOutlet weak var phraseLabel: UILabel!
     let menuModel = MenuModel()
+    var bannerView: GADBannerView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +30,20 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         settingTableView.dataSource = self
         othresTableView.dataSource = self
         othresTableView.tag = 1
+        
+        bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        addBannerViewToView(bannerView)
+        bannerView.adUnitID = "ca-app-pub-7252408232726748/4859564922"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        phraseLabel.textColor = .black
+        settingTableView.layer.cornerRadius = 8
+        othresTableView.layer.cornerRadius = 8
     }
     
     //---------------セルの生成に関して--------------------------
@@ -46,14 +60,16 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         if selectIdentifier(tableView) == "SettingCell"{
             if let cell = settingTableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath) as? SettingTableViewCell{
                 
-                cell.configureCell(title: menuModel.setting[indexPath.row])
+                cell.configureCell(title: menuModel.setting[indexPath.row],imageName: menuModel.settingImages[indexPath.row])
+                cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                 return cell
             }
             return UITableViewCell()
         }else{
             
             if let cell = othresTableView.dequeueReusableCell(withIdentifier: "OthersCell", for: indexPath) as? OthersTableViewCell{
-                cell.configureCell(title: menuModel.others[indexPath.row])
+                cell.configureCell(title: menuModel.others[indexPath.row],imageName: menuModel.othersImages[indexPath.row])
+                cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                 return cell
             }else{
                 return UITableViewCell()
@@ -83,9 +99,15 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             sendMail()
         }
         
+        if tableView.tag == 0 && indexPath.row == 1{
+            performSegue(withIdentifier:"toQuestionVC",sender:self)
+        }
+        
+        
         if tableView.tag == 0 && indexPath.row == 0{
            performSegue(withIdentifier: "toNotificationSetting", sender: self)
         }
+        
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -101,23 +123,25 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     
-    override func viewDidLayoutSubviews(){
-        //  広告インスタンス作成
-        var admobView = GADBannerView()
-        admobView = GADBannerView(adSize:kGADAdSizeBanner)
-        
-        //  広告位置設定
-        let safeArea = self.view.safeAreaInsets.bottom
-        admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - safeArea - admobView.frame.height)
-        admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
-        
-        //  広告ID設定ca-app-pub-7252408232726748/4859564922
-        admobView.adUnitID = "ca-app-pub-7252408232726748/4859564922"
-        
-        //  広告表示
-        admobView.rootViewController = self
-        admobView.load(GADRequest())
-        self.view.addSubview(admobView)
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: bottomLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
     }
        
 
@@ -126,6 +150,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 
 //----------------メール送信に関して-----------------------------
+@available(iOS 13.0, *)
 extension MenuViewController: MFMailComposeViewControllerDelegate{
     func sendMail(){
            

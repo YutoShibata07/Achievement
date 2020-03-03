@@ -20,21 +20,22 @@ class Journal :Codable{
     var detail:String?
     //ジャーナルが属するカテゴリー。名前と色の二つの属性を持つ。
     
-    init(title:String,isToday:Bool, categoryName:String, categorycolor:String, creationDate:String) {
+    init(title:String,isToday:Bool, categoryName:String, categorycolor:String, creationDate:String,detail:String) {
         self.title = title
         self.isToday = isToday
         self.categoryName = categoryName
         self.categoryColor = categorycolor
         self.creationDate = creationDate
+        self.detail = detail
     }
 }
 
 
 
-struct Category:Codable{
+class Category:Codable{
     var name :String!
     var color:String!
-    
+    var listOfIndex = [Int]()
     
     init(name:String, color:String) {
         self.name = name
@@ -53,37 +54,40 @@ class DateMixedJournal{
     }
 }
 
-class RealmJournal:Object{
-    @objc dynamic var title:String
-    @objc dynamic var categoryColor:String
-    @objc dynamic var categoryName:String
-    @objc dynamic var creationDate:String!//このJournalが作成された日にちを保持する。
-    @objc dynamic var detail:String?
-    //ジャーナルが属するカテゴリー。名前と色の二つの属性を持つ。
-    
-    init(title:String, categoryName:String, categorycolor:String, creationDate:String) {
-        self.title = title
-        self.categoryName = categoryName
-        self.categoryColor = categorycolor
-        self.creationDate = creationDate
-    }
-    
-    override required init() {
-        fatalError("init() has not been implemented")
-    }
-}
+//class RealmJournal:Object{
+//    @objc dynamic var title:String
+//    @objc dynamic var categoryColor:String
+//    @objc dynamic var categoryName:String
+//    @objc dynamic var creationDate:String!//このJournalが作成された日にちを保持する。
+//    @objc dynamic var detail:String?
+//    //ジャーナルが属するカテゴリー。名前と色の二つの属性を持つ。
+//
+//    init(title:String, categoryName:String, categorycolor:String, creationDate:String) {
+//        self.title = title
+//        self.categoryName = categoryName
+//        self.categoryColor = categorycolor
+//        self.creationDate = creationDate
+//    }
+//    override static func primaryKey() -> String? {
+//        return "title"
+//    }
+//
+//    override required init() {
+//        fatalError("init() has not been implemented")
+//    }
+//}
 
-class RealmCategory:Object{
-     @objc dynamic var name :String!
-     @objc dynamic var color:String!
-       
-    
-    init(name:String, color:String) {
-        self.name = name
-        self.color = color
-    }
-    
-    override required init() {
-        fatalError("init() has not been implemented")
-    }
-}
+//class RealmCategory:Object{
+//     @objc dynamic var name :String!
+//     @objc dynamic var color:String!
+//
+//
+//    init(name:String, color:String) {
+//        self.name = name
+//        self.color = color
+//    }
+//
+//    override required init() {
+//        fatalError("init() has not been implemented")
+//    }
+//}

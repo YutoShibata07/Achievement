@@ -18,7 +18,7 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
     @IBOutlet weak var returnBtn: UIButton!
     var newJournal:String = ""
     var categoryModel =  CategoryModel()
-    
+    var newDetail:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,12 +70,24 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
         categoryModel.makeNewJournal(
             title: newJournal, //NewJournalVCから送られてきたnewJournalのタイトル。
             color: UserData.sharedData.categoriesToShow[indexPath.row].color,
-            categoryName: UserData.sharedData.categoriesToShow[indexPath.row].name, creationDate: getToday()
+            categoryName: UserData.sharedData.categoriesToShow[indexPath.row].name, creationDate: getToday(),detail: newDetail
         )
+        
+        //-------------------レビューを書かせるための処理------------------
+        
         UserData.sharedData.numberOfJournals += 1
-        if UserData.sharedData.numberOfJournals == 7{
+        if (UserData.sharedData.numberOfJournals == 7) || (UserData.sharedData.numberOfJournals == 20){
             categoryModel.makeReview()
         }
+        
+        if (UserData.sharedData.numberOfJournals == 35) || (UserData.sharedData.numberOfJournals == 50){
+            categoryModel.makeReview()
+        }
+        
+        if (UserData.sharedData.numberOfJournals == 75) || (UserData.sharedData.numberOfJournals == 100) {
+            categoryModel.makeReview()
+        }
+        
         categoryModel.saveJournals(UserData.sharedData.journalsToShow)  //新たに要素が追加されたjournalsToShowを保存する。
         
         presentingViewController?.presentingViewController!.dismiss(animated: true, completion: {
@@ -87,8 +99,8 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
                     print("error")
                     return
                 }
+                journalVC.random = Int.random(in: 0...3)
                 journalVC.viewWillAppear(true)
-                
                 print(journalVC)
             }else {
                 

@@ -44,14 +44,6 @@ class UserData{
     }
 }
 
-class RealmUserData:Object{
-    @objc dynamic var shared :RealmUserData = RealmUserData()
-    @objc dynamic var numberOfJournals = 0
-    dynamic var journalsToShow = List<RealmJournal>()
-    dynamic var journalsReversed = List<RealmJournal>()
-    @objc dynamic var notificationTaime = Date()
-    @objc dynamic var defaultCategory = [RealmCategory(name: "読書", color:"レッド"),RealmCategory(name: "ToDo", color: "ブルー"),RealmCategory(name:"分類なし", color: "グレー")]
-    
-}
+
 
 

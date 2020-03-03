@@ -45,34 +45,18 @@ class CategoryHistoryViewController: UIViewController,UITableViewDelegate,UITabl
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? AddDetailViewController{
             destination.journalTitle = self.selectedJournalTitle
+        }else{
+            if let destinaiton = segue.destination as? EditCategoryViewController{
+                destinaiton.edittedCategory = selectedCategory.name
+                destinaiton.edittedJournals = self.sortedJournals
+                destinaiton.selectedColor = selectedCategory.color
+            }
         }
     }
-    
-    override func viewDidLayoutSubviews(){
-        //  広告インスタンス作成
-        var admobView = GADBannerView()
-        admobView = GADBannerView(adSize:kGADAdSizeBanner)
-        
-        //  広告位置設定
-        let safeArea = self.view.safeAreaInsets.bottom
-        admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - safeArea - admobView.frame.height)
-        admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
-        
-        //  広告ID設定ca-app-pub-7252408232726748/4859564922
-        admobView.adUnitID = "ca-app-pub-7252408232726748/4859564922"
-        
-        //  広告表示
-        admobView.rootViewController = self
-        admobView.load(GADRequest())
-        self.view.addSubview(admobView)
-    }
-    
-    
     
     @IBAction func backButtonClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sortedJournals.count //カテゴリーに従ってソートをしたJournalsを表示する。
@@ -96,7 +80,7 @@ class CategoryHistoryViewController: UIViewController,UITableViewDelegate,UITabl
         let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
             
             //UserDataの方で消す対象となるJournalを検索する。Title以外はテキトー。
-            let deleteIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: self.sortedJournals[indexPath.row].title, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
+            let deleteIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: self.sortedJournals[indexPath.row].title, isToday: true, categoryName: "", categorycolor: "", creationDate: "",detail: ""))
             print(deleteIndex)
             
             UserData.sharedData.journalsToShow.remove(at:deleteIndex!)

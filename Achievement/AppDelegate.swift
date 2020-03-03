@@ -11,6 +11,7 @@ import IQKeyboardManagerSwift
 import  Firebase
 import UserNotifications
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -21,10 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
         // Use Firebase library to configure APIs  
-        FirebaseApp.configure()
         
         let center = UNUserNotificationCenter.current()
 
+        
         // ------------------------------------
         // 前準備: ユーザに通知の許可を求める
         // ------------------------------------
@@ -36,11 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 print("Didn't allowed")
             }
+            
         }
         
-        
         GADMobileAds.configure(withApplicationID:"ca-app-pub-7252408232726748~6308377965")
-        
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         return true
     }
 
@@ -51,15 +52,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         let trigger:UNNotificationTrigger
+        let random = Int.random(in: 3...7)
         let content = UNMutableNotificationContent()
         let ud = UserDefaults.standard
+        let alertIndex:Int!
+        let journalToAlert:Journal!
         var time = ud.object(forKey: "NotificationTime") as? Date
         let component = Calendar.current.dateComponents([.hour, .minute], from: time ?? Date())
         trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
+        content.title = "アウトプットを振り返ろう"
+        guard let data = ud.data(forKey: "JournalsToShow"),
+            let journalsToShow = try? JSONDecoder().decode([Journal].self, from: data) else{return}
+        UserData.sharedData.journalsToShow = journalsToShow
+        if UserData.sharedData.journalsToShow.count == 0{
+            content.title = ""
+            content.body = "今日知ったことを書きおこそう"
+        }else if(UserData.sharedData.journalsToShow.count < random){
+            alertIndex = 0
+            journalToAlert = UserData.sharedData.journalsToShow[alertIndex]
+            content.body = journalToAlert.title
+        }else{
+            alertIndex = UserData.sharedData.journalsToShow.count - random
+            journalToAlert = UserData.sharedData.journalsToShow[alertIndex]
+            content.body = journalToAlert.title
+        }
         
         
-        content.title = ""
-        content.body = "メモを活用して日常を振り返ろう"
         content.sound = UNNotificationSound.default
         
         let request = UNNotificationRequest(identifier: "output_notification", content: content, trigger: trigger)
@@ -67,7 +85,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
     }
-
+    
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }

@@ -8,21 +8,60 @@
 
 import UIKit
 
-class NewAchievementVC: UIViewController,UITextFieldDelegate {
+
+class NewAchievementVC: UIViewController,UITextFieldDelegate,UITextViewDelegate {
     let ud = UserDefaults.standard
+    @IBOutlet weak var textView: UITextView!
     var newJournal:String = ""
     @IBOutlet weak var bgView: RoudedView!
     @IBOutlet weak var textField: UITextField!
     
+    @IBOutlet weak var phraseLabel: UILabel!
+
+    var dynamicColor:UIColor!
+    
+    
     //--------override-------------------------
-    override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(true)
-           bgView.layer.cornerRadius = 10
-       }
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.delegate = self
+        phraseLabel.textColor = .black
+        textView.delegate = self
+        if #available(iOS 13.0, *){
+            dynamicColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
+                switch traitCollection.userInterfaceStyle {
+                case .unspecified,
+                     .light: return .black
+                case .dark: return .white
+                }
+            }
+        }else{
+            dynamicColor = .black
+        }
+        
+        
+        
+        
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        bgView.layer.cornerRadius = 10
+        textView.layer.cornerRadius  = 10
+        textField.textColor = .lightGray
+        textView.text = "詳細なメモを追加する"
+        textView.textColor = .lightGray
+        
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        textView.textColor = dynamicColor
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+        textField.textColor = dynamicColor
+    }
+    
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -31,9 +70,22 @@ class NewAchievementVC: UIViewController,UITextFieldDelegate {
         }
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "詳細なメモを追加する"{
+            textView.text = ""
+            textView.textColor = .black
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? ClasifyViewController{
             destination.newJournal = self.newJournal
+            if textView.text != "詳細なメモを追加する"{
+                destination.newDetail = self.textView.text
+            }else{
+                destination.newDetail = ""
+            }
+            
         }
     }
     

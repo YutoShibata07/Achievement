@@ -46,7 +46,7 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
             toCategoryButton.isEnabled = false
             toDateButton.isEnabled = true
         }
-       
+        tableView.layer.cornerRadius = 8
         tableView.reloadData()
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,25 +65,6 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
         super.viewDidDisappear(true)
     }
 
-    
-//    override func viewDidLayoutSubviews(){
-//        //  広告インスタンス作成
-//        var admobView = GADBannerView()
-//        admobView = GADBannerView(adSize:kGADAdSizeBanner)
-//
-//        //  広告位置設定
-//        let safeArea = self.view.safeAreaInsets.bottom
-//        admobView.frame.origin = CGPoint(x:0, y:self.view.frame.size.height - safeArea - admobView.frame.height)
-//        admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
-//
-//        //  広告ID設定ca-app-pub-7252408232726748/4859564922
-//        admobView.adUnitID = "ca-app-pub-7252408232726748/4859564922"
-//
-//        //  広告表示
-//        admobView.rootViewController = self
-//        admobView.load(GADRequest())
-//        self.view.addSubview(admobView)
-//    }
     
     
     
@@ -109,10 +90,8 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
         historyModel.loadCategories()
         historyModel.loadJournals()
         if historyModel.isDate == false{ //カテゴリー表示の場合。
-             print("category!! \(UserData.sharedData.categoriesToShow.count)")
             return UserData.sharedData.categoriesToShow.count
         }else{                           //日付表示の場合。
-            print("セルの数は\(HistoryModel.getJournalsWithDate().count)")
             return HistoryModel.getJournalsWithDate().count
             //挿入する日付の数だけRowSectionの数を増やす。
             
@@ -128,16 +107,19 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
         if let categoryCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? HistoryTableViewCell{
             
             if historyModel.isDate == false{//これでカテゴリ毎に表示する
+                categoryCell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
                 categoryCell.configureCell(
                     title: UserData.sharedData.categoriesToShow[indexPath.row].name,
                     color: UserData.sharedData.categoriesToShow[indexPath.row].color.toUIColor())
                 return categoryCell
                 
             }else{//これで日付毎に表示する。
+                categoryCell.accessoryType = UITableViewCell.AccessoryType.none
                 if journalsWithDate.count != 0{
                     categoryCell.notDate = (HistoryModel.getJournalsWithDate()[indexPath.row].isDate == false)
                     //表示するセルが日付なのか日記の内容なのかを渡す。
                     categoryCell.configureDateCell(journal: journalsWithDate[indexPath.row])
+                    
                     return categoryCell
                 }else{
                     return categoryCell
@@ -169,6 +151,8 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
     }
     
+    
+    
      //---------------------------セルの消去に関してーーーーーーーーーーーーーーーーーーー
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
@@ -186,7 +170,7 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
             let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
                 
                 //UserDataの方で消す対象となるJournalを検索する。Title以外はテキトー。
-                let deleteIndex = UserData.sharedData.journalsToShow.index(of:Journal.init(title: self.journalsWithDate[indexPath.row].title, isToday: true, categoryName: "", categorycolor: "", creationDate: ""))
+                let deleteIndex = UserData.sharedData.journalsToShow.index(of:Journal.init(title: self.journalsWithDate[indexPath.row].title, isToday: true, categoryName: "", categorycolor: "", creationDate: "",detail: ""))
                 
                 for journal in UserData.sharedData.journalsToShow {
                     if journal.creationDate == UserData.sharedData.journalsToShow[deleteIndex!].creationDate{

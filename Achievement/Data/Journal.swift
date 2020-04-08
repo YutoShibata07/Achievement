@@ -8,21 +8,18 @@
 
 import Foundation
 import UIKit
-import RealmSwift
 
 
 class Journal :Codable{
     var title:String
-    var isToday:Bool
     var categoryColor:String
     var categoryName:String
     var creationDate:String!//このJournalが作成された日にちを保持する。
     var detail:String?
     //ジャーナルが属するカテゴリー。名前と色の二つの属性を持つ。
     
-    init(title:String,isToday:Bool, categoryName:String, categorycolor:String, creationDate:String,detail:String) {
+    init(title:String, categoryName:String, categorycolor:String, creationDate:String,detail:String) {
         self.title = title
-        self.isToday = isToday
         self.categoryName = categoryName
         self.categoryColor = categorycolor
         self.creationDate = creationDate
@@ -35,7 +32,7 @@ class Journal :Codable{
 class Category:Codable{
     var name :String!
     var color:String!
-    var listOfIndex = [Int]()
+
     
     init(name:String, color:String) {
         self.name = name

@@ -14,12 +14,12 @@ import GoogleMobileAds
 class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     
+    @IBOutlet weak var headingLabel: UILabel!
     @IBOutlet weak var toCategoryButton: UIButton!
     
     @IBOutlet weak var toDateButton: UIButton!
     
     @IBOutlet weak var tableView: UITableView!
-    
     
     var historyModel = HistoryModel()
     var journalsWithDate = [DateMixedJournal]()
@@ -35,6 +35,8 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
         tableView.delegate = self
         
         tableView.dataSource = self
+        
+        headingLabel.textColor = .black
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -170,7 +172,7 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
             let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
                 
                 //UserDataの方で消す対象となるJournalを検索する。Title以外はテキトー。
-                let deleteIndex = UserData.sharedData.journalsToShow.index(of:Journal.init(title: self.journalsWithDate[indexPath.row].title, isToday: true, categoryName: "", categorycolor: "", creationDate: "",detail: ""))
+                let deleteIndex = UserData.sharedData.journalsToShow.index(of:Journal.init(title: self.journalsWithDate[indexPath.row].title, categoryName: "", categorycolor: "", creationDate: "",detail: ""))
                 
                 for journal in UserData.sharedData.journalsToShow {
                     if journal.creationDate == UserData.sharedData.journalsToShow[deleteIndex!].creationDate{

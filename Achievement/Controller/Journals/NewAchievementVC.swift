@@ -9,23 +9,21 @@
 import UIKit
 
 
-class NewAchievementVC: UIViewController,UITextFieldDelegate,UITextViewDelegate {
-    let ud = UserDefaults.standard
-    @IBOutlet weak var textView: UITextView!
-    var newJournal:String = ""
-    @IBOutlet weak var bgView: RoudedView!
-    @IBOutlet weak var textField: UITextField!
-    
-    @IBOutlet weak var phraseLabel: UILabel!
+class NewAchievementVC: UIViewController,UITextViewDelegate {
 
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var bgView: RoudedView!
+    @IBOutlet weak var titleTextView: UITextView!
+    @IBOutlet weak var phraseLabel: UILabel!
     var dynamicColor:UIColor!
-    
+    var newJournal:String = ""
+    let ud = UserDefaults.standard
     
     //--------override-------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.delegate = self
         phraseLabel.textColor = .black
+        titleTextView.delegate = self
         textView.delegate = self
         if #available(iOS 13.0, *){
             dynamicColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
@@ -47,34 +45,25 @@ class NewAchievementVC: UIViewController,UITextFieldDelegate,UITextViewDelegate 
         super.viewWillAppear(true)
         bgView.layer.cornerRadius = 10
         textView.layer.cornerRadius  = 10
-        textField.textColor = .lightGray
+        titleTextView.layer.cornerRadius = 10
+        titleTextView.text = "内容"
+        titleTextView.textColor = .lightGray
         textView.text = "詳細なメモを追加する"
         textView.textColor = .lightGray
         
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        textView.textColor = dynamicColor
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = ""
-        textField.textColor = dynamicColor
-    }
     
     
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (self.textField.isFirstResponder) {
-            self.textField.resignFirstResponder()
-        }
-    }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == "詳細なメモを追加する"{
             textView.text = ""
-            textView.textColor = .black
         }
+        if textView.text == "内容"{
+            textView.text = ""
+        }
+        textView.textColor = dynamicColor
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -96,7 +85,7 @@ class NewAchievementVC: UIViewController,UITextFieldDelegate,UITextViewDelegate 
         dismiss(animated: true, completion: nil)
     }
     @IBAction func addButtonClicked(_ sender: Any){
-        if let textToShow = textField.text, textToShow.isNotEmpty == true{
+        if let textToShow = titleTextView.text, textToShow.isNotEmpty == true{
 //      方針転換。カテゴリを決めた段階で新しくJournalを追加する。
         newJournal = textToShow
         }else{
@@ -108,14 +97,6 @@ class NewAchievementVC: UIViewController,UITextFieldDelegate,UITextViewDelegate 
             }
         }
     }
-    
-    
-    //---------Custom Functions----------------
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
     
     
 

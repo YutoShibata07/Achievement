@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import RealmSwift
+
 
 class JournalModel{
     
@@ -32,7 +32,8 @@ class JournalModel{
     func loadedData(){
         guard let data = ud.data(forKey: "JournalsToShow"),
             let journalsToShow = try? JSONDecoder().decode([Journal].self, from: data) else{return}
-        UserData.sharedData.journalsToShow = journalsToShow       
+        UserData.sharedData.journalsToShow = journalsToShow
+        print("goood")
         return
     }
     
@@ -42,11 +43,6 @@ class JournalModel{
         ud.synchronize()
     }
     
-    func resetData(){//今日の分のデータをリセットする。
-        for data in UserData.sharedData.journalsToShow {
-            data.isToday = false
-        }
-    }
     
     func changeColorView(colorView:UIView, category:Category){
         colorView.backgroundColor = category.color.toUIColor()

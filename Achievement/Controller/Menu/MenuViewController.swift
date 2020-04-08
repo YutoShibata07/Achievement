@@ -11,6 +11,8 @@ import GoogleMobileAds
 import StoreKit
 import MessageUI
 import UserNotifications
+import SCLAlertView
+import SwiftyDropbox
 
 @available(iOS 13.0, *)
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -44,6 +46,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         phraseLabel.textColor = .black
         settingTableView.layer.cornerRadius = 8
         othresTableView.layer.cornerRadius = 8
+        menuModel.checkConnetionToDropbox()
     }
     
     //---------------セルの生成に関して--------------------------
@@ -81,22 +84,105 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //-----------------セルの選択時に関して--------------------
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if indexPath.row == 0 && tableView.tag == 1{
+        //---------------------バックアップに関する処理----------------------
+        if tableView.tag == 0 && indexPath.row == 2{
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false
+            )
+            let alertView = SCLAlertView(appearance: appearance)
+            alertView.addButton("Step1.Dropboxと連携する"){
+                self.menuModel.signInDropbox(controller: self,completion:{})
+            }
             
-            let YOUR_APP_ID = "1486176031"
-            let urlString = "itms-apps://itunes.apple.com/jp/app/id\(YOUR_APP_ID)?mt=8&action=write-review"
-            if let url = URL(string: urlString) {
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(url, options: [:])
-                } else {
-                    UIApplication.shared.openURL(url)
+            alertView.addButton("Step2-a.データを「復元」する") {
+                self.menuModel.downloadDropboxFile {
+                    let alertView = SCLAlertView(appearance: appearance)
+                    alertView.addButton("閉じる", action:{})
+                    alertView.showInfo("データの読み込み完了！！", subTitle: "いつも有難うございます",colorStyle: 0x79BF73, colorTextButton: 0x000000)
+                    
                 }
             }
+            alertView.addButton("Step2-b. データを「保存」する") {
+                self.menuModel.uploadOutput()
+                let alertView = SCLAlertView(appearance: appearance)
+                alertView.addButton("閉じる", action:{})
+                alertView.showInfo("データの書き込み完了！！", subTitle: "いつも有難うございます",colorStyle: 0x79BF73, colorTextButton: 0x000000)
+                
+            }
+            alertView.addButton("やっぱやめる", action:{
+                self.dismiss(animated: true, completion: nil)
+            })
+            alertView.showEdit("バックアップを行う", subTitle: "⚠️先にDropboxと連携させて下さい⚠️",  colorStyle: 0x79BF73, colorTextButton: 0x000000)
+            
+    
+        }
+            
+        
+        if indexPath.row == 0 && tableView.tag == 1{
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false
+            )
+            let alertView = SCLAlertView(appearance: appearance)
+            alertView.addButton("わかりました"){
+                let YOUR_APP_ID = "1486176031"
+                let urlString = "itms-apps://itunes.apple.com/jp/app/id\(YOUR_APP_ID)?mt=8&action=write-review"
+                if let url = URL(string: urlString) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url, options: [:])
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+            }
+            alertView.addButton("また今度") {
+                self.dismiss(animated: true, completion: nil)
+            }
+            alertView.showEdit("レビューを書く", subTitle: "機能向上に役立てせたり、読んで嬉しく思ったりします",  colorStyle: 0x79BF73, colorTextButton: 0x000000)
+            
+            
+        }
+        //-----------簡単に星で評価する----------------------
+        if indexPath.row == 1 && tableView.tag == 1{
+            // レビューページへ遷移
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false
+            )
+            let alertView = SCLAlertView(appearance: appearance)
+            alertView.addButton("わかりました"){
+                if #available(iOS 10.3, *) {
+                    SKStoreReviewController.requestReview()
+                }
+                    // iOS 10.3未満の処理
+                else {
+                    if let url = URL(string: "itms-apps://itunes.apple.com/app/id1486176031?action=write-review") {
+                        if #available(iOS 10.0, *) {
+                            UIApplication.shared.open(url, options: [:])
+                        } else {
+                            UIApplication.shared.openURL(url)
+                        }
+                    }
+                    
+                }
+            }
+            alertView.addButton("また今度") {
+                self.dismiss(animated: true, completion: nil)
+            }
+            alertView.showEdit("簡単に評価する", subTitle: "10秒だけ時間を下さい",  colorStyle: 0x79BF73, colorTextButton: 0x000000)
         }
         
-        if tableView.tag == 1 && indexPath.row == 1{
-            sendMail()
+        
+        if tableView.tag == 1 && indexPath.row == 2{
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false
+            )
+            let alertView = SCLAlertView(appearance: appearance)
+            alertView.addButton("わかりました") {
+                self.sendMail()
+            }
+            alertView.addButton("また今度") {
+                self.dismiss(animated: true, completion: nil)
+            }
+            alertView.showEdit("アップデートを行う際に参考にします", subTitle: "率直すぎる意見も大歓迎",colorStyle: 0x79BF73, colorTextButton: 0x000000)
         }
         
         if tableView.tag == 0 && indexPath.row == 1{
@@ -118,6 +204,14 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }else{
             return "OthersCell"
         }
+    }
+    
+    func makeAlert(title:String,subtitle:String){
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.showWait(title, subTitle:subtitle,  colorStyle: 0x79BF73, colorTextButton: 0x000000)
     }
     
     
@@ -181,5 +275,6 @@ extension MenuViewController: MFMailComposeViewControllerDelegate{
            
        }
        
+    
 }
 

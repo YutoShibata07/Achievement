@@ -1,71 +1,72 @@
 PODS:
-  - Eureka (5.1.0)
-  - Firebase/AdMob (6.12.0):
+  - Alamofire (4.8.2)
+  - Eureka (5.2.0)
+  - Firebase/AdMob (6.20.0):
     - Firebase/CoreOnly
     - Google-Mobile-Ads-SDK (~> 7.50)
-  - Firebase/Analytics (6.12.0):
+  - Firebase/Analytics (6.20.0):
     - Firebase/Core
-  - Firebase/Core (6.12.0):
+  - Firebase/Core (6.20.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 6.1.5)
-  - Firebase/CoreOnly (6.12.0):
-    - FirebaseCore (= 6.3.3)
-  - FirebaseAnalytics (6.1.5):
-    - FirebaseCore (~> 6.3)
-    - FirebaseInstanceID (~> 4.2)
-    - GoogleAppMeasurement (= 6.1.5)
+    - FirebaseAnalytics (= 6.3.1)
+  - Firebase/CoreOnly (6.20.0):
+    - FirebaseCore (= 6.6.4)
+  - FirebaseAnalytics (6.3.1):
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstallations (~> 1.1)
+    - GoogleAppMeasurement (= 6.3.1)
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (= 0.3.9011)
-  - FirebaseCore (6.3.3):
-    - FirebaseCoreDiagnostics (~> 1.0)
-    - FirebaseCoreDiagnosticsInterop (~> 1.0)
-    - GoogleUtilities/Environment (~> 6.2)
-    - GoogleUtilities/Logger (~> 6.2)
-  - FirebaseCoreDiagnostics (1.1.1):
-    - FirebaseCoreDiagnosticsInterop (~> 1.0)
-    - GoogleDataTransportCCTSupport (~> 1.0)
-    - GoogleUtilities/Environment (~> 6.2)
-    - GoogleUtilities/Logger (~> 6.2)
+  - FirebaseCore (6.6.4):
+    - FirebaseCoreDiagnostics (~> 1.2)
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+  - FirebaseCoreDiagnostics (1.2.2):
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleDataTransportCCTSupport (~> 2.0)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
     - nanopb (~> 0.3.901)
-  - FirebaseCoreDiagnosticsInterop (1.1.0)
-  - FirebaseInstanceID (4.2.7):
-    - FirebaseCore (~> 6.0)
-    - GoogleUtilities/Environment (~> 6.0)
-    - GoogleUtilities/UserDefaults (~> 6.0)
-  - Google-Mobile-Ads-SDK (7.52.0):
+  - FirebaseCoreDiagnosticsInterop (1.2.0)
+  - FirebaseInstallations (1.1.0):
+    - FirebaseCore (~> 6.6)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+    - PromisesObjC (~> 1.2)
+  - Google-Mobile-Ads-SDK (7.57.0):
     - GoogleAppMeasurement (~> 6.0)
-  - GoogleAppMeasurement (6.1.5):
+  - GoogleAppMeasurement (6.3.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (= 0.3.9011)
-  - GoogleDataTransport (3.0.1)
-  - GoogleDataTransportCCTSupport (1.2.1):
-    - GoogleDataTransport (~> 3.0)
+  - GoogleDataTransport (5.0.0)
+  - GoogleDataTransportCCTSupport (2.0.0):
+    - GoogleDataTransport (~> 5.0)
     - nanopb (~> 0.3.901)
-  - GoogleUtilities/AppDelegateSwizzler (6.3.1):
+  - GoogleUtilities/AppDelegateSwizzler (6.5.2):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (6.3.1)
-  - GoogleUtilities/Logger (6.3.1):
+  - GoogleUtilities/Environment (6.5.2)
+  - GoogleUtilities/Logger (6.5.2):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.3.1):
+  - GoogleUtilities/MethodSwizzler (6.5.2):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (6.3.1):
+  - GoogleUtilities/Network (6.5.2):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (6.3.1)"
-  - GoogleUtilities/Reachability (6.3.1):
+  - "GoogleUtilities/NSData+zlib (6.5.2)"
+  - GoogleUtilities/Reachability (6.5.2):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (6.3.1):
+  - GoogleUtilities/UserDefaults (6.5.2):
     - GoogleUtilities/Logger
-  - IQKeyboardManagerSwift (6.5.2)
+  - IQKeyboardManagerSwift (6.5.5)
   - Macaw (0.9.5):
     - SWXMLHash
   - nanopb (0.3.9011):
@@ -73,13 +74,11 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
-  - Realm (4.0.0):
-    - Realm/Headers (= 4.0.0)
-  - Realm/Headers (4.0.0)
-  - RealmSwift (4.0.0):
-    - Realm (= 4.0.0)
+  - PromisesObjC (1.2.8)
   - SCLAlertView (0.8)
-  - Siren (5.2.3)
+  - Siren (5.4.0)
+  - SwiftyDropbox (5.1.0):
+    - Alamofire (~> 4.8.2)
   - SWXMLHash (5.0.1)
 
 DEPENDENCIES:
@@ -88,19 +87,20 @@ DEPENDENCIES:
   - Firebase/Analytics
   - IQKeyboardManagerSwift
   - Macaw (= 0.9.5)
-  - RealmSwift
   - SCLAlertView
   - Siren
+  - SwiftyDropbox
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - Eureka
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
-    - FirebaseInstanceID
+    - FirebaseInstallations
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleDataTransport
@@ -109,34 +109,35 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - Macaw
     - nanopb
-    - Realm
-    - RealmSwift
+    - PromisesObjC
     - SCLAlertView
     - Siren
+    - SwiftyDropbox
     - SWXMLHash
 
 SPEC CHECKSUMS:
-  Eureka: 18a5076dcf0c41f9cd9748aa1c42f4d11434bdae
-  Firebase: da031bc7012374e3bed17a6731b89327b29863b9
-  FirebaseAnalytics: 4e53a7eb7b76bc703c4d9239bc964545e9b23361
-  FirebaseCore: bcd6c112429249d7921e907d661e8955a3549e26
-  FirebaseCoreDiagnostics: af29e43048607588c050889d19204f4d7b758c9f
-  FirebaseCoreDiagnosticsInterop: e9b1b023157e3a2fc6418b5cb601e79b9af7b3a0
-  FirebaseInstanceID: ebd2ea79ee38db0cb5f5167b17a0d387e1cc7b6e
-  Google-Mobile-Ads-SDK: 62f6244637306cb60a1b4adda067f53224c7a860
-  GoogleAppMeasurement: 037f46d1d8ae8b312720f1042585ab961a1289e3
-  GoogleDataTransport: 166f9b9f82cbf60a204e8fe2daa9db3e3ec1fb15
-  GoogleDataTransportCCTSupport: f6ab1962e9dc05ab1fb938b795e5b310209edeec
-  GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
-  IQKeyboardManagerSwift: c75366f1f19590e8caeae45fcd5815c9289d6099
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Eureka: 820a761c700f6eaab3b60758f138e0d9b99072b3
+  Firebase: fe7f74012742ab403451dd283e6909b8f1fb348a
+  FirebaseAnalytics: 572e467f3d977825266e8ccd52674aa3e6f47eac
+  FirebaseCore: ed0a24c758a57c2b88c5efa8e6a8195e868af589
+  FirebaseCoreDiagnostics: e9b4cd8ba60dee0f2d13347332e4b7898cca5b61
+  FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
+  FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
+  Google-Mobile-Ads-SDK: ec897018b9ab9b447e7aa4876e7f75aba13ba2de
+  GoogleAppMeasurement: c29d405ff76e18551b5d158eaba6753fda8c7542
+  GoogleDataTransport: a857c6a002d201b524dd4bc2ed7e7355ed07e785
+  GoogleDataTransportCCTSupport: 32f75fbe904c82772fcbb6b6bd4525bfb6f2a862
+  GoogleUtilities: ad0f3b691c67909d03a3327cc205222ab8f42e0e
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   Macaw: 10bf9e327cb75f24e3225d5229a80ed544df85f0
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
-  Realm: 0c5b8f398daeec5b29824e41c453ff9e126e31d8
-  RealmSwift: 02e1f604f7091ec535145055764ca53efa8cdc92
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
-  Siren: 996f37869eae1f343f8c11f17d90c9c8da90bd4c
+  Siren: 9df16ed5278cfaad7ea034f3d2206e4f6983e9b8
+  SwiftyDropbox: 7ca4961e0340c62c8d6d1ece91d67badfe4c0380
   SWXMLHash: 9cc0c2e4807926c74377724aa8722ee5707a0485
 
-PODFILE CHECKSUM: bbb5c7e280f939182d9f8e6532233b914cbc6849
+PODFILE CHECKSUM: 4a435f242c5277b250e846047883c86860b1d618
 
 COCOAPODS: 1.7.5

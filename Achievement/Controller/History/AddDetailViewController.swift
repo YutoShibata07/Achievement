@@ -13,12 +13,13 @@ import GoogleMobileAds
 class AddDetailViewController: UIViewController, UITextViewDelegate ,UITextFieldDelegate{
 
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var titleTextField: UITextField!
+    
+    @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     var journalTitle:String!
+    var journalDetail = ""
     let journalModel = JournalModel()
-
     var dynamicColor:UIColor!
     
     
@@ -26,7 +27,7 @@ class AddDetailViewController: UIViewController, UITextViewDelegate ,UITextField
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.delegate = self
-        titleTextField.delegate = self
+        titleTextView.delegate = self
         if #available(iOS 13.0, *){
             dynamicColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
                 switch traitCollection.userInterfaceStyle {
@@ -39,14 +40,17 @@ class AddDetailViewController: UIViewController, UITextViewDelegate ,UITextField
             dynamicColor = .black
         }
         
+        titleTextView.textColor = dynamicColor
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        titleTextField.text = journalTitle
+        titleTextView.text = journalTitle
         journalModel.loadedData()
+        titleTextView.layer.cornerRadius = 8
         textView.layer.cornerRadius = 8
-        let index = UserData.sharedData.journalsToShow.index(of: Journal.init(title: journalTitle, isToday: true, categoryName: "", categorycolor: "", creationDate: "", detail: ""))
+        let index = UserData.sharedData.journalsToShow.index(of: Journal.init(title: journalTitle, categoryName: "", categorycolor: "", creationDate: "", detail: ""))
         //詳細メモを表示させるメモのインデックスをまず調べる
         if let detail = UserData.sharedData.journalsToShow[index!].detail{
             if detail == ""{
@@ -66,13 +70,17 @@ class AddDetailViewController: UIViewController, UITextViewDelegate ,UITextField
         if (self.textView.isFirstResponder) {
             self.textView.resignFirstResponder()
         }
+        if self.titleTextView.isFirstResponder {
+            self.titleTextView.resignFirstResponder()
+        }
     }
     
     func textViewDidChange(_ textView: UITextView) {
         textView.textColor = dynamicColor
     }
     
-   
+    
+    
 
       
     
@@ -80,16 +88,13 @@ class AddDetailViewController: UIViewController, UITextViewDelegate ,UITextField
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        var edittedIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: journalTitle, isToday: true, categoryName: "", categorycolor: "", creationDate: "",detail: ""))
+        var edittedIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: journalTitle,  categoryName: "", categorycolor: "", creationDate: "",detail: ""))
        
     }
     
     
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        titleTextField.resignFirstResponder()
-        return true
-    }
+    
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == "詳細なメモを残す"{
@@ -108,9 +113,9 @@ class AddDetailViewController: UIViewController, UITextViewDelegate ,UITextField
             }
             return
         }
-        let index = UserData.sharedData.journalsToShow.index(of: Journal(title: journalTitle, isToday: true, categoryName: "", categorycolor: "", creationDate: "",detail: ""))
+        let index = UserData.sharedData.journalsToShow.index(of: Journal(title: journalTitle,  categoryName: "", categorycolor: "", creationDate: "",detail: ""))
         UserData.sharedData.journalsToShow[index!].detail = detail
-        guard let journalTitle = self.titleTextField.text else{
+        guard let journalTitle = self.titleTextView.text else{
             if #available(iOS 13.0, *) {
                 simpleAlert(title: "エラー", msg: "タイトルが入力されていません")
             } else {

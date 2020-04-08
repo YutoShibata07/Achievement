@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '9.0'
+# platform :ios, '9.0'
 
 target 'Achievement' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -10,10 +10,11 @@ target 'Achievement' do
   pod "Macaw", "0.9.5"
   pod 'IQKeyboardManagerSwift'
   pod 'Firebase/AdMob'
-  
-  pod 'RealmSwift'
-  pod 'Firebase/Analytics'
+  pod 'SwiftyDropbox'
   pod 'Siren'
+  pod 'Eureka'
+  pod 'Firebase/Analytics'
+  
   
 
 end

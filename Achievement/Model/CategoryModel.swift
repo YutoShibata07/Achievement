@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import StoreKit
-
+import SCLAlertView
 
 class CategoryModel{
     
@@ -20,7 +20,7 @@ class CategoryModel{
 //        UserData.sharedData.journalsToShow.last?.categoryName = categoryName
        }
     func makeNewJournal(title:String, color:String, categoryName:String, creationDate:String,detail:String){
-        var newJournal = Journal(title: title, isToday: true, categoryName: categoryName, categorycolor: color, creationDate: creationDate,detail:detail)
+        var newJournal = Journal(title: title, categoryName: categoryName, categorycolor: color, creationDate: creationDate,detail:detail)
         UserData.sharedData.journalsToShow.append(newJournal)
     }
     

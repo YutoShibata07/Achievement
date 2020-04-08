@@ -10,6 +10,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import  Firebase
 import UserNotifications
+import SwiftyDropbox
 
 
 @UIApplicationMain
@@ -24,7 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use Firebase library to configure APIs  
         
         let center = UNUserNotificationCenter.current()
-
+        
+        //DropBoxに関する処理
+        DropboxClientsManager.setupWithAppKey("6lx8sj8fx9g31ov")
         
         // ------------------------------------
         // 前準備: ユーザに通知の許可を求める
@@ -45,6 +48,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func application(_ app:UIApplication,open url:URL,options:[UIApplication.OpenURLOptionsKey:Any] = [:])-> Bool{
+        if let authResult = DropboxClientsManager.handleRedirectURL(url){
+            switch authResult {
+            case .success:
+                print("Success! User is logged into Dropbox")
+            case .error(let error,let description):
+                print("Error\(error):\(description)")
+            case .cancel:
+                print("cancel")
+            }
+        }
+        
+        return false
+    }
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

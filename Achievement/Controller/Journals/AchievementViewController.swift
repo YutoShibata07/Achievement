@@ -8,10 +8,11 @@
 
 import UIKit
 import GoogleMobileAds
-import RealmSwift
+
 
 @available(iOS 13.0, *)
 class AchievementViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    @IBOutlet weak var headingLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var dateLbl: UILabel!
@@ -20,16 +21,15 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
     var random:Int!
     var journalModel = JournalModel()
     var displayingJournals = [Journal]()
-
+    var selectedJournalTitle = ""
     
     
+    //--------------Override------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.layer.cornerRadius = 8
-        
-        
         bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
         addBannerViewToView(bannerView)
         bannerView.adUnitID = "ca-app-pub-7252408232726748/4859564922"
@@ -38,6 +38,7 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
         random = Int.random(in: 0...3)
         setCommentLabel(random: 4)
         praseLabel.textColor = .black
+        headingLabel.textColor = .black
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +49,13 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
         self.tableView?.reloadData()
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? AddDetailViewController{
+            destination.journalTitle = self.selectedJournalTitle
+        }
+    }
+    
     
     //-------広告の配置に関する関数-----------------
     func addBannerViewToView(_ bannerView: GADBannerView) {
@@ -73,11 +81,8 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
    
     
     
-    
+//----------------セルの配置に関する関数たち---------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if displayingJournals.count == 0{
-//            return 1
-//        }
         return displayingJournals.count
     }
     
@@ -85,13 +90,7 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
         if let achieveCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? AchieveTableViewCell{
             achieveCell.configureCell(event: displayingJournals[indexPath.row].title,                                           color: displayingJournals[indexPath.row].categoryColor)
         
-//これはできればやりたいができない。。。
-//            if displayingJournals.count == 0{
-//                achieveCell.configureCell(event: "今日はまだアウトプットしていません", color:"クリア")
-//            }else{
-//                achieveCell.configureCell(event: displayingJournals[indexPath.row].title,                                           color: displayingJournals[indexPath.row].categoryColor)
-//
-//            }
+
             return achieveCell
         }
             
@@ -113,7 +112,7 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
         let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
             
             //UserDataの方で消す対象となるJournalを検索する。Title以外はテキトー。
-            let deleteIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: self.displayingJournals[indexPath.row].title, isToday: true, categoryName: "", categorycolor: "", creationDate: "",detail: ""))
+            let deleteIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: self.displayingJournals[indexPath.row].title, categoryName: "", categorycolor: "", creationDate: "",detail: ""))
             
             
             UserData.sharedData.journalsToShow.remove(at:deleteIndex!)
@@ -127,6 +126,11 @@ class AchievementViewController: UIViewController,UITableViewDelegate,UITableVie
         }
         deleteButton.backgroundColor = UIColor.red
         return [deleteButton]
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedJournalTitle = displayingJournals[indexPath.row].title
+        performSegue(withIdentifier: "toDetailSegue", sender: self)
     }
     
     func setCommentLabel(random:Int){

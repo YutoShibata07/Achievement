@@ -40,7 +40,7 @@ class HistoryTableViewCell: UITableViewCell {
    
     
     func configureDateCell(journal:DateMixedJournal){
-        let colorIndex = UserData.sharedData.journalsToShow.index(of:Journal.init(title: journal.title, isToday: true, categoryName: "", categorycolor: "", creationDate: "",detail: ""))
+        let colorIndex = UserData.sharedData.journalsToShow.index(of:Journal.init(title: journal.title, categoryName: "", categorycolor: "", creationDate: "",detail: ""))
         colorView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0)
         
         if notDate == true{

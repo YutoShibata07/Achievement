@@ -8,25 +8,25 @@
 
 import Foundation
 import UIKit
-import RealmSwift
+
 
 //どう見ても使ってないデータばかり。後で消す
-struct User {
-    var isFirstVisit:Bool
-    var doneCount = 0
-    var recentCount:[Int] = [0,0,0]
-    
-    init(isFirstVisit:Bool) {
-        self.isFirstVisit = isFirstVisit
-        doneCount = 0
-        recentCount = [0,0,0]//過去三日間の達成したroutineの数
-        
-    }
-}
+//struct User {
+//    var isFirstVisit:Bool
+//    var doneCount = 0
+//    var recentCount:[Int] = [0,0,0]
+//
+//    init(isFirstVisit:Bool) {
+//        self.isFirstVisit = isFirstVisit
+//        doneCount = 0
+//        recentCount = [0,0,0]//過去三日間の達成したroutineの数
+//
+//    }
+//}
 
 //Userの一つしかないデータセットを扱うクラス
 class UserData{
-    var data = User(isFirstVisit: true)
+    var connectedToDropbox = false
     static let sharedData :UserData = UserData()
     var numberOfJournals = 0
     var journalsToShow = [Journal]()

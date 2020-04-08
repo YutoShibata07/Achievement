@@ -8,6 +8,7 @@
 
 import UIKit
 import StoreKit
+import SCLAlertView
 
 
 
@@ -75,18 +76,35 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         //-------------------レビューを書かせるための処理------------------
         
-        UserData.sharedData.numberOfJournals += 1
-        if (UserData.sharedData.numberOfJournals == 7) || (UserData.sharedData.numberOfJournals == 20){
-            categoryModel.makeReview()
+        var journalCount = UserData.sharedData.journalsToShow.count
+        if journalCount == 1{
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false
+            )
+            let alertView = SCLAlertView(appearance: appearance)
+            alertView.addButton("了解した！") {
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+            alertView.showInfo("初アウトプットお疲れ様です！", subTitle: "設定欄から「エモい通知」機能を設定して復習に役立てよう",  colorStyle: 0x79BF73, colorTextButton: 0x000000)
+            
+        }
+        if (journalCount == 5) {
+            makeAlertReview()
         }
         
-        if (UserData.sharedData.numberOfJournals == 35) || (UserData.sharedData.numberOfJournals == 50){
-            categoryModel.makeReview()
+        if journalCount == 17{
+            writeReview()
         }
         
-        if (UserData.sharedData.numberOfJournals == 75) || (UserData.sharedData.numberOfJournals == 100) {
-            categoryModel.makeReview()
+        if (journalCount == 35){
+            makeAlertReview()
         }
+        
+        if (journalCount == 78) || (journalCount == 120) {
+            writeReview()
+        }
+        
         
         categoryModel.saveJournals(UserData.sharedData.journalsToShow)  //新たに要素が追加されたjournalsToShowを保存する。
         
@@ -112,6 +130,61 @@ class ClasifyViewController: UIViewController,UITableViewDelegate,UITableViewDat
     @IBAction func returnBtnClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    func makeAlertReview(){
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.addButton("わかりました"){
+            
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            }
+                // iOS 10.3未満の処理
+            else {
+                if let url = URL(string: "itms-apps://itunes.apple.com/app/id1486176031?action=write-review") {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url, options: [:])
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+                
+            }
+        }
+        alertView.addButton("また今度") {
+            self.dismiss(animated: true, completion: nil)
+        }
+        alertView.showEdit("簡単に評価する", subTitle: "10秒だけ時間を下さい",  colorStyle: 0x79BF73, colorTextButton: 0x000000)
+        
+        
+    }
+    
+    func writeReview(){
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.addButton("わかりました"){
+            let YOUR_APP_ID = "1486176031"
+            let urlString = "itms-apps://itunes.apple.com/jp/app/id\(YOUR_APP_ID)?mt=8&action=write-review"
+            if let url = URL(string: urlString) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:])
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+            }
+        }
+        alertView.addButton("また今度") {
+            self.dismiss(animated: true, completion: nil)
+        }
+        alertView.showEdit("レビューを書く", subTitle: "機能向上に役立てせたり、読んで嬉しく思ったりします",  colorStyle: 0x79BF73, colorTextButton: 0x000000)
+        
+    }
+    
+    
   
     
 }

@@ -80,7 +80,7 @@ class CategoryHistoryViewController: UIViewController,UITableViewDelegate,UITabl
         let deleteButton:UITableViewRowAction = UITableViewRowAction(style: .normal, title: "削除") { (action, index) -> Void in
             
             //UserDataの方で消す対象となるJournalを検索する。Title以外はテキトー。
-            let deleteIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: self.sortedJournals[indexPath.row].title, isToday: true, categoryName: "", categorycolor: "", creationDate: "",detail: ""))
+            let deleteIndex = UserData.sharedData.journalsToShow.index(of: Journal(title: self.sortedJournals[indexPath.row].title,categoryName: "", categorycolor: "", creationDate: "",detail: ""))
             print(deleteIndex)
             
             UserData.sharedData.journalsToShow.remove(at:deleteIndex!)

@@ -576,7 +576,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.yuto19990715.Achievement;
 				PRODUCT_NAME = "アウトプット";
 				SWIFT_COMPILATION_MODE = singlefile;
@@ -599,7 +599,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.yuto19990715.Achievement;
 				PRODUCT_NAME = "アウトプット";
 				SWIFT_COMPILATION_MODE = wholemodule;

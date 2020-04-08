@@ -16,6 +16,7 @@ import GoogleMobileAds
 class GraphViewController: UIViewController {
     
     
+    @IBOutlet weak var headingLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
     @IBOutlet weak var phraseLbl: UILabel!
@@ -49,6 +50,7 @@ class GraphViewController: UIViewController {
         default:
             return
         }
+        headingLabel.textColor = .black
         
         
         

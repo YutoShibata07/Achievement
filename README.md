@@ -3,7 +3,9 @@
 
 ## カテゴリ毎、日付毎に記録を振り返るToDoアプリです。
 カテゴリーの名称、色を自分で決定して体系的にメモをまとめることが可能になります。
- 
+
+<img src="https://user-images.githubusercontent.com/55349093/82851856-1e188900-9f3c-11ea-91f6-92709b71129b.jpeg" height="320px"><img src="https://user-images.githubusercontent.com/55349093/82851865-2244a680-9f3c-11ea-9e7a-5a15c157217a.jpeg" height="320px">
+
 ## Features
  
  通知機能を活用して、最近残したメモの復習を促すようになっています。また直近一週間に書いたメモの数をグラフで確認することも可能です。

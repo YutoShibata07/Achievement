@@ -29,11 +29,7 @@ class NotificationSettingViewController: FormViewController {
                 print(type(of: row.value))
             })
     }
-//    let dateFormatter = DateFormatter()
-//    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//    dateFormatter.timeZone   = TimeZone(identifier: "Asia/Tokyo")
-//    let three = dateFormatter.date(from: "\(getTodayDetail()) 03:00:00")
-//    return three ?? Date()
+
     
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         let dateFormatter = DateFormatter()

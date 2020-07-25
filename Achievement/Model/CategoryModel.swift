@@ -15,10 +15,10 @@ class CategoryModel{
     
     let ud = UserDefaults.standard
     
-//    func decideCategory(colorName:String, categoryName:String){
-////        UserData.sharedData.journalsToShow.last.categoryColor = colorName
-////        UserData.sharedData.journalsToShow.last?.categoryName = categoryName
-//       }
+    func decideCategory(colorName:String, categoryName:String){
+//        UserData.sharedData.journalsToShow.last.categoryColor = colorName
+//        UserData.sharedData.journalsToShow.last?.categoryName = categoryName
+       }
     func makeNewJournal(title:String, color:String, categoryName:String, creationDate:String,detail:String){
         var newJournal = Journal(title: title, categoryName: categoryName, categorycolor: color, creationDate: creationDate,detail:detail)
         UserData.sharedData.journalsToShow.append(newJournal)

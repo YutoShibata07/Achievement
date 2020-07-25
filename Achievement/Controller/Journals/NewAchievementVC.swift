@@ -25,6 +25,7 @@ class NewAchievementVC: UIViewController,UITextViewDelegate {
         phraseLabel.textColor = .black
         titleTextView.delegate = self
         textView.delegate = self
+        //ダークモードかどうかでフォントの色を変える。
         if #available(iOS 13.0, *){
             dynamicColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
                 switch traitCollection.userInterfaceStyle {

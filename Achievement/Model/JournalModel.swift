@@ -61,11 +61,11 @@ class JournalModel{
         return sortedJournals
     }
     
-    func saveEmotionalJournals(_ value:[Journal]){
-        guard let data = try? JSONEncoder().encode(value) else{return}
-        ud.set(data, forKey: "emotionalJournals")
-        ud.synchronize()
-    }
-    
+//    func saveEmotionalJournals(_ value:[Journal]){
+//        guard let data = try? JSONEncoder().encode(value) else{return}
+//        ud.set(data, forKey: "emotionalJournals")
+//        ud.synchronize()
+//    }
+//    
    
 }

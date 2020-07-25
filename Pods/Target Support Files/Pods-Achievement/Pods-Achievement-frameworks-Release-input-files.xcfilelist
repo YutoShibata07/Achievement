@@ -1,0 +1,12 @@
+${PODS_ROOT}/Target Support Files/Pods-Achievement/Pods-Achievement-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework
+${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
+${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework
+${BUILT_PRODUCTS_DIR}/Macaw/Macaw.framework
+${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework
+${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework
+${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework
+${BUILT_PRODUCTS_DIR}/Siren/Siren.framework
+${BUILT_PRODUCTS_DIR}/SwiftyDropbox/SwiftyDropbox.framework
+${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework

@@ -50,7 +50,7 @@ class JournalModel{
     func changeTitle(titleLabel:UILabel, category:Category){
         titleLabel.text = category.name
     }
-    func sortJournal(category:Category) -> [Journal]{
+    func selectJournal(category:Category) -> [Journal]{//選択されたカテゴリーに属する記事を選択する。
         var sortedJournals = [Journal]()
         loadedData()
         for journal in UserData.sharedData.journalsToShow {

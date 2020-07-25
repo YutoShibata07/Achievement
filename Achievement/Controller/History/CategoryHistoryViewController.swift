@@ -38,7 +38,7 @@ class CategoryHistoryViewController: UIViewController,UITableViewDelegate,UITabl
         journalModel.loadedData()
         journalModel.changeColorView(colorView: self.colorView, category: selectedCategory)
         journalModel.changeTitle(titleLabel: categoryTitleLabel, category: selectedCategory)
-        sortedJournals = journalModel.sortJournal(category: selectedCategory) //表示するカテゴリをソートする。
+        sortedJournals = journalModel.selectJournal(category: selectedCategory) //表示するカテゴリを選択する。
         tableView.reloadData()
     }
     
